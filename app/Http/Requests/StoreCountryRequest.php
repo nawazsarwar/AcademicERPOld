@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Requests;
+
+use App\Models\Country;
+use Gate;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Response;
+
+class StoreCountryRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return Gate::allows('country_create');
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => [
+                'string',
+                'required',
+            ],
+            'short_code' => [
+                'string',
+                'required',
+            ],
+            'phone_code' => [
+                'string',
+                'nullable',
+            ],
+            'nationality' => [
+                'string',
+                'nullable',
+            ],
+            'status' => [
+                'string',
+                'nullable',
+            ],
+            'remarks' => [
+                'string',
+                'nullable',
+            ],
+        ];
+    }
+}
