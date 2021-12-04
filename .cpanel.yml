@@ -2,9 +2,21 @@
 deployment:
  tasks:
  - export REPOPATH=/home/unideskamu/repositories/AcademicERP
- - export DEPLOYPATH=/home/unideskamu/application/
+ - export DEPLOYPATH=/home/unideskamu/application
  - cd $REPOPATH
- - composer install
- - composer update
- - cd /home/unideskamu
+ - composer install --no-dev
+ - composer update --no-dev
+ - cd ~
+ - rm -rf /home/unideskamu/application_backup
+ - mv /home/unideskamu/application /home/unideskamu/application_backup
+ - mkdir /home/unideskamu/application
  - /bin/cp $REPOPATH $DEPLOYPATH
+ - rm -rf /home/unideskamu/public_html
+ - ln -s /home/unideskamu/application/public /home/unideskamu/public_html
+ - cp ~/.env $DEPLOYPATH
+ - cd $DEPLOYPATH
+ - composer dump-autoload
+ - php artisan storage:link
+ - php artisan key:generate
+ - php artisan migrate:fresh
+ - php artisan db:seed
