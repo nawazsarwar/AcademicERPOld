@@ -1121,4 +1121,12 @@ return [
         'title'          => 'Dean Students\' Welfare',
         'title_singular' => 'Dean Students\' Welfare',
     ],
+    'registrarsOffice' => [
+        'title'          => 'Registrar\'s Office',
+        'title_singular' => 'Registrar\'s Office',
+    ],
+    'systemConfiguration' => [
+        'title'          => 'System Configurations',
+        'title_singular' => 'System Configuration',
+    ],
 ];
