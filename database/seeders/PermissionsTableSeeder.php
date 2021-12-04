@@ -840,6 +840,14 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 208,
+                'title' => 'registrars_office_access',
+            ],
+            [
+                'id'    => 209,
+                'title' => 'system_configuration_access',
+            ],
+            [
+                'id'    => 210,
                 'title' => 'profile_password_edit',
             ],
         ];
