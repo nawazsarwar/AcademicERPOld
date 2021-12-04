@@ -10,7 +10,7 @@ deployment:
  - rm -rf /home/unideskamu/application_backup
  - mv /home/unideskamu/application /home/unideskamu/application_backup
  - mkdir /home/unideskamu/application
- - /bin/cp $REPOPATH $DEPLOYPATH
+ - /bin/cp -r $REPOPATH/* $DEPLOYPATH
  - rm -rf /home/unideskamu/public_html
  - ln -s /home/unideskamu/application/public /home/unideskamu/public_html
  - cp ~/.env $DEPLOYPATH
