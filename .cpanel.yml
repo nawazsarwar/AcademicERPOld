@@ -1,0 +1,10 @@
+---
+deployment:
+ tasks:
+ - export REPOPATH=/home/unideskamu/repositories/AcademicERP
+ - export DEPLOYPATH=/home/unideskamu/application/
+ - cd $REPOPATH
+ - composer install
+ - composer update
+ - cd /home/unideskamu
+ - /bin/cp $REPOPATH $DEPLOYPATH
