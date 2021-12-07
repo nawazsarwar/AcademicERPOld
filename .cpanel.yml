@@ -22,4 +22,6 @@ deployment:
  - php artisan db:seed
  - php artisan optimize:clear
  - php artisan --version
+ - echo "Adding temporary library to generate seeds for easier testing"
+ - composer require orangehill/iseed
  - echo "Deployment completed successfully"
