@@ -10,7 +10,7 @@ class AddRelationshipFieldsToAddressesTable extends Migration
     {
         Schema::table('addresses', function (Blueprint $table) {
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id', 'country_fk_5630186')->references('id')->on('countries');
+            $table->foreign('country_id', 'country_fk_5658039')->references('id')->on('countries');
             $table->unsignedBigInteger('person_id');
             $table->foreign('person_id', 'person_fk_5635443')->references('id')->on('people');
             $table->unsignedBigInteger('postal_code_id');

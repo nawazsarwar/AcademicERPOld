@@ -8,7 +8,6 @@ use App\Http\Requests\MassDestroyStudentRequest;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Enrolment;
-use App\Models\Person;
 use App\Models\Student;
 use Gate;
 use Illuminate\Http\Request;
@@ -24,7 +23,7 @@ class StudentsController extends Controller
         abort_if(Gate::denies('student_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Student::with(['enrolment', 'person'])->select(sprintf('%s.*', (new Student())->table));
+            $query = Student::with(['enrolment'])->select(sprintf('%s.*', (new Student())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -55,11 +54,8 @@ class StudentsController extends Controller
             $table->editColumn('guardian_mobile_no', function ($row) {
                 return $row->guardian_mobile_no ? $row->guardian_mobile_no : '';
             });
-            $table->addColumn('person_first_name', function ($row) {
-                return $row->person ? $row->person->first_name : '';
-            });
 
-            $table->rawColumns(['actions', 'placeholder', 'enrolment', 'person']);
+            $table->rawColumns(['actions', 'placeholder', 'enrolment']);
 
             return $table->make(true);
         }
@@ -73,9 +69,7 @@ class StudentsController extends Controller
 
         $enrolments = Enrolment::pluck('number', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.students.create', compact('enrolments', 'people'));
+        return view('admin.students.create', compact('enrolments'));
     }
 
     public function store(StoreStudentRequest $request)
@@ -91,11 +85,9 @@ class StudentsController extends Controller
 
         $enrolments = Enrolment::pluck('number', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $student->load('enrolment');
 
-        $student->load('enrolment', 'person');
-
-        return view('admin.students.edit', compact('enrolments', 'people', 'student'));
+        return view('admin.students.edit', compact('enrolments', 'student'));
     }
 
     public function update(UpdateStudentRequest $request, Student $student)
@@ -109,7 +101,7 @@ class StudentsController extends Controller
     {
         abort_if(Gate::denies('student_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $student->load('enrolment', 'person');
+        $student->load('enrolment');
 
         return view('admin.students.show', compact('student'));
     }

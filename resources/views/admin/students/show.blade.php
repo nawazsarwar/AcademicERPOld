@@ -39,14 +39,6 @@
                             {{ $student->guardian_mobile_no }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.student.fields.person') }}
-                        </th>
-                        <td>
-                            {{ $student->person->first_name ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

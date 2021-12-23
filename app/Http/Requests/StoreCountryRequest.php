@@ -19,18 +19,24 @@ class StoreCountryRequest extends FormRequest
         return [
             'name' => [
                 'string',
+                'max:190',
                 'required',
+                'unique:countries',
             ],
-            'short_code' => [
+            'code' => [
                 'string',
+                'max:190',
                 'required',
+                'unique:countries',
             ],
             'phone_code' => [
                 'string',
+                'max:190',
                 'nullable',
             ],
             'nationality' => [
                 'string',
+                'max:190',
                 'nullable',
             ],
             'status' => [

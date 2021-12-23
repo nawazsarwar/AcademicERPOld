@@ -19,18 +19,24 @@ class UpdateCountryRequest extends FormRequest
         return [
             'name' => [
                 'string',
+                'max:190',
                 'required',
+                'unique:countries,name,' . request()->route('country')->id,
             ],
-            'short_code' => [
+            'code' => [
                 'string',
+                'max:190',
                 'required',
+                'unique:countries,code,' . request()->route('country')->id,
             ],
             'phone_code' => [
                 'string',
+                'max:190',
                 'nullable',
             ],
             'nationality' => [
                 'string',
+                'max:190',
                 'nullable',
             ],
             'status' => [

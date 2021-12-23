@@ -10,7 +10,7 @@ class AddRelationshipFieldsToProvincesTable extends Migration
     {
         Schema::table('provinces', function (Blueprint $table) {
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id', 'country_fk_5232537')->references('id')->on('countries');
+            $table->foreign('country_id', 'country_fk_5658040')->references('id')->on('countries');
         });
     }
 }

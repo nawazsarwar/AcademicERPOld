@@ -14,7 +14,7 @@ class AddRelationshipFieldsToPeopleTable extends Migration
             $table->unsignedBigInteger('caste_id')->nullable();
             $table->foreign('caste_id', 'caste_fk_5656611')->references('id')->on('castes');
             $table->unsignedBigInteger('nationality_id')->nullable();
-            $table->foreign('nationality_id', 'nationality_fk_5233646')->references('id')->on('countries');
+            $table->foreign('nationality_id', 'nationality_fk_5658038')->references('id')->on('countries');
             $table->unsignedBigInteger('domicile_province_id')->nullable();
             $table->foreign('domicile_province_id', 'domicile_province_fk_5233647')->references('id')->on('provinces');
             $table->unsignedBigInteger('verified_by_id')->nullable();

@@ -11,8 +11,6 @@ class AddRelationshipFieldsToStudentsTable extends Migration
         Schema::table('students', function (Blueprint $table) {
             $table->unsignedBigInteger('enrolment_id');
             $table->foreign('enrolment_id', 'enrolment_fk_5233704')->references('id')->on('enrolments');
-            $table->unsignedBigInteger('person_id');
-            $table->foreign('person_id', 'person_fk_5650019')->references('id')->on('people');
         });
     }
 }

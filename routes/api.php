@@ -10,9 +10,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Campuses
     Route::apiResource('campuses', 'CampusesApiController');
 
-    // Countries
-    Route::apiResource('countries', 'CountriesApiController');
-
     // Provinces
     Route::apiResource('provinces', 'ProvincesApiController');
 
@@ -153,4 +150,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Work Experiences
     Route::apiResource('work-experiences', 'WorkExperiencesApiController');
+
+    // Countries
+    Route::apiResource('countries', 'CountriesApiController');
 });
