@@ -17,7 +17,7 @@ class PersonsApiController extends Controller
     {
         abort_if(Gate::denies('person_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PersonResource(Person::with(['religion', 'nationality', 'domicile_province', 'verified_by', 'user'])->get());
+        return new PersonResource(Person::with(['religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user'])->get());
     }
 
     public function store(StorePersonRequest $request)
@@ -33,7 +33,7 @@ class PersonsApiController extends Controller
     {
         abort_if(Gate::denies('person_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PersonResource($person->load(['religion', 'nationality', 'domicile_province', 'verified_by', 'user']));
+        return new PersonResource($person->load(['religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user']));
     }
 
     public function update(UpdatePersonRequest $request, Person $person)

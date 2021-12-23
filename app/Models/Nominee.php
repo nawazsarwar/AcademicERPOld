@@ -25,7 +25,7 @@ class Nominee extends Model
     protected $fillable = [
         'name',
         'address',
-        'relationship_employee',
+        'relationship',
         'age',
         'witness_name_1',
         'designation_witness_1',

@@ -26,10 +26,18 @@ class Designation extends Model
         'code',
         'name',
         'pay_grade',
+        'type_id',
+        'retirement_age',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(DesignationType::class, 'type_id');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

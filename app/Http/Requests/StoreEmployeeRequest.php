@@ -38,16 +38,6 @@ class StoreEmployeeRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'group' => [
-                'string',
-                'min:0',
-                'max:1',
-                'nullable',
-            ],
-            'retirement_scheme' => [
-                'string',
-                'nullable',
-            ],
             'leave_account_no' => [
                 'string',
                 'nullable',

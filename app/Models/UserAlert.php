@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class UserAlert extends Model
 {
+    use Auditable;
     use HasFactory;
 
     public $table = 'user_alerts';

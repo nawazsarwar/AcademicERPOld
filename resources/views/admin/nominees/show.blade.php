@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.nominee.fields.relationship_employee') }}
+                            {{ trans('cruds.nominee.fields.relationship') }}
                         </th>
                         <td>
-                            {{ $nominee->relationship_employee }}
+                            {{ $nominee->relationship }}
                         </td>
                     </tr>
                     <tr>

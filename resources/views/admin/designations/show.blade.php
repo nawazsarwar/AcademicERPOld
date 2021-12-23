@@ -47,6 +47,30 @@
                             {{ $designation->pay_grade }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.designation.fields.type') }}
+                        </th>
+                        <td>
+                            {{ $designation->type->title ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.designation.fields.retirement_age') }}
+                        </th>
+                        <td>
+                            {{ $designation->retirement_age }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.designation.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $designation->remarks }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

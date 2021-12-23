@@ -41,7 +41,7 @@
                         {{ trans('cruds.employee.fields.highest_qualification') }}
                     </th>
                     <th>
-                        {{ trans('cruds.employee.fields.status') }}
+                        {{ trans('cruds.employee.fields.employment_status') }}
                     </th>
                     <th>
                         {{ trans('cruds.employee.fields.status_date') }}
@@ -131,7 +131,7 @@
 { data: 'service_book_no', name: 'service_book_no' },
 { data: 'application_no', name: 'application_no' },
 { data: 'highest_qualification', name: 'highest_qualification' },
-{ data: 'status', name: 'status' },
+{ data: 'employment_status_title', name: 'employment_status.title' },
 { data: 'status_date', name: 'status_date' },
 { data: 'group', name: 'group' },
 { data: 'retirement_scheme', name: 'retirement_scheme' },

@@ -452,103 +452,103 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 111,
-                'title' => 'status_create',
+                'title' => 'support_status_create',
             ],
             [
                 'id'    => 112,
-                'title' => 'status_edit',
+                'title' => 'support_status_edit',
             ],
             [
                 'id'    => 113,
-                'title' => 'status_show',
+                'title' => 'support_status_show',
             ],
             [
                 'id'    => 114,
-                'title' => 'status_delete',
+                'title' => 'support_status_delete',
             ],
             [
                 'id'    => 115,
-                'title' => 'status_access',
+                'title' => 'support_status_access',
             ],
             [
                 'id'    => 116,
-                'title' => 'priority_create',
+                'title' => 'support_priority_create',
             ],
             [
                 'id'    => 117,
-                'title' => 'priority_edit',
+                'title' => 'support_priority_edit',
             ],
             [
                 'id'    => 118,
-                'title' => 'priority_show',
+                'title' => 'support_priority_show',
             ],
             [
                 'id'    => 119,
-                'title' => 'priority_delete',
+                'title' => 'support_priority_delete',
             ],
             [
                 'id'    => 120,
-                'title' => 'priority_access',
+                'title' => 'support_priority_access',
             ],
             [
                 'id'    => 121,
-                'title' => 'category_create',
+                'title' => 'support_category_create',
             ],
             [
                 'id'    => 122,
-                'title' => 'category_edit',
+                'title' => 'support_category_edit',
             ],
             [
                 'id'    => 123,
-                'title' => 'category_show',
+                'title' => 'support_category_show',
             ],
             [
                 'id'    => 124,
-                'title' => 'category_delete',
+                'title' => 'support_category_delete',
             ],
             [
                 'id'    => 125,
-                'title' => 'category_access',
+                'title' => 'support_category_access',
             ],
             [
                 'id'    => 126,
-                'title' => 'ticket_create',
+                'title' => 'support_ticket_create',
             ],
             [
                 'id'    => 127,
-                'title' => 'ticket_edit',
+                'title' => 'support_ticket_edit',
             ],
             [
                 'id'    => 128,
-                'title' => 'ticket_show',
+                'title' => 'support_ticket_show',
             ],
             [
                 'id'    => 129,
-                'title' => 'ticket_delete',
+                'title' => 'support_ticket_delete',
             ],
             [
                 'id'    => 130,
-                'title' => 'ticket_access',
+                'title' => 'support_ticket_access',
             ],
             [
                 'id'    => 131,
-                'title' => 'comment_create',
+                'title' => 'support_comment_create',
             ],
             [
                 'id'    => 132,
-                'title' => 'comment_edit',
+                'title' => 'support_comment_edit',
             ],
             [
                 'id'    => 133,
-                'title' => 'comment_show',
+                'title' => 'support_comment_show',
             ],
             [
                 'id'    => 134,
-                'title' => 'comment_delete',
+                'title' => 'support_comment_delete',
             ],
             [
                 'id'    => 135,
-                'title' => 'comment_access',
+                'title' => 'support_comment_access',
             ],
             [
                 'id'    => 136,
@@ -1080,6 +1080,110 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 268,
+                'title' => 'employment_status_create',
+            ],
+            [
+                'id'    => 269,
+                'title' => 'employment_status_edit',
+            ],
+            [
+                'id'    => 270,
+                'title' => 'employment_status_show',
+            ],
+            [
+                'id'    => 271,
+                'title' => 'employment_status_delete',
+            ],
+            [
+                'id'    => 272,
+                'title' => 'employment_status_access',
+            ],
+            [
+                'id'    => 273,
+                'title' => 'caste_create',
+            ],
+            [
+                'id'    => 274,
+                'title' => 'caste_edit',
+            ],
+            [
+                'id'    => 275,
+                'title' => 'caste_show',
+            ],
+            [
+                'id'    => 276,
+                'title' => 'caste_delete',
+            ],
+            [
+                'id'    => 277,
+                'title' => 'caste_access',
+            ],
+            [
+                'id'    => 278,
+                'title' => 'designation_type_create',
+            ],
+            [
+                'id'    => 279,
+                'title' => 'designation_type_edit',
+            ],
+            [
+                'id'    => 280,
+                'title' => 'designation_type_show',
+            ],
+            [
+                'id'    => 281,
+                'title' => 'designation_type_delete',
+            ],
+            [
+                'id'    => 282,
+                'title' => 'designation_type_access',
+            ],
+            [
+                'id'    => 283,
+                'title' => 'demographic_access',
+            ],
+            [
+                'id'    => 284,
+                'title' => 'biometric_create',
+            ],
+            [
+                'id'    => 285,
+                'title' => 'biometric_edit',
+            ],
+            [
+                'id'    => 286,
+                'title' => 'biometric_show',
+            ],
+            [
+                'id'    => 287,
+                'title' => 'biometric_delete',
+            ],
+            [
+                'id'    => 288,
+                'title' => 'biometric_access',
+            ],
+            [
+                'id'    => 289,
+                'title' => 'work_experience_create',
+            ],
+            [
+                'id'    => 290,
+                'title' => 'work_experience_edit',
+            ],
+            [
+                'id'    => 291,
+                'title' => 'work_experience_show',
+            ],
+            [
+                'id'    => 292,
+                'title' => 'work_experience_delete',
+            ],
+            [
+                'id'    => 293,
+                'title' => 'work_experience_access',
+            ],
+            [
+                'id'    => 294,
                 'title' => 'profile_password_edit',
             ],
         ];

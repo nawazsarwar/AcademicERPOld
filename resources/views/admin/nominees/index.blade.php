@@ -35,7 +35,7 @@
                         {{ trans('cruds.nominee.fields.address') }}
                     </th>
                     <th>
-                        {{ trans('cruds.nominee.fields.relationship_employee') }}
+                        {{ trans('cruds.nominee.fields.relationship') }}
                     </th>
                     <th>
                         {{ trans('cruds.nominee.fields.age') }}
@@ -126,7 +126,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'address', name: 'address' },
-{ data: 'relationship_employee', name: 'relationship_employee' },
+{ data: 'relationship', name: 'relationship' },
 { data: 'age', name: 'age' },
 { data: 'witness_name_1', name: 'witness_name_1' },
 { data: 'designation_witness_1', name: 'designation_witness_1' },

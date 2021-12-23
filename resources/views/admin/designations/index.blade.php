@@ -38,6 +38,15 @@
                         {{ trans('cruds.designation.fields.pay_grade') }}
                     </th>
                     <th>
+                        {{ trans('cruds.designation.fields.type') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.designation.fields.retirement_age') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.designation.fields.remarks') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -97,6 +106,9 @@
 { data: 'code', name: 'code' },
 { data: 'name', name: 'name' },
 { data: 'pay_grade', name: 'pay_grade' },
+{ data: 'type_title', name: 'type.title' },
+{ data: 'retirement_age', name: 'retirement_age' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -71,20 +71,47 @@
                 <span class="help-block">{{ trans('cruds.academicQualification.fields.board_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="result">{{ trans('cruds.academicQualification.fields.result') }}</label>
-                <input class="form-control {{ $errors->has('result') ? 'is-invalid' : '' }}" type="text" name="result" id="result" value="{{ old('result', $academicQualification->result) }}" required>
+                <label class="required">{{ trans('cruds.academicQualification.fields.result') }}</label>
+                <select class="form-control {{ $errors->has('result') ? 'is-invalid' : '' }}" name="result" id="result" required>
+                    <option value disabled {{ old('result', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\AcademicQualification::RESULT_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('result', $academicQualification->result) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('result'))
                     <span class="text-danger">{{ $errors->first('result') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.academicQualification.fields.result_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="percentage">{{ trans('cruds.academicQualification.fields.percentage') }}</label>
-                <input class="form-control {{ $errors->has('percentage') ? 'is-invalid' : '' }}" type="text" name="percentage" id="percentage" value="{{ old('percentage', $academicQualification->percentage) }}">
-                @if($errors->has('percentage'))
-                    <span class="text-danger">{{ $errors->first('percentage') }}</span>
+                <label class="required">{{ trans('cruds.academicQualification.fields.grading_type') }}</label>
+                <select class="form-control {{ $errors->has('grading_type') ? 'is-invalid' : '' }}" name="grading_type" id="grading_type" required>
+                    <option value disabled {{ old('grading_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\AcademicQualification::GRADING_TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('grading_type', $academicQualification->grading_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grading_type'))
+                    <span class="text-danger">{{ $errors->first('grading_type') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.academicQualification.fields.percentage_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.academicQualification.fields.grading_type_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade">{{ trans('cruds.academicQualification.fields.grade') }}</label>
+                <input class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}" type="text" name="grade" id="grade" value="{{ old('grade', $academicQualification->grade) }}">
+                @if($errors->has('grade'))
+                    <span class="text-danger">{{ $errors->first('grade') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.academicQualification.fields.grade_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="certificate">{{ trans('cruds.academicQualification.fields.certificate') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('certificate') ? 'is-invalid' : '' }}" id="certificate-dropzone">
+                </div>
+                @if($errors->has('certificate'))
+                    <span class="text-danger">{{ $errors->first('certificate') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.academicQualification.fields.certificate_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="cdn_url">{{ trans('cruds.academicQualification.fields.cdn_url') }}</label>
@@ -121,4 +148,57 @@
 
 
 
+@endsection
+
+@section('scripts')
+<script>
+    Dropzone.options.certificateDropzone = {
+    url: '{{ route('admin.academic-qualifications.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="certificate"]').remove()
+      $('form').append('<input type="hidden" name="certificate" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="certificate"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($academicQualification) && $academicQualification->certificate)
+      var file = {!! json_encode($academicQualification->certificate) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="certificate" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
 @endsection

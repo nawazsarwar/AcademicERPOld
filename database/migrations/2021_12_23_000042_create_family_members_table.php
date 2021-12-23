@@ -17,7 +17,7 @@ class CreateFamilyMembersTable extends Migration
             $table->string('gender')->nullable();
             $table->string('marital_status')->nullable();
             $table->integer('status')->nullable();
-            $table->string('remarks')->nullable();
+            $table->longText('remarks')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -11,6 +11,8 @@ class AddRelationshipFieldsToPeopleTable extends Migration
         Schema::table('people', function (Blueprint $table) {
             $table->unsignedBigInteger('religion_id')->nullable();
             $table->foreign('religion_id', 'religion_fk_5233643')->references('id')->on('religions');
+            $table->unsignedBigInteger('caste_id')->nullable();
+            $table->foreign('caste_id', 'caste_fk_5656611')->references('id')->on('castes');
             $table->unsignedBigInteger('nationality_id')->nullable();
             $table->foreign('nationality_id', 'nationality_fk_5233646')->references('id')->on('countries');
             $table->unsignedBigInteger('domicile_province_id')->nullable();

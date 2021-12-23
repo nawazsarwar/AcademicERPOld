@@ -76,15 +76,35 @@
                             {{ trans('cruds.academicQualification.fields.result') }}
                         </th>
                         <td>
-                            {{ $academicQualification->result }}
+                            {{ App\Models\AcademicQualification::RESULT_SELECT[$academicQualification->result] ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.academicQualification.fields.percentage') }}
+                            {{ trans('cruds.academicQualification.fields.grading_type') }}
                         </th>
                         <td>
-                            {{ $academicQualification->percentage }}
+                            {{ App\Models\AcademicQualification::GRADING_TYPE_SELECT[$academicQualification->grading_type] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.academicQualification.fields.grade') }}
+                        </th>
+                        <td>
+                            {{ $academicQualification->grade }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.academicQualification.fields.certificate') }}
+                        </th>
+                        <td>
+                            @if($academicQualification->certificate)
+                                <a href="{{ $academicQualification->certificate->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
                         </td>
                     </tr>
                     <tr>

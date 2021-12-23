@@ -25,8 +25,9 @@ class StoreNomineeRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'relationship_employee' => [
+            'relationship' => [
                 'string',
+                'max:190',
                 'nullable',
             ],
             'age' => [
@@ -66,10 +67,6 @@ class StoreNomineeRequest extends FormRequest
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-            ],
-            'remarks' => [
-                'string',
-                'nullable',
             ],
         ];
     }

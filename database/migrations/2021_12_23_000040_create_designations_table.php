@@ -13,6 +13,8 @@ class CreateDesignationsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('pay_grade')->nullable();
+            $table->integer('retirement_age');
+            $table->longText('remarks')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

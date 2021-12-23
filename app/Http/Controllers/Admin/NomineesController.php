@@ -53,8 +53,8 @@ class NomineesController extends Controller
             $table->editColumn('address', function ($row) {
                 return $row->address ? $row->address : '';
             });
-            $table->editColumn('relationship_employee', function ($row) {
-                return $row->relationship_employee ? $row->relationship_employee : '';
+            $table->editColumn('relationship', function ($row) {
+                return $row->relationship ? $row->relationship : '';
             });
             $table->editColumn('age', function ($row) {
                 return $row->age ? $row->age : '';
