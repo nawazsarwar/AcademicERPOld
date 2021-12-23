@@ -25,21 +25,11 @@ class UpdateFacultyRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'color_code' => [
-                'string',
-                'nullable',
-            ],
-            'type' => [
+            'color' => [
                 'string',
                 'nullable',
             ],
             'status' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'remarks' => [
                 'string',
                 'nullable',
             ],

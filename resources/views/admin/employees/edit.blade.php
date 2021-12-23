@@ -125,6 +125,18 @@
                 <span class="help-block">{{ trans('cruds.employee.fields.remarks_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="person_id">{{ trans('cruds.employee.fields.person') }}</label>
+                <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id" required>
+                    @foreach($people as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('person_id') ? old('person_id') : $employee->person->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('person'))
+                    <span class="text-danger">{{ $errors->first('person') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.person_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

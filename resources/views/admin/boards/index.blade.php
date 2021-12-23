@@ -38,6 +38,9 @@
                         {{ trans('cruds.board.fields.status') }}
                     </th>
                     <th>
+                        {{ trans('cruds.board.fields.remarks') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -97,6 +100,7 @@
 { data: 'name', name: 'name' },
 { data: 'code', name: 'code' },
 { data: 'status', name: 'status' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

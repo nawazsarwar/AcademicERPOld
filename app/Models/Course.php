@@ -14,6 +14,11 @@ class Course extends Model
     use Auditable;
     use HasFactory;
 
+    public const SUBSIDIARIZABLE_RADIO = [
+        '1' => 'Yes',
+        '0' => 'No',
+    ];
+
     public $table = 'courses';
 
     protected $dates = [
@@ -23,25 +28,61 @@ class Course extends Model
     ];
 
     protected $fillable = [
+        'degree_id',
         'campus_id',
-        'name',
+        'title',
+        'title_hindi',
+        'title_urdu',
         'code',
         'course_code',
         'internal_code',
-        'mode',
-        'course_type',
-        'test_type',
+        'level_id',
+        'entrance_type_id',
+        'mode_id',
+        'duration_type_id',
         'duration',
-        'duration_type',
         'total_intake',
+        'subsidiarizable',
+        'administrable_id',
+        'administrable_type',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    public function degree()
+    {
+        return $this->belongsTo(Degree::class, 'degree_id');
+    }
+
     public function campus()
     {
         return $this->belongsTo(Campus::class, 'campus_id');
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(CourseLevel::class, 'level_id');
+    }
+
+    public function entrance_type()
+    {
+        return $this->belongsTo(AdmissionEntranceType::class, 'entrance_type_id');
+    }
+
+    public function mode()
+    {
+        return $this->belongsTo(ProgrammeDeliveryMode::class, 'mode_id');
+    }
+
+    public function duration_type()
+    {
+        return $this->belongsTo(ProgrammeDurationType::class, 'duration_type_id');
+    }
+
+    public function administrable()
+    {
+        return $this->belongsTo(Department::class, 'administrable_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

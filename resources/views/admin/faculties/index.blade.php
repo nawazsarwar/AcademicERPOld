@@ -35,10 +35,7 @@
                         {{ trans('cruds.faculty.fields.code') }}
                     </th>
                     <th>
-                        {{ trans('cruds.faculty.fields.color_code') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.faculty.fields.type') }}
+                        {{ trans('cruds.faculty.fields.color') }}
                     </th>
                     <th>
                         {{ trans('cruds.faculty.fields.status') }}
@@ -105,8 +102,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'code', name: 'code' },
-{ data: 'color_code', name: 'color_code' },
-{ data: 'type', name: 'type' },
+{ data: 'color', name: 'color' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

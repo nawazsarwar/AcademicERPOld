@@ -49,8 +49,8 @@ class CountriesController extends Controller
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
-            $table->editColumn('short_code', function ($row) {
-                return $row->short_code ? $row->short_code : '';
+            $table->editColumn('code', function ($row) {
+                return $row->code ? $row->code : '';
             });
             $table->editColumn('phone_code', function ($row) {
                 return $row->phone_code ? $row->phone_code : '';

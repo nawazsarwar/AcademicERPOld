@@ -26,6 +26,10 @@ class StoreReligionRequest extends FormRequest
                 'required',
                 'unique:religions',
             ],
+            'status' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.department.fields.name') }}
+                            {{ trans('cruds.department.fields.faculty') }}
                         </th>
                         <td>
-                            {{ $department->name }}
+                            {{ $department->faculty->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -37,6 +37,14 @@
                         </th>
                         <td>
                             {{ $department->code }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.department.fields.name') }}
+                        </th>
+                        <td>
+                            {{ $department->name }}
                         </td>
                     </tr>
                     <tr>
@@ -53,14 +61,6 @@
                         </th>
                         <td>
                             {{ $department->remarks }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.department.fields.faculty') }}
-                        </th>
-                        <td>
-                            {{ $department->faculty->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

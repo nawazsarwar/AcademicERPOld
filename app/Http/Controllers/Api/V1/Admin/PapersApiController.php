@@ -17,7 +17,7 @@ class PapersApiController extends Controller
     {
         abort_if(Gate::denies('paper_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PaperResource(Paper::with(['paper_type'])->get());
+        return new PaperResource(Paper::with(['paper_type', 'administrable'])->get());
     }
 
     public function store(StorePaperRequest $request)
@@ -33,7 +33,7 @@ class PapersApiController extends Controller
     {
         abort_if(Gate::denies('paper_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PaperResource($paper->load(['paper_type']));
+        return new PaperResource($paper->load(['paper_type', 'administrable']));
     }
 
     public function update(UpdatePaperRequest $request, Paper $paper)

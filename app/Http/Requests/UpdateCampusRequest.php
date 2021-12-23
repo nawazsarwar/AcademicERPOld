@@ -26,10 +26,6 @@ class UpdateCampusRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
             'status' => [
                 'string',
                 'nullable',

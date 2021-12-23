@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.course.fields.degree') }}
+                        </th>
+                        <td>
+                            {{ $course->degree->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.course.fields.campus') }}
                         </th>
                         <td>
@@ -33,10 +41,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.name') }}
+                            {{ trans('cruds.course.fields.title') }}
                         </th>
                         <td>
-                            {{ $course->name }}
+                            {{ $course->title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.title_hindi') }}
+                        </th>
+                        <td>
+                            {{ $course->title_hindi }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.title_urdu') }}
+                        </th>
+                        <td>
+                            {{ $course->title_urdu }}
                         </td>
                     </tr>
                     <tr>
@@ -65,26 +89,34 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.course.fields.level') }}
+                        </th>
+                        <td>
+                            {{ $course->level->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.entrance_type') }}
+                        </th>
+                        <td>
+                            {{ $course->entrance_type->title ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.course.fields.mode') }}
                         </th>
                         <td>
-                            {{ $course->mode }}
+                            {{ $course->mode->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.course_type') }}
+                            {{ trans('cruds.course.fields.duration_type') }}
                         </th>
                         <td>
-                            {{ $course->course_type }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.course.fields.test_type') }}
-                        </th>
-                        <td>
-                            {{ $course->test_type }}
+                            {{ $course->duration_type->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -97,18 +129,34 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.duration_type') }}
-                        </th>
-                        <td>
-                            {{ $course->duration_type }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.course.fields.total_intake') }}
                         </th>
                         <td>
                             {{ $course->total_intake }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.subsidiarizable') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Course::SUBSIDIARIZABLE_RADIO[$course->subsidiarizable] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.administrable') }}
+                        </th>
+                        <td>
+                            {{ $course->administrable->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.administrable_type') }}
+                        </th>
+                        <td>
+                            {{ $course->administrable_type }}
                         </td>
                     </tr>
                 </tbody>

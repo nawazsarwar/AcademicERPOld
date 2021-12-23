@@ -21,6 +21,10 @@ class StoreCityRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'status' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

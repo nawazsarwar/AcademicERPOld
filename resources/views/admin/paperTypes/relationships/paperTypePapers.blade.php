@@ -28,7 +28,7 @@
                                 {{ trans('cruds.paper.fields.code') }}
                             </th>
                             <th>
-                                {{ trans('cruds.paper.fields.name') }}
+                                {{ trans('cruds.paper.fields.title') }}
                             </th>
                             <th>
                                 {{ trans('cruds.paper.fields.paper_type') }}
@@ -37,7 +37,7 @@
                                 {{ trans('cruds.paperType.fields.name') }}
                             </th>
                             <th>
-                                {{ trans('cruds.paper.fields.part') }}
+                                {{ trans('cruds.paper.fields.fraction') }}
                             </th>
                             <th>
                                 {{ trans('cruds.paper.fields.teaching_status') }}
@@ -50,6 +50,12 @@
                             </th>
                             <th>
                                 {{ trans('cruds.paper.fields.remarks') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.paper.fields.administrable') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.paper.fields.administrable_type') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -69,7 +75,7 @@
                                     {{ $paper->code ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $paper->name ?? '' }}
+                                    {{ $paper->title ?? '' }}
                                 </td>
                                 <td>
                                     {{ $paper->paper_type->name ?? '' }}
@@ -78,7 +84,7 @@
                                     {{ $paper->paper_type->name ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $paper->part ?? '' }}
+                                    {{ $paper->fraction ?? '' }}
                                 </td>
                                 <td>
                                     {{ App\Models\Paper::TEACHING_STATUS_SELECT[$paper->teaching_status] ?? '' }}
@@ -91,6 +97,12 @@
                                 </td>
                                 <td>
                                     {{ $paper->remarks ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $paper->administrable->name ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $paper->administrable_type ?? '' }}
                                 </td>
                                 <td>
                                     @can('paper_show')

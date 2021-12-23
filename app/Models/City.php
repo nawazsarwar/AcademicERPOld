@@ -25,6 +25,8 @@ class City extends Model
     protected $fillable = [
         'province_id',
         'name',
+        'status',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',

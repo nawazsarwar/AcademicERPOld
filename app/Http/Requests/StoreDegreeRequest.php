@@ -26,10 +26,6 @@ class StoreDegreeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

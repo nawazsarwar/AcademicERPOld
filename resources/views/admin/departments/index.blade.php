@@ -29,19 +29,19 @@
                         {{ trans('cruds.department.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.department.fields.name') }}
+                        {{ trans('cruds.department.fields.faculty') }}
                     </th>
                     <th>
                         {{ trans('cruds.department.fields.code') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.department.fields.name') }}
                     </th>
                     <th>
                         {{ trans('cruds.department.fields.status') }}
                     </th>
                     <th>
                         {{ trans('cruds.department.fields.remarks') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.department.fields.faculty') }}
                     </th>
                     <th>
                         &nbsp;
@@ -100,11 +100,11 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
+{ data: 'faculty_name', name: 'faculty.name' },
 { data: 'code', name: 'code' },
+{ data: 'name', name: 'name' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
-{ data: 'faculty_name', name: 'faculty.name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

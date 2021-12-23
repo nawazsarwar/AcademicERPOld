@@ -21,10 +21,6 @@ class Paper extends Model
 
     public $table = 'papers';
 
-    public static $searchable = [
-        'name',
-    ];
-
     protected $dates = [
         'created_at',
         'updated_at',
@@ -33,13 +29,15 @@ class Paper extends Model
 
     protected $fillable = [
         'code',
-        'name',
-        'status',
-        'remarks',
+        'title',
         'paper_type_id',
-        'part',
+        'fraction',
         'teaching_status',
         'credits',
+        'status',
+        'remarks',
+        'administrable_id',
+        'administrable_type',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -48,6 +46,11 @@ class Paper extends Model
     public function paper_type()
     {
         return $this->belongsTo(PaperType::class, 'paper_type_id');
+    }
+
+    public function administrable()
+    {
+        return $this->belongsTo(Department::class, 'administrable_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

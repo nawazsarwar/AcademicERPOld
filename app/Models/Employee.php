@@ -60,6 +60,7 @@ class Employee extends Model
         'pf_account_no',
         'personal_file_no',
         'remarks',
+        'person_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -73,6 +74,11 @@ class Employee extends Model
     public function setStatusDateAttribute($value)
     {
         $this->attributes['status_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'person_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

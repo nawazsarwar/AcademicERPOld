@@ -41,18 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.faculty.fields.color_code') }}
+                            {{ trans('cruds.faculty.fields.color') }}
                         </th>
                         <td>
-                            {{ $faculty->color_code }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.faculty.fields.type') }}
-                        </th>
-                        <td>
-                            {{ $faculty->type }}
+                            {{ $faculty->color }}
                         </td>
                     </tr>
                     <tr>

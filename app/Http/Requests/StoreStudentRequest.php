@@ -25,6 +25,10 @@ class StoreStudentRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'person_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

@@ -35,6 +35,12 @@
                         {{ trans('cruds.city.fields.name') }}
                     </th>
                     <th>
+                        {{ trans('cruds.city.fields.status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.city.fields.remarks') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -93,6 +99,8 @@
 { data: 'id', name: 'id' },
 { data: 'province_type', name: 'province.type' },
 { data: 'name', name: 'name' },
+{ data: 'status', name: 'status' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

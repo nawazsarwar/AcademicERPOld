@@ -32,7 +32,7 @@
                         {{ trans('cruds.paper.fields.code') }}
                     </th>
                     <th>
-                        {{ trans('cruds.paper.fields.name') }}
+                        {{ trans('cruds.paper.fields.title') }}
                     </th>
                     <th>
                         {{ trans('cruds.paper.fields.paper_type') }}
@@ -41,7 +41,7 @@
                         {{ trans('cruds.paperType.fields.name') }}
                     </th>
                     <th>
-                        {{ trans('cruds.paper.fields.part') }}
+                        {{ trans('cruds.paper.fields.fraction') }}
                     </th>
                     <th>
                         {{ trans('cruds.paper.fields.teaching_status') }}
@@ -54,6 +54,12 @@
                     </th>
                     <th>
                         {{ trans('cruds.paper.fields.remarks') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.paper.fields.administrable') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.paper.fields.administrable_type') }}
                     </th>
                     <th>
                         &nbsp;
@@ -113,14 +119,16 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'code', name: 'code' },
-{ data: 'name', name: 'name' },
+{ data: 'title', name: 'title' },
 { data: 'paper_type_name', name: 'paper_type.name' },
 { data: 'paper_type.name', name: 'paper_type.name' },
-{ data: 'part', name: 'part' },
+{ data: 'fraction', name: 'fraction' },
 { data: 'teaching_status', name: 'teaching_status' },
 { data: 'credits', name: 'credits' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
+{ data: 'administrable_name', name: 'administrable.name' },
+{ data: 'administrable_type', name: 'administrable_type' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

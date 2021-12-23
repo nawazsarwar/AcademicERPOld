@@ -17,13 +17,27 @@ class StoreCourseRequest extends FormRequest
     public function rules()
     {
         return [
+            'degree_id' => [
+                'required',
+                'integer',
+            ],
             'campus_id' => [
                 'required',
                 'integer',
             ],
-            'name' => [
+            'title' => [
                 'string',
                 'required',
+            ],
+            'title_hindi' => [
+                'string',
+                'max:190',
+                'nullable',
+            ],
+            'title_urdu' => [
+                'string',
+                'max:190',
+                'nullable',
             ],
             'code' => [
                 'string',
@@ -37,17 +51,17 @@ class StoreCourseRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'mode' => [
-                'string',
-                'nullable',
+            'entrance_type_id' => [
+                'required',
+                'integer',
             ],
-            'course_type' => [
-                'string',
-                'nullable',
+            'mode_id' => [
+                'required',
+                'integer',
             ],
-            'test_type' => [
-                'string',
-                'nullable',
+            'duration_type_id' => [
+                'required',
+                'integer',
             ],
             'duration' => [
                 'nullable',
@@ -55,15 +69,22 @@ class StoreCourseRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
-            'duration_type' => [
-                'string',
-                'nullable',
-            ],
             'total_intake' => [
                 'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
+            ],
+            'subsidiarizable' => [
+                'required',
+            ],
+            'administrable_id' => [
+                'required',
+                'integer',
+            ],
+            'administrable_type' => [
+                'string',
+                'nullable',
             ],
         ];
     }

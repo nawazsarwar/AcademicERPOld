@@ -31,6 +31,12 @@
                         {{ trans('cruds.religion.fields.code') }}
                     </th>
                     <th>
+                        {{ trans('cruds.religion.fields.status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.religion.fields.remarks') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -89,6 +95,8 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'code', name: 'code' },
+{ data: 'status', name: 'status' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

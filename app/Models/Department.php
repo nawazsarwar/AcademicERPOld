@@ -23,11 +23,11 @@ class Department extends Model
     ];
 
     protected $fillable = [
-        'name',
+        'faculty_id',
         'code',
+        'name',
         'status',
         'remarks',
-        'faculty_id',
         'created_at',
         'updated_at',
         'deleted_at',

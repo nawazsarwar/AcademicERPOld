@@ -26,24 +26,16 @@
                 <span class="help-block">{{ trans('cruds.faculty.fields.code_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="color_code">{{ trans('cruds.faculty.fields.color_code') }}</label>
-                <input class="form-control {{ $errors->has('color_code') ? 'is-invalid' : '' }}" type="text" name="color_code" id="color_code" value="{{ old('color_code', '') }}">
-                @if($errors->has('color_code'))
-                    <span class="text-danger">{{ $errors->first('color_code') }}</span>
+                <label for="color">{{ trans('cruds.faculty.fields.color') }}</label>
+                <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text" name="color" id="color" value="{{ old('color', '') }}">
+                @if($errors->has('color'))
+                    <span class="text-danger">{{ $errors->first('color') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.faculty.fields.color_code_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="type">{{ trans('cruds.faculty.fields.type') }}</label>
-                <input class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" type="text" name="type" id="type" value="{{ old('type', '') }}">
-                @if($errors->has('type'))
-                    <span class="text-danger">{{ $errors->first('type') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.faculty.fields.type_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.faculty.fields.color_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.faculty.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', '') }}">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif
@@ -51,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.faculty.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', '') }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif

@@ -39,6 +39,22 @@
                             {{ $religion->code }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.religion.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $religion->status }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.religion.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $religion->remarks }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

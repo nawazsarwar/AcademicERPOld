@@ -24,12 +24,18 @@ class Enrolment extends Model
 
     protected $fillable = [
         'number',
+        'student_id',
         'status',
         'remarks',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

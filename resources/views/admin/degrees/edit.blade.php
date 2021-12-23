@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.degree.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', $degree->remarks) }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $degree->remarks) }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif

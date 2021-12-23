@@ -87,6 +87,12 @@ class ProvincesController extends Controller
             $table->editColumn('additional_official_languages', function ($row) {
                 return $row->additional_official_languages ? $row->additional_official_languages : '';
             });
+            $table->editColumn('status', function ($row) {
+                return $row->status ? $row->status : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'country']);
 
@@ -134,7 +140,7 @@ class ProvincesController extends Controller
     {
         abort_if(Gate::denies('province_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $province->load('country', 'provincePincodes');
+        $province->load('country', 'provincePostalCodes');
 
         return view('admin.provinces.show', compact('province'));
     }

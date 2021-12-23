@@ -54,6 +54,12 @@ class CitiesController extends Controller
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
+            $table->editColumn('status', function ($row) {
+                return $row->status ? $row->status : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'province']);
 
@@ -87,7 +93,7 @@ class CitiesController extends Controller
 
         $city->load('province');
 
-        return view('admin.cities.edit', compact('provinces', 'city'));
+        return view('admin.cities.edit', compact('city', 'provinces'));
     }
 
     public function update(UpdateCityRequest $request, City $city)

@@ -18,8 +18,20 @@
                 <span class="help-block">{{ trans('cruds.enrolment.fields.number_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="student_id">{{ trans('cruds.enrolment.fields.student') }}</label>
+                <select class="form-control select2 {{ $errors->has('student') ? 'is-invalid' : '' }}" name="student_id" id="student_id">
+                    @foreach($students as $id => $entry)
+                        <option value="{{ $id }}" {{ old('student_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('student'))
+                    <span class="text-danger">{{ $errors->first('student') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolment.fields.student_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="status">{{ trans('cruds.enrolment.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', '') }}">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif
@@ -27,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.enrolment.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', '') }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif
