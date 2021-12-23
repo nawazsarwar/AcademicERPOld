@@ -62,12 +62,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('campuses/process-csv-import', 'CampusesController@processCsvImport')->name('campuses.processCsvImport');
     Route::resource('campuses', 'CampusesController');
 
-    // Countries
-    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
-    Route::post('countries/parse-csv-import', 'CountriesController@parseCsvImport')->name('countries.parseCsvImport');
-    Route::post('countries/process-csv-import', 'CountriesController@processCsvImport')->name('countries.processCsvImport');
-    Route::resource('countries', 'CountriesController');
-
     // Provinces
     Route::delete('provinces/destroy', 'ProvincesController@massDestroy')->name('provinces.massDestroy');
     Route::post('provinces/parse-csv-import', 'ProvincesController@parseCsvImport')->name('provinces.parseCsvImport');
@@ -84,11 +78,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('religions/destroy', 'ReligionsController@massDestroy')->name('religions.massDestroy');
     Route::resource('religions', 'ReligionsController');
 
-    // Persons
-    Route::delete('people/destroy', 'PersonsController@massDestroy')->name('people.massDestroy');
-    Route::post('people/parse-csv-import', 'PersonsController@parseCsvImport')->name('people.parseCsvImport');
-    Route::post('people/process-csv-import', 'PersonsController@processCsvImport')->name('people.processCsvImport');
-    Route::resource('people', 'PersonsController');
+    // Peoples
+    Route::delete('people/destroy', 'PeoplesController@massDestroy')->name('people.massDestroy');
+    Route::post('people/parse-csv-import', 'PeoplesController@parseCsvImport')->name('people.parseCsvImport');
+    Route::post('people/process-csv-import', 'PeoplesController@processCsvImport')->name('people.processCsvImport');
+    Route::resource('people', 'PeoplesController');
 
     // Boards
     Route::delete('boards/destroy', 'BoardsController@massDestroy')->name('boards.massDestroy');
@@ -327,6 +321,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Work Experiences
     Route::delete('work-experiences/destroy', 'WorkExperiencesController@massDestroy')->name('work-experiences.massDestroy');
     Route::resource('work-experiences', 'WorkExperiencesController');
+
+    // Countries
+    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountriesController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

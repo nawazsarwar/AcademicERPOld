@@ -35,9 +35,6 @@
                         {{ trans('cruds.student.fields.guardian_mobile_no') }}
                     </th>
                     <th>
-                        {{ trans('cruds.student.fields.person') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -96,7 +93,6 @@
 { data: 'id', name: 'id' },
 { data: 'enrolment_number', name: 'enrolment.number' },
 { data: 'guardian_mobile_no', name: 'guardian_mobile_no' },
-{ data: 'person_first_name', name: 'person.first_name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

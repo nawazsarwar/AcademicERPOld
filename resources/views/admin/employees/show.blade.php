@@ -127,14 +127,6 @@
                             {{ $employee->remarks }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.employee.fields.person') }}
-                        </th>
-                        <td>
-                            {{ $employee->person->first_name ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

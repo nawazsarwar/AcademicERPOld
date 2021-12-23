@@ -499,7 +499,7 @@
                             @can('country_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.countries.index") }}" class="nav-link {{ request()->is("admin/countries") || request()->is("admin/countries/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-flag">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
 
                                         </i>
                                         <p>

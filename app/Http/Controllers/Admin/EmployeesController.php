@@ -9,7 +9,6 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
 use App\Models\EmploymentStatus;
-use App\Models\Person;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +23,7 @@ class EmployeesController extends Controller
         abort_if(Gate::denies('employee_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Employee::with(['employment_status', 'person'])->select(sprintf('%s.*', (new Employee())->table));
+            $query = Employee::with(['employment_status'])->select(sprintf('%s.*', (new Employee())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -85,11 +84,8 @@ class EmployeesController extends Controller
             $table->editColumn('remarks', function ($row) {
                 return $row->remarks ? $row->remarks : '';
             });
-            $table->addColumn('person_first_name', function ($row) {
-                return $row->person ? $row->person->first_name : '';
-            });
 
-            $table->rawColumns(['actions', 'placeholder', 'employment_status', 'person']);
+            $table->rawColumns(['actions', 'placeholder', 'employment_status']);
 
             return $table->make(true);
         }
@@ -103,9 +99,7 @@ class EmployeesController extends Controller
 
         $employment_statuses = EmploymentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.employees.create', compact('employment_statuses', 'people'));
+        return view('admin.employees.create', compact('employment_statuses'));
     }
 
     public function store(StoreEmployeeRequest $request)
@@ -121,11 +115,9 @@ class EmployeesController extends Controller
 
         $employment_statuses = EmploymentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $employee->load('employment_status');
 
-        $employee->load('employment_status', 'person');
-
-        return view('admin.employees.edit', compact('employee', 'employment_statuses', 'people'));
+        return view('admin.employees.edit', compact('employee', 'employment_statuses'));
     }
 
     public function update(UpdateEmployeeRequest $request, Employee $employee)
@@ -139,7 +131,7 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employee->load('employment_status', 'person');
+        $employee->load('employment_status');
 
         return view('admin.employees.show', compact('employee'));
     }

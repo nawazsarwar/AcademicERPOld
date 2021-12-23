@@ -10,8 +10,8 @@ class CreateCountriesTable extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('code')->nullable();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
             $table->string('phone_code')->nullable();
             $table->string('nationality')->nullable();
             $table->string('status')->nullable();
