@@ -68,6 +68,12 @@
                         {{ trans('cruds.province.fields.additional_official_languages') }}
                     </th>
                     <th>
+                        {{ trans('cruds.province.fields.status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.province.fields.remarks') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -137,6 +143,8 @@
 { data: 'area', name: 'area' },
 { data: 'official_languages', name: 'official_languages' },
 { data: 'additional_official_languages', name: 'additional_official_languages' },
+{ data: 'status', name: 'status' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

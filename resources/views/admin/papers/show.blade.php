@@ -33,10 +33,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.paper.fields.name') }}
+                            {{ trans('cruds.paper.fields.title') }}
                         </th>
                         <td>
-                            {{ $paper->name }}
+                            {{ $paper->title }}
                         </td>
                     </tr>
                     <tr>
@@ -49,10 +49,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.paper.fields.part') }}
+                            {{ trans('cruds.paper.fields.fraction') }}
                         </th>
                         <td>
-                            {{ $paper->part }}
+                            {{ $paper->fraction }}
                         </td>
                     </tr>
                     <tr>
@@ -85,6 +85,22 @@
                         </th>
                         <td>
                             {{ $paper->remarks }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.paper.fields.administrable') }}
+                        </th>
+                        <td>
+                            {{ $paper->administrable->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.paper.fields.administrable_type') }}
+                        </th>
+                        <td>
+                            {{ $paper->administrable_type }}
                         </td>
                     </tr>
                 </tbody>

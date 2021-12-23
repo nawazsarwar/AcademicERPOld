@@ -29,10 +29,19 @@
                         {{ trans('cruds.course.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.course.fields.degree') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.course.fields.campus') }}
                     </th>
                     <th>
-                        {{ trans('cruds.course.fields.name') }}
+                        {{ trans('cruds.course.fields.title') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.course.fields.title_hindi') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.course.fields.title_urdu') }}
                     </th>
                     <th>
                         {{ trans('cruds.course.fields.code') }}
@@ -44,22 +53,31 @@
                         {{ trans('cruds.course.fields.internal_code') }}
                     </th>
                     <th>
+                        {{ trans('cruds.course.fields.level') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.course.fields.entrance_type') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.course.fields.mode') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.course.fields.course_type') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.course.fields.test_type') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.course.fields.duration') }}
                     </th>
                     <th>
                         {{ trans('cruds.course.fields.duration_type') }}
                     </th>
                     <th>
+                        {{ trans('cruds.course.fields.duration') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.course.fields.total_intake') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.course.fields.subsidiarizable') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.course.fields.administrable') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.course.fields.administrable_type') }}
                     </th>
                     <th>
                         &nbsp;
@@ -118,17 +136,23 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'degree_name', name: 'degree.name' },
 { data: 'campus_name', name: 'campus.name' },
-{ data: 'name', name: 'name' },
+{ data: 'title', name: 'title' },
+{ data: 'title_hindi', name: 'title_hindi' },
+{ data: 'title_urdu', name: 'title_urdu' },
 { data: 'code', name: 'code' },
 { data: 'course_code', name: 'course_code' },
 { data: 'internal_code', name: 'internal_code' },
-{ data: 'mode', name: 'mode' },
-{ data: 'course_type', name: 'course_type' },
-{ data: 'test_type', name: 'test_type' },
+{ data: 'level_name', name: 'level.name' },
+{ data: 'entrance_type_title', name: 'entrance_type.title' },
+{ data: 'mode_title', name: 'mode.title' },
+{ data: 'duration_type_title', name: 'duration_type.title' },
 { data: 'duration', name: 'duration' },
-{ data: 'duration_type', name: 'duration_type' },
 { data: 'total_intake', name: 'total_intake' },
+{ data: 'subsidiarizable', name: 'subsidiarizable' },
+{ data: 'administrable_name', name: 'administrable.name' },
+{ data: 'administrable_type', name: 'administrable_type' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

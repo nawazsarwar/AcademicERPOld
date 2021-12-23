@@ -29,16 +29,19 @@
                         {{ trans('cruds.address.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.address.fields.country') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.address.fields.person') }}
                     </th>
                     <th>
-                        {{ trans('cruds.person.fields.middle_name') }}
+                        {{ trans('cruds.address.fields.mobile') }}
                     </th>
                     <th>
-                        {{ trans('cruds.person.fields.last_name') }}
+                        {{ trans('cruds.address.fields.postal_code') }}
                     </th>
                     <th>
-                        {{ trans('cruds.address.fields.house_no') }}
+                        {{ trans('cruds.address.fields.details') }}
                     </th>
                     <th>
                         {{ trans('cruds.address.fields.street') }}
@@ -53,22 +56,13 @@
                         {{ trans('cruds.address.fields.city') }}
                     </th>
                     <th>
-                        {{ trans('cruds.address.fields.district') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.address.fields.province') }}
                     </th>
                     <th>
-                        {{ trans('cruds.address.fields.pincode') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.address.fields.country') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.address.fields.type') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.address.fields.status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.address.fields.remarks') }}
                     </th>
                     <th>
                         &nbsp;
@@ -127,20 +121,18 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'country_name', name: 'country.name' },
 { data: 'person_first_name', name: 'person.first_name' },
-{ data: 'person.middle_name', name: 'person.middle_name' },
-{ data: 'person.last_name', name: 'person.last_name' },
-{ data: 'house_no', name: 'house_no' },
+{ data: 'mobile', name: 'mobile' },
+{ data: 'postal_code_name', name: 'postal_code.name' },
+{ data: 'details', name: 'details' },
 { data: 'street', name: 'street' },
 { data: 'landmark', name: 'landmark' },
 { data: 'locality', name: 'locality' },
 { data: 'city', name: 'city' },
-{ data: 'district', name: 'district' },
-{ data: 'province', name: 'province' },
-{ data: 'pincode', name: 'pincode' },
-{ data: 'country', name: 'country' },
-{ data: 'type', name: 'type' },
+{ data: 'province_name', name: 'province.name' },
 { data: 'status', name: 'status' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

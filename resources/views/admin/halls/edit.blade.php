@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.hall.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', $hall->status) }}" step="1">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $hall->status) }}">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif
@@ -69,7 +69,7 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.hall.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', $hall->remarks) }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $hall->remarks) }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif

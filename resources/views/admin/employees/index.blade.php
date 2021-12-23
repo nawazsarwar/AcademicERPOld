@@ -68,6 +68,9 @@
                         {{ trans('cruds.employee.fields.remarks') }}
                     </th>
                     <th>
+                        {{ trans('cruds.employee.fields.person') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -137,6 +140,7 @@
 { data: 'pf_account_no', name: 'pf_account_no' },
 { data: 'personal_file_no', name: 'personal_file_no' },
 { data: 'remarks', name: 'remarks' },
+{ data: 'person_first_name', name: 'person.first_name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

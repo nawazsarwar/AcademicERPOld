@@ -37,12 +37,6 @@ class StoreHallRequest extends FormRequest
                 'required',
             ],
             'status' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'remarks' => [
                 'string',
                 'nullable',
             ],

@@ -52,11 +52,8 @@ class FacultiesController extends Controller
             $table->editColumn('code', function ($row) {
                 return $row->code ? $row->code : '';
             });
-            $table->editColumn('color_code', function ($row) {
-                return $row->color_code ? $row->color_code : '';
-            });
-            $table->editColumn('type', function ($row) {
-                return $row->type ? $row->type : '';
+            $table->editColumn('color', function ($row) {
+                return $row->color ? $row->color : '';
             });
             $table->editColumn('status', function ($row) {
                 return $row->status ? $row->status : '';

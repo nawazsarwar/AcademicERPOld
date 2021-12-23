@@ -26,10 +26,6 @@ class UpdateDegreeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

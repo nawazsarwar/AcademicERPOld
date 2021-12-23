@@ -28,12 +28,6 @@ class StoreQualificationLevelRequest extends FormRequest
                 'max:2147483647',
             ],
             'status' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'remarks' => [
                 'string',
                 'nullable',
             ],

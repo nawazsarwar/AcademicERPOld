@@ -84,12 +84,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('religions/destroy', 'ReligionsController@massDestroy')->name('religions.massDestroy');
     Route::resource('religions', 'ReligionsController');
 
-    // Pincodes
-    Route::delete('pincodes/destroy', 'PincodesController@massDestroy')->name('pincodes.massDestroy');
-    Route::post('pincodes/parse-csv-import', 'PincodesController@parseCsvImport')->name('pincodes.parseCsvImport');
-    Route::post('pincodes/process-csv-import', 'PincodesController@processCsvImport')->name('pincodes.processCsvImport');
-    Route::resource('pincodes', 'PincodesController');
-
     // Persons
     Route::delete('people/destroy', 'PersonsController@massDestroy')->name('people.massDestroy');
     Route::post('people/parse-csv-import', 'PersonsController@parseCsvImport')->name('people.parseCsvImport');
@@ -182,11 +176,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('hostels/process-csv-import', 'HostelsController@processCsvImport')->name('hostels.processCsvImport');
     Route::resource('hostels', 'HostelsController');
 
-    // Qualifications
-    Route::delete('qualifications/destroy', 'QualificationsController@massDestroy')->name('qualifications.massDestroy');
-    Route::post('qualifications/parse-csv-import', 'QualificationsController@parseCsvImport')->name('qualifications.parseCsvImport');
-    Route::post('qualifications/process-csv-import', 'QualificationsController@processCsvImport')->name('qualifications.processCsvImport');
-    Route::resource('qualifications', 'QualificationsController');
+    // Academic Qualifications
+    Route::delete('academic-qualifications/destroy', 'AcademicQualificationsController@massDestroy')->name('academic-qualifications.massDestroy');
+    Route::post('academic-qualifications/parse-csv-import', 'AcademicQualificationsController@parseCsvImport')->name('academic-qualifications.parseCsvImport');
+    Route::post('academic-qualifications/process-csv-import', 'AcademicQualificationsController@processCsvImport')->name('academic-qualifications.processCsvImport');
+    Route::resource('academic-qualifications', 'AcademicQualificationsController');
 
     // Qualification Levels
     Route::delete('qualification-levels/destroy', 'QualificationLevelsController@massDestroy')->name('qualification-levels.massDestroy');
@@ -202,8 +196,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Paper Types
     Route::delete('paper-types/destroy', 'PaperTypesController@massDestroy')->name('paper-types.massDestroy');
-    Route::post('paper-types/parse-csv-import', 'PaperTypesController@parseCsvImport')->name('paper-types.parseCsvImport');
-    Route::post('paper-types/process-csv-import', 'PaperTypesController@processCsvImport')->name('paper-types.processCsvImport');
     Route::resource('paper-types', 'PaperTypesController');
 
     // Papers
@@ -247,6 +239,68 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('family-members/parse-csv-import', 'FamilyMembersController@parseCsvImport')->name('family-members.parseCsvImport');
     Route::post('family-members/process-csv-import', 'FamilyMembersController@processCsvImport')->name('family-members.processCsvImport');
     Route::resource('family-members', 'FamilyMembersController');
+
+    // Hostel Rooms
+    Route::delete('hostel-rooms/destroy', 'HostelRoomsController@massDestroy')->name('hostel-rooms.massDestroy');
+    Route::post('hostel-rooms/parse-csv-import', 'HostelRoomsController@parseCsvImport')->name('hostel-rooms.parseCsvImport');
+    Route::post('hostel-rooms/process-csv-import', 'HostelRoomsController@processCsvImport')->name('hostel-rooms.processCsvImport');
+    Route::resource('hostel-rooms', 'HostelRoomsController');
+
+    // Course Levels
+    Route::delete('course-levels/destroy', 'CourseLevelsController@massDestroy')->name('course-levels.massDestroy');
+    Route::post('course-levels/parse-csv-import', 'CourseLevelsController@parseCsvImport')->name('course-levels.parseCsvImport');
+    Route::post('course-levels/process-csv-import', 'CourseLevelsController@processCsvImport')->name('course-levels.processCsvImport');
+    Route::resource('course-levels', 'CourseLevelsController');
+
+    // Academic Sessions
+    Route::delete('academic-sessions/destroy', 'AcademicSessionsController@massDestroy')->name('academic-sessions.massDestroy');
+    Route::post('academic-sessions/parse-csv-import', 'AcademicSessionsController@parseCsvImport')->name('academic-sessions.parseCsvImport');
+    Route::post('academic-sessions/process-csv-import', 'AcademicSessionsController@processCsvImport')->name('academic-sessions.processCsvImport');
+    Route::resource('academic-sessions', 'AcademicSessionsController');
+
+    // Postal Code
+    Route::delete('postal-codes/destroy', 'PostalCodeController@massDestroy')->name('postal-codes.massDestroy');
+    Route::post('postal-codes/parse-csv-import', 'PostalCodeController@parseCsvImport')->name('postal-codes.parseCsvImport');
+    Route::post('postal-codes/process-csv-import', 'PostalCodeController@processCsvImport')->name('postal-codes.processCsvImport');
+    Route::resource('postal-codes', 'PostalCodeController');
+
+    // Admission Charges
+    Route::delete('admission-charges/destroy', 'AdmissionChargesController@massDestroy')->name('admission-charges.massDestroy');
+    Route::post('admission-charges/parse-csv-import', 'AdmissionChargesController@parseCsvImport')->name('admission-charges.parseCsvImport');
+    Route::post('admission-charges/process-csv-import', 'AdmissionChargesController@processCsvImport')->name('admission-charges.processCsvImport');
+    Route::resource('admission-charges', 'AdmissionChargesController');
+
+    // Continuation Charges
+    Route::delete('continuation-charges/destroy', 'ContinuationChargesController@massDestroy')->name('continuation-charges.massDestroy');
+    Route::post('continuation-charges/parse-csv-import', 'ContinuationChargesController@parseCsvImport')->name('continuation-charges.parseCsvImport');
+    Route::post('continuation-charges/process-csv-import', 'ContinuationChargesController@processCsvImport')->name('continuation-charges.processCsvImport');
+    Route::resource('continuation-charges', 'ContinuationChargesController');
+
+    // Programme Delivery Mode
+    Route::delete('programme-delivery-modes/destroy', 'ProgrammeDeliveryModeController@massDestroy')->name('programme-delivery-modes.massDestroy');
+    Route::resource('programme-delivery-modes', 'ProgrammeDeliveryModeController');
+
+    // Admission Entrance Type
+    Route::delete('admission-entrance-types/destroy', 'AdmissionEntranceTypeController@massDestroy')->name('admission-entrance-types.massDestroy');
+    Route::resource('admission-entrance-types', 'AdmissionEntranceTypeController');
+
+    // Programme Duration Type
+    Route::delete('programme-duration-types/destroy', 'ProgrammeDurationTypeController@massDestroy')->name('programme-duration-types.massDestroy');
+    Route::resource('programme-duration-types', 'ProgrammeDurationTypeController');
+
+    // Registration Forms
+    Route::delete('registration-forms/destroy', 'RegistrationFormsController@massDestroy')->name('registration-forms.massDestroy');
+    Route::post('registration-forms/parse-csv-import', 'RegistrationFormsController@parseCsvImport')->name('registration-forms.parseCsvImport');
+    Route::post('registration-forms/process-csv-import', 'RegistrationFormsController@processCsvImport')->name('registration-forms.processCsvImport');
+    Route::resource('registration-forms', 'RegistrationFormsController');
+
+    // Exam Registrations
+    Route::delete('exam-registrations/destroy', 'ExamRegistrationsController@massDestroy')->name('exam-registrations.massDestroy');
+    Route::resource('exam-registrations', 'ExamRegistrationsController');
+
+    // Papers Registration
+    Route::delete('papers-registrations/destroy', 'PapersRegistrationController@massDestroy')->name('papers-registrations.massDestroy');
+    Route::resource('papers-registrations', 'PapersRegistrationController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

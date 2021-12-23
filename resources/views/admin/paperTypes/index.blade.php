@@ -6,10 +6,6 @@
             <a class="btn btn-success" href="{{ route('admin.paper-types.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.paperType.title_singular') }}
             </a>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
-                {{ trans('global.app_csvImport') }}
-            </button>
-            @include('csvImport.modal', ['model' => 'PaperType', 'route' => 'admin.paper-types.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -19,33 +15,82 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-PaperType">
-            <thead>
-                <tr>
-                    <th width="10">
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-PaperType">
+                <thead>
+                    <tr>
+                        <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.paperType.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.paperType.fields.code') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.paperType.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.paperType.fields.status') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.paperType.fields.remarks') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                        </th>
+                        <th>
+                            {{ trans('cruds.paperType.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.paperType.fields.code') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.paperType.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.paperType.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.paperType.fields.remarks') }}
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($paperTypes as $key => $paperType)
+                        <tr data-entry-id="{{ $paperType->id }}">
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $paperType->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $paperType->code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $paperType->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $paperType->status ?? '' }}
+                            </td>
+                            <td>
+                                {{ $paperType->remarks ?? '' }}
+                            </td>
+                            <td>
+                                @can('paper_type_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.paper-types.show', $paperType->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('paper_type_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.paper-types.edit', $paperType->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+
+                                @can('paper_type_delete')
+                                    <form action="{{ route('admin.paper-types.destroy', $paperType->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
+
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -58,14 +103,14 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('paper_type_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.paper-types.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
       });
 
       if (ids.length === 0) {
@@ -87,33 +132,18 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  let dtOverrideGlobals = {
-    buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: "{{ route('admin.paper-types.index') }}",
-    columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'code', name: 'code' },
-{ data: 'name', name: 'name' },
-{ data: 'status', name: 'status' },
-{ data: 'remarks', name: 'remarks' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
+  $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
-  };
-  let table = $('.datatable-PaperType').DataTable(dtOverrideGlobals);
+  });
+  let table = $('.datatable-PaperType:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
   
-});
+})
 
 </script>
 @endsection

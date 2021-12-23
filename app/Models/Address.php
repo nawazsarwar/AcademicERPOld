@@ -23,26 +23,41 @@ class Address extends Model
     ];
 
     protected $fillable = [
+        'country_id',
         'person_id',
-        'house_no',
+        'mobile',
+        'postal_code_id',
+        'details',
         'street',
         'landmark',
         'locality',
         'city',
-        'district',
-        'province',
-        'pincode',
-        'country',
-        'type',
+        'province_id',
         'status',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
     public function person()
     {
         return $this->belongsTo(Person::class, 'person_id');
+    }
+
+    public function postal_code()
+    {
+        return $this->belongsTo(PostalCode::class, 'postal_code_id');
+    }
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class, 'province_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

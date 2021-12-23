@@ -26,6 +26,10 @@ class UpdateReligionRequest extends FormRequest
                 'required',
                 'unique:religions,code,' . request()->route('religion')->id,
             ],
+            'status' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

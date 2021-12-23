@@ -11,20 +11,20 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.centre.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $centre->name) }}" required>
-                @if($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.centre.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="code">{{ trans('cruds.centre.fields.code') }}</label>
                 <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $centre->code) }}">
                 @if($errors->has('code'))
                     <span class="text-danger">{{ $errors->first('code') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.centre.fields.code_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="name">{{ trans('cruds.centre.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $centre->name) }}" required>
+                @if($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.centre.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.centre.fields.status') }}</label>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.centre.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', $centre->remarks) }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $centre->remarks) }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif

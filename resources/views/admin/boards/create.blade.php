@@ -34,6 +34,14 @@
                 <span class="help-block">{{ trans('cruds.board.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="remarks">{{ trans('cruds.board.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
+                @if($errors->has('remarks'))
+                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.board.fields.remarks_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

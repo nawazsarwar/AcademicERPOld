@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyPaperRequest;
 use App\Http\Requests\StorePaperRequest;
 use App\Http\Requests\UpdatePaperRequest;
+use App\Models\Department;
 use App\Models\Paper;
 use App\Models\PaperType;
 use Gate;
@@ -23,7 +24,7 @@ class PapersController extends Controller
         abort_if(Gate::denies('paper_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Paper::with(['paper_type'])->select(sprintf('%s.*', (new Paper())->table));
+            $query = Paper::with(['paper_type', 'administrable'])->select(sprintf('%s.*', (new Paper())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -50,14 +51,8 @@ class PapersController extends Controller
             $table->editColumn('code', function ($row) {
                 return $row->code ? $row->code : '';
             });
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : '';
-            });
-            $table->editColumn('status', function ($row) {
-                return $row->status ? $row->status : '';
-            });
-            $table->editColumn('remarks', function ($row) {
-                return $row->remarks ? $row->remarks : '';
+            $table->editColumn('title', function ($row) {
+                return $row->title ? $row->title : '';
             });
             $table->addColumn('paper_type_name', function ($row) {
                 return $row->paper_type ? $row->paper_type->name : '';
@@ -66,8 +61,8 @@ class PapersController extends Controller
             $table->editColumn('paper_type.name', function ($row) {
                 return $row->paper_type ? (is_string($row->paper_type) ? $row->paper_type : $row->paper_type->name) : '';
             });
-            $table->editColumn('part', function ($row) {
-                return $row->part ? $row->part : '';
+            $table->editColumn('fraction', function ($row) {
+                return $row->fraction ? $row->fraction : '';
             });
             $table->editColumn('teaching_status', function ($row) {
                 return $row->teaching_status ? Paper::TEACHING_STATUS_SELECT[$row->teaching_status] : '';
@@ -75,8 +70,21 @@ class PapersController extends Controller
             $table->editColumn('credits', function ($row) {
                 return $row->credits ? $row->credits : '';
             });
+            $table->editColumn('status', function ($row) {
+                return $row->status ? $row->status : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
+            $table->addColumn('administrable_name', function ($row) {
+                return $row->administrable ? $row->administrable->name : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'paper_type']);
+            $table->editColumn('administrable_type', function ($row) {
+                return $row->administrable_type ? $row->administrable_type : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'paper_type', 'administrable']);
 
             return $table->make(true);
         }
@@ -90,7 +98,9 @@ class PapersController extends Controller
 
         $paper_types = PaperType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.papers.create', compact('paper_types'));
+        $administrables = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.papers.create', compact('administrables', 'paper_types'));
     }
 
     public function store(StorePaperRequest $request)
@@ -106,9 +116,11 @@ class PapersController extends Controller
 
         $paper_types = PaperType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $paper->load('paper_type');
+        $administrables = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.papers.edit', compact('paper_types', 'paper'));
+        $paper->load('paper_type', 'administrable');
+
+        return view('admin.papers.edit', compact('administrables', 'paper', 'paper_types'));
     }
 
     public function update(UpdatePaperRequest $request, Paper $paper)
@@ -122,7 +134,7 @@ class PapersController extends Controller
     {
         abort_if(Gate::denies('paper_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $paper->load('paper_type');
+        $paper->load('paper_type', 'administrable');
 
         return view('admin.papers.show', compact('paper'));
     }

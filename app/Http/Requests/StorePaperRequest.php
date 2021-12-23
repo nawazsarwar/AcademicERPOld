@@ -22,30 +22,30 @@ class StorePaperRequest extends FormRequest
                 'required',
                 'unique:papers',
             ],
-            'name' => [
+            'title' => [
                 'string',
+                'max:190',
                 'required',
-                'unique:papers',
-            ],
-            'status' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'remarks' => [
-                'string',
-                'nullable',
             ],
             'paper_type_id' => [
                 'required',
                 'integer',
             ],
-            'part' => [
+            'fraction' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'credits' => [
                 'string',
                 'nullable',
             ],
-            'credits' => [
+            'status' => [
+                'string',
+                'nullable',
+            ],
+            'administrable_type' => [
                 'string',
                 'nullable',
             ],

@@ -17,25 +17,21 @@ class StoreDepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'string',
+            'faculty_id' => [
                 'required',
+                'integer',
             ],
             'code' => [
                 'string',
                 'nullable',
             ],
+            'name' => [
+                'string',
+                'required',
+            ],
             'status' => [
                 'string',
                 'nullable',
-            ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
-            'faculty_id' => [
-                'required',
-                'integer',
             ],
         ];
     }

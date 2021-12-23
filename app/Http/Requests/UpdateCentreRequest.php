@@ -17,19 +17,15 @@ class UpdateCentreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'string',
-                'required',
-            ],
             'code' => [
                 'string',
                 'nullable',
             ],
-            'status' => [
+            'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
-            'remarks' => [
+            'status' => [
                 'string',
                 'nullable',
             ],

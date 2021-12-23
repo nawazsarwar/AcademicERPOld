@@ -21,6 +21,10 @@ class UpdateCityRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'status' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

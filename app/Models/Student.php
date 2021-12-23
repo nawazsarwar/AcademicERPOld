@@ -25,6 +25,7 @@ class Student extends Model
     protected $fillable = [
         'enrolment_id',
         'guardian_mobile_no',
+        'person_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -33,6 +34,11 @@ class Student extends Model
     public function enrolment()
     {
         return $this->belongsTo(Enrolment::class, 'enrolment_id');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'person_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

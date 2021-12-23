@@ -88,7 +88,7 @@
             </div>
             <div class="form-group">
                 <label for="population">{{ trans('cruds.province.fields.population') }}</label>
-                <input class="form-control {{ $errors->has('population') ? 'is-invalid' : '' }}" type="text" name="population" id="population" value="{{ old('population', $province->population) }}">
+                <input class="form-control {{ $errors->has('population') ? 'is-invalid' : '' }}" type="number" name="population" id="population" value="{{ old('population', $province->population) }}" step="1">
                 @if($errors->has('population'))
                     <span class="text-danger">{{ $errors->first('population') }}</span>
                 @endif
@@ -96,7 +96,7 @@
             </div>
             <div class="form-group">
                 <label for="area">{{ trans('cruds.province.fields.area') }}</label>
-                <input class="form-control {{ $errors->has('area') ? 'is-invalid' : '' }}" type="text" name="area" id="area" value="{{ old('area', $province->area) }}">
+                <input class="form-control {{ $errors->has('area') ? 'is-invalid' : '' }}" type="number" name="area" id="area" value="{{ old('area', $province->area) }}" step="1">
                 @if($errors->has('area'))
                     <span class="text-danger">{{ $errors->first('area') }}</span>
                 @endif
@@ -117,6 +117,22 @@
                     <span class="text-danger">{{ $errors->first('additional_official_languages') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.province.fields.additional_official_languages_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="status">{{ trans('cruds.province.fields.status') }}</label>
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $province->status) }}">
+                @if($errors->has('status'))
+                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.province.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="remarks">{{ trans('cruds.province.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $province->remarks) }}</textarea>
+                @if($errors->has('remarks'))
+                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.province.fields.remarks_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

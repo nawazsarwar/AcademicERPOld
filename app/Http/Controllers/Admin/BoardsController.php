@@ -55,6 +55,9 @@ class BoardsController extends Controller
             $table->editColumn('status', function ($row) {
                 return $row->status ? $row->status : '';
             });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder']);
 

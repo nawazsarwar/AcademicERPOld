@@ -23,12 +23,6 @@ class UpdateEnrolmentRequest extends FormRequest
                 'unique:enrolments,number,' . request()->route('enrolment')->id,
             ],
             'status' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'remarks' => [
                 'string',
                 'nullable',
             ],

@@ -18,12 +18,12 @@
                 <span class="help-block">{{ trans('cruds.paper.fields.code_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.paper.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                @if($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                <label class="required" for="title">{{ trans('cruds.paper.fields.title') }}</label>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                @if($errors->has('title'))
+                    <span class="text-danger">{{ $errors->first('title') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.paper.fields.name_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.paper.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="paper_type_id">{{ trans('cruds.paper.fields.paper_type') }}</label>
@@ -38,12 +38,12 @@
                 <span class="help-block">{{ trans('cruds.paper.fields.paper_type_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="part">{{ trans('cruds.paper.fields.part') }}</label>
-                <input class="form-control {{ $errors->has('part') ? 'is-invalid' : '' }}" type="text" name="part" id="part" value="{{ old('part', '') }}">
-                @if($errors->has('part'))
-                    <span class="text-danger">{{ $errors->first('part') }}</span>
+                <label for="fraction">{{ trans('cruds.paper.fields.fraction') }}</label>
+                <input class="form-control {{ $errors->has('fraction') ? 'is-invalid' : '' }}" type="number" name="fraction" id="fraction" value="{{ old('fraction', '') }}" step="1">
+                @if($errors->has('fraction'))
+                    <span class="text-danger">{{ $errors->first('fraction') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.paper.fields.part_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.paper.fields.fraction_helper') }}</span>
             </div>
             <div class="form-group">
                 <label>{{ trans('cruds.paper.fields.teaching_status') }}</label>
@@ -68,7 +68,7 @@
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.paper.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', '') }}">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif
@@ -76,11 +76,31 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.paper.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', '') }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.paper.fields.remarks_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="administrable_id">{{ trans('cruds.paper.fields.administrable') }}</label>
+                <select class="form-control select2 {{ $errors->has('administrable') ? 'is-invalid' : '' }}" name="administrable_id" id="administrable_id">
+                    @foreach($administrables as $id => $entry)
+                        <option value="{{ $id }}" {{ old('administrable_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('administrable'))
+                    <span class="text-danger">{{ $errors->first('administrable') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.paper.fields.administrable_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="administrable_type">{{ trans('cruds.paper.fields.administrable_type') }}</label>
+                <input class="form-control {{ $errors->has('administrable_type') ? 'is-invalid' : '' }}" type="text" name="administrable_type" id="administrable_type" value="{{ old('administrable_type', '') }}">
+                @if($errors->has('administrable_type'))
+                    <span class="text-danger">{{ $errors->first('administrable_type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.paper.fields.administrable_type_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

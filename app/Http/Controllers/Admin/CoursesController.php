@@ -7,8 +7,14 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyCourseRequest;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\AdmissionEntranceType;
 use App\Models\Campus;
 use App\Models\Course;
+use App\Models\CourseLevel;
+use App\Models\Degree;
+use App\Models\Department;
+use App\Models\ProgrammeDeliveryMode;
+use App\Models\ProgrammeDurationType;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +29,7 @@ class CoursesController extends Controller
         abort_if(Gate::denies('course_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Course::with(['campus'])->select(sprintf('%s.*', (new Course())->table));
+            $query = Course::with(['degree', 'campus', 'level', 'entrance_type', 'mode', 'duration_type', 'administrable'])->select(sprintf('%s.*', (new Course())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -47,12 +53,22 @@ class CoursesController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->addColumn('degree_name', function ($row) {
+                return $row->degree ? $row->degree->name : '';
+            });
+
             $table->addColumn('campus_name', function ($row) {
                 return $row->campus ? $row->campus->name : '';
             });
 
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : '';
+            $table->editColumn('title', function ($row) {
+                return $row->title ? $row->title : '';
+            });
+            $table->editColumn('title_hindi', function ($row) {
+                return $row->title_hindi ? $row->title_hindi : '';
+            });
+            $table->editColumn('title_urdu', function ($row) {
+                return $row->title_urdu ? $row->title_urdu : '';
             });
             $table->editColumn('code', function ($row) {
                 return $row->code ? $row->code : '';
@@ -63,26 +79,40 @@ class CoursesController extends Controller
             $table->editColumn('internal_code', function ($row) {
                 return $row->internal_code ? $row->internal_code : '';
             });
-            $table->editColumn('mode', function ($row) {
-                return $row->mode ? $row->mode : '';
+            $table->addColumn('level_name', function ($row) {
+                return $row->level ? $row->level->name : '';
             });
-            $table->editColumn('course_type', function ($row) {
-                return $row->course_type ? $row->course_type : '';
+
+            $table->addColumn('entrance_type_title', function ($row) {
+                return $row->entrance_type ? $row->entrance_type->title : '';
             });
-            $table->editColumn('test_type', function ($row) {
-                return $row->test_type ? $row->test_type : '';
+
+            $table->addColumn('mode_title', function ($row) {
+                return $row->mode ? $row->mode->title : '';
             });
+
+            $table->addColumn('duration_type_title', function ($row) {
+                return $row->duration_type ? $row->duration_type->title : '';
+            });
+
             $table->editColumn('duration', function ($row) {
                 return $row->duration ? $row->duration : '';
-            });
-            $table->editColumn('duration_type', function ($row) {
-                return $row->duration_type ? $row->duration_type : '';
             });
             $table->editColumn('total_intake', function ($row) {
                 return $row->total_intake ? $row->total_intake : '';
             });
+            $table->editColumn('subsidiarizable', function ($row) {
+                return $row->subsidiarizable ? Course::SUBSIDIARIZABLE_RADIO[$row->subsidiarizable] : '';
+            });
+            $table->addColumn('administrable_name', function ($row) {
+                return $row->administrable ? $row->administrable->name : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'campus']);
+            $table->editColumn('administrable_type', function ($row) {
+                return $row->administrable_type ? $row->administrable_type : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'degree', 'campus', 'level', 'entrance_type', 'mode', 'duration_type', 'administrable']);
 
             return $table->make(true);
         }
@@ -94,9 +124,21 @@ class CoursesController extends Controller
     {
         abort_if(Gate::denies('course_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $degrees = Degree::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $campuses = Campus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.courses.create', compact('campuses'));
+        $levels = CourseLevel::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $entrance_types = AdmissionEntranceType::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $modes = ProgrammeDeliveryMode::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $duration_types = ProgrammeDurationType::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $administrables = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.courses.create', compact('administrables', 'campuses', 'degrees', 'duration_types', 'entrance_types', 'levels', 'modes'));
     }
 
     public function store(StoreCourseRequest $request)
@@ -110,11 +152,23 @@ class CoursesController extends Controller
     {
         abort_if(Gate::denies('course_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $degrees = Degree::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $campuses = Campus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $course->load('campus');
+        $levels = CourseLevel::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.courses.edit', compact('campuses', 'course'));
+        $entrance_types = AdmissionEntranceType::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $modes = ProgrammeDeliveryMode::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $duration_types = ProgrammeDurationType::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $administrables = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $course->load('degree', 'campus', 'level', 'entrance_type', 'mode', 'duration_type', 'administrable');
+
+        return view('admin.courses.edit', compact('administrables', 'campuses', 'course', 'degrees', 'duration_types', 'entrance_types', 'levels', 'modes'));
     }
 
     public function update(UpdateCourseRequest $request, Course $course)
@@ -128,7 +182,7 @@ class CoursesController extends Controller
     {
         abort_if(Gate::denies('course_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $course->load('campus');
+        $course->load('degree', 'campus', 'level', 'entrance_type', 'mode', 'duration_type', 'administrable');
 
         return view('admin.courses.show', compact('course'));
     }

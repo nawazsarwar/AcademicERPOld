@@ -40,10 +40,6 @@ class UpdateHostelRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

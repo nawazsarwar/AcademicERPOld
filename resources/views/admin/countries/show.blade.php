@@ -33,10 +33,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.country.fields.short_code') }}
+                            {{ trans('cruds.country.fields.code') }}
                         </th>
                         <td>
-                            {{ $country->short_code }}
+                            {{ $country->code }}
                         </td>
                     </tr>
                     <tr>

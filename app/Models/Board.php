@@ -26,6 +26,7 @@ class Board extends Model
         'name',
         'code',
         'status',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',

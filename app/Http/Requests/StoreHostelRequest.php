@@ -40,10 +40,6 @@ class StoreHostelRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

@@ -27,6 +27,22 @@
                 <span class="help-block">{{ trans('cruds.religion.fields.code_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="status">{{ trans('cruds.religion.fields.status') }}</label>
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $religion->status) }}">
+                @if($errors->has('status'))
+                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.religion.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="remarks">{{ trans('cruds.religion.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $religion->remarks) }}</textarea>
+                @if($errors->has('remarks'))
+                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.religion.fields.remarks_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

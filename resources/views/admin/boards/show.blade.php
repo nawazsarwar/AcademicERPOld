@@ -47,6 +47,14 @@
                             {{ $board->status }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.board.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $board->remarks }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

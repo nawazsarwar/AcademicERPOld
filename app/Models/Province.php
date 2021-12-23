@@ -36,14 +36,16 @@ class Province extends Model
         'area',
         'official_languages',
         'additional_official_languages',
+        'status',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function provincePincodes()
+    public function provincePostalCodes()
     {
-        return $this->hasMany(Pincode::class, 'province_id', 'id');
+        return $this->hasMany(PostalCode::class, 'province_id', 'id');
     }
 
     public function country()

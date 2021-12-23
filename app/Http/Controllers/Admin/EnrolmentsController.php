@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyEnrolmentRequest;
 use App\Http\Requests\StoreEnrolmentRequest;
 use App\Http\Requests\UpdateEnrolmentRequest;
 use App\Models\Enrolment;
+use App\Models\Student;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class EnrolmentsController extends Controller
         abort_if(Gate::denies('enrolment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Enrolment::query()->select(sprintf('%s.*', (new Enrolment())->table));
+            $query = Enrolment::with(['student'])->select(sprintf('%s.*', (new Enrolment())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -49,6 +50,10 @@ class EnrolmentsController extends Controller
             $table->editColumn('number', function ($row) {
                 return $row->number ? $row->number : '';
             });
+            $table->addColumn('student_guardian_mobile_no', function ($row) {
+                return $row->student ? $row->student->guardian_mobile_no : '';
+            });
+
             $table->editColumn('status', function ($row) {
                 return $row->status ? $row->status : '';
             });
@@ -56,7 +61,7 @@ class EnrolmentsController extends Controller
                 return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->rawColumns(['actions', 'placeholder', 'student']);
 
             return $table->make(true);
         }
@@ -68,7 +73,9 @@ class EnrolmentsController extends Controller
     {
         abort_if(Gate::denies('enrolment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.enrolments.create');
+        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.enrolments.create', compact('students'));
     }
 
     public function store(StoreEnrolmentRequest $request)
@@ -82,7 +89,11 @@ class EnrolmentsController extends Controller
     {
         abort_if(Gate::denies('enrolment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.enrolments.edit', compact('enrolment'));
+        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $enrolment->load('student');
+
+        return view('admin.enrolments.edit', compact('enrolment', 'students'));
     }
 
     public function update(UpdateEnrolmentRequest $request, Enrolment $enrolment)
@@ -95,6 +106,8 @@ class EnrolmentsController extends Controller
     public function show(Enrolment $enrolment)
     {
         abort_if(Gate::denies('enrolment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $enrolment->load('student');
 
         return view('admin.enrolments.show', compact('enrolment'));
     }

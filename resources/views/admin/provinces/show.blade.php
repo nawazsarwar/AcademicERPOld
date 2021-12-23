@@ -127,6 +127,22 @@
                             {{ $province->additional_official_languages }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.province.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $province->status }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.province.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $province->remarks }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -144,14 +160,14 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#province_pincodes" role="tab" data-toggle="tab">
-                {{ trans('cruds.pincode.title') }}
+            <a class="nav-link" href="#province_postal_codes" role="tab" data-toggle="tab">
+                {{ trans('cruds.postalCode.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="province_pincodes">
-            @includeIf('admin.provinces.relationships.provincePincodes', ['pincodes' => $province->provincePincodes])
+        <div class="tab-pane" role="tabpanel" id="province_postal_codes">
+            @includeIf('admin.provinces.relationships.provincePostalCodes', ['postalCodes' => $province->provincePostalCodes])
         </div>
     </div>
 </div>

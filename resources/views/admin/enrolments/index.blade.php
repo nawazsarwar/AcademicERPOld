@@ -32,6 +32,9 @@
                         {{ trans('cruds.enrolment.fields.number') }}
                     </th>
                     <th>
+                        {{ trans('cruds.enrolment.fields.student') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.enrolment.fields.status') }}
                     </th>
                     <th>
@@ -95,6 +98,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'number', name: 'number' },
+{ data: 'student_guardian_mobile_no', name: 'student.guardian_mobile_no' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

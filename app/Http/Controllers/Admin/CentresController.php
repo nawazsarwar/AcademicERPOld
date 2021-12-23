@@ -47,20 +47,21 @@ class CentresController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : '';
+            $table->addColumn('faculty_name', function ($row) {
+                return $row->faculty ? $row->faculty->name : '';
             });
+
             $table->editColumn('code', function ($row) {
                 return $row->code ? $row->code : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
             });
             $table->editColumn('status', function ($row) {
                 return $row->status ? $row->status : '';
             });
             $table->editColumn('remarks', function ($row) {
                 return $row->remarks ? $row->remarks : '';
-            });
-            $table->addColumn('faculty_name', function ($row) {
-                return $row->faculty ? $row->faculty->name : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'faculty']);

@@ -56,18 +56,26 @@ class UpdateProvinceRequest extends FormRequest
                 'max:2147483647',
             ],
             'population' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'area' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'official_languages' => [
                 'string',
                 'nullable',
             ],
             'additional_official_languages' => [
+                'string',
+                'nullable',
+            ],
+            'status' => [
                 'string',
                 'nullable',
             ],

@@ -169,7 +169,7 @@ class PersonsController extends Controller
 
         $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.people.create', compact('religions', 'nationalities', 'domicile_provinces', 'verified_bies', 'users'));
+        return view('admin.people.create', compact('domicile_provinces', 'nationalities', 'religions', 'users', 'verified_bies'));
     }
 
     public function store(StorePersonRequest $request)
@@ -195,7 +195,7 @@ class PersonsController extends Controller
 
         $person->load('religion', 'nationality', 'domicile_province', 'verified_by', 'user');
 
-        return view('admin.people.edit', compact('religions', 'nationalities', 'domicile_provinces', 'verified_bies', 'users', 'person'));
+        return view('admin.people.edit', compact('domicile_provinces', 'nationalities', 'person', 'religions', 'users', 'verified_bies'));
     }
 
     public function update(UpdatePersonRequest $request, Person $person)

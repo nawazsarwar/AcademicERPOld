@@ -39,6 +39,22 @@
                             {{ $city->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.city.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $city->status }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.city.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $city->remarks }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

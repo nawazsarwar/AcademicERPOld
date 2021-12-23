@@ -17,12 +17,25 @@ class StoreAddressRequest extends FormRequest
     public function rules()
     {
         return [
+            'country_id' => [
+                'required',
+                'integer',
+            ],
             'person_id' => [
                 'required',
                 'integer',
             ],
-            'house_no' => [
+            'mobile' => [
                 'string',
+                'required',
+            ],
+            'postal_code_id' => [
+                'required',
+                'integer',
+            ],
+            'details' => [
+                'string',
+                'max:150',
                 'required',
             ],
             'street' => [
@@ -35,31 +48,11 @@ class StoreAddressRequest extends FormRequest
             ],
             'locality' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'city' => [
                 'string',
-                'nullable',
-            ],
-            'district' => [
-                'string',
-                'nullable',
-            ],
-            'province' => [
-                'string',
-                'nullable',
-            ],
-            'pincode' => [
-                'string',
-                'nullable',
-            ],
-            'country' => [
-                'string',
-                'nullable',
-            ],
-            'type' => [
-                'string',
-                'nullable',
+                'required',
             ],
             'status' => [
                 'string',

@@ -1,0 +1,63 @@
+@extends('layouts.admin')
+@section('content')
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.show') }} {{ trans('cruds.programmeDurationType.title') }}
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ route('admin.programme-duration-types.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.programmeDurationType.fields.id') }}
+                        </th>
+                        <td>
+                            {{ $programmeDurationType->id }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.programmeDurationType.fields.title') }}
+                        </th>
+                        <td>
+                            {{ $programmeDurationType->title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.programmeDurationType.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $programmeDurationType->status }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.programmeDurationType.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $programmeDurationType->remarks }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ route('admin.programme-duration-types.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@endsection

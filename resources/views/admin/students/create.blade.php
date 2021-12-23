@@ -30,6 +30,18 @@
                 <span class="help-block">{{ trans('cruds.student.fields.guardian_mobile_no_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="person_id">{{ trans('cruds.student.fields.person') }}</label>
+                <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id" required>
+                    @foreach($people as $id => $entry)
+                        <option value="{{ $id }}" {{ old('person_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('person'))
+                    <span class="text-danger">{{ $errors->first('person') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.person_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

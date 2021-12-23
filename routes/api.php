@@ -22,9 +22,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Religions
     Route::apiResource('religions', 'ReligionsApiController');
 
-    // Pincodes
-    Route::apiResource('pincodes', 'PincodesApiController');
-
     // Persons
     Route::apiResource('people', 'PersonsApiController');
 
@@ -71,8 +68,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Hostels
     Route::apiResource('hostels', 'HostelsApiController');
 
-    // Qualifications
-    Route::apiResource('qualifications', 'QualificationsApiController');
+    // Academic Qualifications
+    Route::apiResource('academic-qualifications', 'AcademicQualificationsApiController');
 
     // Qualification Levels
     Route::apiResource('qualification-levels', 'QualificationLevelsApiController');
@@ -103,4 +100,40 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Family Members
     Route::apiResource('family-members', 'FamilyMembersApiController');
+
+    // Hostel Rooms
+    Route::apiResource('hostel-rooms', 'HostelRoomsApiController');
+
+    // Course Levels
+    Route::apiResource('course-levels', 'CourseLevelsApiController');
+
+    // Academic Sessions
+    Route::apiResource('academic-sessions', 'AcademicSessionsApiController');
+
+    // Postal Code
+    Route::apiResource('postal-codes', 'PostalCodeApiController');
+
+    // Admission Charges
+    Route::apiResource('admission-charges', 'AdmissionChargesApiController');
+
+    // Continuation Charges
+    Route::apiResource('continuation-charges', 'ContinuationChargesApiController');
+
+    // Programme Delivery Mode
+    Route::apiResource('programme-delivery-modes', 'ProgrammeDeliveryModeApiController');
+
+    // Admission Entrance Type
+    Route::apiResource('admission-entrance-types', 'AdmissionEntranceTypeApiController');
+
+    // Programme Duration Type
+    Route::apiResource('programme-duration-types', 'ProgrammeDurationTypeApiController');
+
+    // Registration Forms
+    Route::apiResource('registration-forms', 'RegistrationFormsApiController');
+
+    // Exam Registrations
+    Route::apiResource('exam-registrations', 'ExamRegistrationsApiController');
+
+    // Papers Registration
+    Route::apiResource('papers-registrations', 'PapersRegistrationApiController');
 });
