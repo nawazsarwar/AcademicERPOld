@@ -27,12 +27,12 @@
                 <span class="help-block">{{ trans('cruds.nominee.fields.address_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="relationship_employee">{{ trans('cruds.nominee.fields.relationship_employee') }}</label>
-                <input class="form-control {{ $errors->has('relationship_employee') ? 'is-invalid' : '' }}" type="text" name="relationship_employee" id="relationship_employee" value="{{ old('relationship_employee', $nominee->relationship_employee) }}">
-                @if($errors->has('relationship_employee'))
-                    <span class="text-danger">{{ $errors->first('relationship_employee') }}</span>
+                <label for="relationship">{{ trans('cruds.nominee.fields.relationship') }}</label>
+                <input class="form-control {{ $errors->has('relationship') ? 'is-invalid' : '' }}" type="text" name="relationship" id="relationship" value="{{ old('relationship', $nominee->relationship) }}">
+                @if($errors->has('relationship'))
+                    <span class="text-danger">{{ $errors->first('relationship') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.nominee.fields.relationship_employee_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.nominee.fields.relationship_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="age">{{ trans('cruds.nominee.fields.age') }}</label>
@@ -112,7 +112,7 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.nominee.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', $nominee->remarks) }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $nominee->remarks) }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif

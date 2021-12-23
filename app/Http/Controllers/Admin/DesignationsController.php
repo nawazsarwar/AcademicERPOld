@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyDesignationRequest;
 use App\Http\Requests\StoreDesignationRequest;
 use App\Http\Requests\UpdateDesignationRequest;
 use App\Models\Designation;
+use App\Models\DesignationType;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class DesignationsController extends Controller
         abort_if(Gate::denies('designation_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Designation::query()->select(sprintf('%s.*', (new Designation())->table));
+            $query = Designation::with(['type'])->select(sprintf('%s.*', (new Designation())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -55,8 +56,18 @@ class DesignationsController extends Controller
             $table->editColumn('pay_grade', function ($row) {
                 return $row->pay_grade ? $row->pay_grade : '';
             });
+            $table->addColumn('type_title', function ($row) {
+                return $row->type ? $row->type->title : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->editColumn('retirement_age', function ($row) {
+                return $row->retirement_age ? $row->retirement_age : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'type']);
 
             return $table->make(true);
         }
@@ -68,7 +79,9 @@ class DesignationsController extends Controller
     {
         abort_if(Gate::denies('designation_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.designations.create');
+        $types = DesignationType::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.designations.create', compact('types'));
     }
 
     public function store(StoreDesignationRequest $request)
@@ -82,7 +95,11 @@ class DesignationsController extends Controller
     {
         abort_if(Gate::denies('designation_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.designations.edit', compact('designation'));
+        $types = DesignationType::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $designation->load('type');
+
+        return view('admin.designations.edit', compact('designation', 'types'));
     }
 
     public function update(UpdateDesignationRequest $request, Designation $designation)
@@ -95,6 +112,8 @@ class DesignationsController extends Controller
     public function show(Designation $designation)
     {
         abort_if(Gate::denies('designation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $designation->load('type');
 
         return view('admin.designations.show', compact('designation'));
     }

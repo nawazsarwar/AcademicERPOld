@@ -30,6 +30,16 @@ class UpdateDesignationRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'type_id' => [
+                'required',
+                'integer',
+            ],
+            'retirement_age' => [
+                'required',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
         ];
     }
 }

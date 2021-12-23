@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyEmployeeRequest;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
+use App\Models\EmploymentStatus;
 use App\Models\Person;
 use Gate;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class EmployeesController extends Controller
         abort_if(Gate::denies('employee_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Employee::with(['person'])->select(sprintf('%s.*', (new Employee())->table));
+            $query = Employee::with(['employment_status', 'person'])->select(sprintf('%s.*', (new Employee())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -59,15 +60,15 @@ class EmployeesController extends Controller
             $table->editColumn('highest_qualification', function ($row) {
                 return $row->highest_qualification ? $row->highest_qualification : '';
             });
-            $table->editColumn('status', function ($row) {
-                return $row->status ? Employee::STATUS_SELECT[$row->status] : '';
+            $table->addColumn('employment_status_title', function ($row) {
+                return $row->employment_status ? $row->employment_status->title : '';
             });
 
             $table->editColumn('group', function ($row) {
-                return $row->group ? $row->group : '';
+                return $row->group ? Employee::GROUP_SELECT[$row->group] : '';
             });
             $table->editColumn('retirement_scheme', function ($row) {
-                return $row->retirement_scheme ? $row->retirement_scheme : '';
+                return $row->retirement_scheme ? Employee::RETIREMENT_SCHEME_SELECT[$row->retirement_scheme] : '';
             });
             $table->editColumn('employment_type', function ($row) {
                 return $row->employment_type ? Employee::EMPLOYMENT_TYPE_SELECT[$row->employment_type] : '';
@@ -88,7 +89,7 @@ class EmployeesController extends Controller
                 return $row->person ? $row->person->first_name : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'person']);
+            $table->rawColumns(['actions', 'placeholder', 'employment_status', 'person']);
 
             return $table->make(true);
         }
@@ -100,9 +101,11 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employment_statuses = EmploymentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employees.create', compact('people'));
+        return view('admin.employees.create', compact('employment_statuses', 'people'));
     }
 
     public function store(StoreEmployeeRequest $request)
@@ -116,11 +119,13 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employment_statuses = EmploymentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employee->load('person');
+        $employee->load('employment_status', 'person');
 
-        return view('admin.employees.edit', compact('employee', 'people'));
+        return view('admin.employees.edit', compact('employee', 'employment_statuses', 'people'));
     }
 
     public function update(UpdateEmployeeRequest $request, Employee $employee)
@@ -134,7 +139,7 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employee->load('person');
+        $employee->load('employment_status', 'person');
 
         return view('admin.employees.show', compact('employee'));
     }

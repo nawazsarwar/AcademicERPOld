@@ -132,37 +132,37 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('centres/process-csv-import', 'CentresController@processCsvImport')->name('centres.processCsvImport');
     Route::resource('centres', 'CentresController');
 
-    // Statuses
-    Route::delete('statuses/destroy', 'StatusesController@massDestroy')->name('statuses.massDestroy');
-    Route::post('statuses/parse-csv-import', 'StatusesController@parseCsvImport')->name('statuses.parseCsvImport');
-    Route::post('statuses/process-csv-import', 'StatusesController@processCsvImport')->name('statuses.processCsvImport');
-    Route::resource('statuses', 'StatusesController');
+    // Support Statuses
+    Route::delete('support-statuses/destroy', 'SupportStatusesController@massDestroy')->name('support-statuses.massDestroy');
+    Route::post('support-statuses/parse-csv-import', 'SupportStatusesController@parseCsvImport')->name('support-statuses.parseCsvImport');
+    Route::post('support-statuses/process-csv-import', 'SupportStatusesController@processCsvImport')->name('support-statuses.processCsvImport');
+    Route::resource('support-statuses', 'SupportStatusesController');
 
-    // Priorities
-    Route::delete('priorities/destroy', 'PrioritiesController@massDestroy')->name('priorities.massDestroy');
-    Route::post('priorities/parse-csv-import', 'PrioritiesController@parseCsvImport')->name('priorities.parseCsvImport');
-    Route::post('priorities/process-csv-import', 'PrioritiesController@processCsvImport')->name('priorities.processCsvImport');
-    Route::resource('priorities', 'PrioritiesController');
+    // Support Priorities
+    Route::delete('support-priorities/destroy', 'SupportPrioritiesController@massDestroy')->name('support-priorities.massDestroy');
+    Route::post('support-priorities/parse-csv-import', 'SupportPrioritiesController@parseCsvImport')->name('support-priorities.parseCsvImport');
+    Route::post('support-priorities/process-csv-import', 'SupportPrioritiesController@processCsvImport')->name('support-priorities.processCsvImport');
+    Route::resource('support-priorities', 'SupportPrioritiesController');
 
-    // Categories
-    Route::delete('categories/destroy', 'CategoriesController@massDestroy')->name('categories.massDestroy');
-    Route::post('categories/parse-csv-import', 'CategoriesController@parseCsvImport')->name('categories.parseCsvImport');
-    Route::post('categories/process-csv-import', 'CategoriesController@processCsvImport')->name('categories.processCsvImport');
-    Route::resource('categories', 'CategoriesController');
+    // Support Categories
+    Route::delete('support-categories/destroy', 'SupportCategoriesController@massDestroy')->name('support-categories.massDestroy');
+    Route::post('support-categories/parse-csv-import', 'SupportCategoriesController@parseCsvImport')->name('support-categories.parseCsvImport');
+    Route::post('support-categories/process-csv-import', 'SupportCategoriesController@processCsvImport')->name('support-categories.processCsvImport');
+    Route::resource('support-categories', 'SupportCategoriesController');
 
-    // Tickets
-    Route::delete('tickets/destroy', 'TicketsController@massDestroy')->name('tickets.massDestroy');
-    Route::post('tickets/media', 'TicketsController@storeMedia')->name('tickets.storeMedia');
-    Route::post('tickets/ckmedia', 'TicketsController@storeCKEditorImages')->name('tickets.storeCKEditorImages');
-    Route::post('tickets/parse-csv-import', 'TicketsController@parseCsvImport')->name('tickets.parseCsvImport');
-    Route::post('tickets/process-csv-import', 'TicketsController@processCsvImport')->name('tickets.processCsvImport');
-    Route::resource('tickets', 'TicketsController');
+    // Support Tickets
+    Route::delete('support-tickets/destroy', 'SupportTicketsController@massDestroy')->name('support-tickets.massDestroy');
+    Route::post('support-tickets/media', 'SupportTicketsController@storeMedia')->name('support-tickets.storeMedia');
+    Route::post('support-tickets/ckmedia', 'SupportTicketsController@storeCKEditorImages')->name('support-tickets.storeCKEditorImages');
+    Route::post('support-tickets/parse-csv-import', 'SupportTicketsController@parseCsvImport')->name('support-tickets.parseCsvImport');
+    Route::post('support-tickets/process-csv-import', 'SupportTicketsController@processCsvImport')->name('support-tickets.processCsvImport');
+    Route::resource('support-tickets', 'SupportTicketsController');
 
-    // Comments
-    Route::delete('comments/destroy', 'CommentsController@massDestroy')->name('comments.massDestroy');
-    Route::post('comments/parse-csv-import', 'CommentsController@parseCsvImport')->name('comments.parseCsvImport');
-    Route::post('comments/process-csv-import', 'CommentsController@processCsvImport')->name('comments.processCsvImport');
-    Route::resource('comments', 'CommentsController');
+    // Support Comments
+    Route::delete('support-comments/destroy', 'SupportCommentsController@massDestroy')->name('support-comments.massDestroy');
+    Route::post('support-comments/parse-csv-import', 'SupportCommentsController@parseCsvImport')->name('support-comments.parseCsvImport');
+    Route::post('support-comments/process-csv-import', 'SupportCommentsController@processCsvImport')->name('support-comments.processCsvImport');
+    Route::resource('support-comments', 'SupportCommentsController');
 
     // Halls
     Route::delete('halls/destroy', 'HallsController@massDestroy')->name('halls.massDestroy');
@@ -178,6 +178,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Academic Qualifications
     Route::delete('academic-qualifications/destroy', 'AcademicQualificationsController@massDestroy')->name('academic-qualifications.massDestroy');
+    Route::post('academic-qualifications/media', 'AcademicQualificationsController@storeMedia')->name('academic-qualifications.storeMedia');
+    Route::post('academic-qualifications/ckmedia', 'AcademicQualificationsController@storeCKEditorImages')->name('academic-qualifications.storeCKEditorImages');
     Route::post('academic-qualifications/parse-csv-import', 'AcademicQualificationsController@parseCsvImport')->name('academic-qualifications.parseCsvImport');
     Route::post('academic-qualifications/process-csv-import', 'AcademicQualificationsController@processCsvImport')->name('academic-qualifications.processCsvImport');
     Route::resource('academic-qualifications', 'AcademicQualificationsController');
@@ -301,6 +303,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Papers Registration
     Route::delete('papers-registrations/destroy', 'PapersRegistrationController@massDestroy')->name('papers-registrations.massDestroy');
     Route::resource('papers-registrations', 'PapersRegistrationController');
+
+    // Employment Status
+    Route::delete('employment-statuses/destroy', 'EmploymentStatusController@massDestroy')->name('employment-statuses.massDestroy');
+    Route::resource('employment-statuses', 'EmploymentStatusController');
+
+    // Castes
+    Route::delete('castes/destroy', 'CastesController@massDestroy')->name('castes.massDestroy');
+    Route::post('castes/parse-csv-import', 'CastesController@parseCsvImport')->name('castes.parseCsvImport');
+    Route::post('castes/process-csv-import', 'CastesController@processCsvImport')->name('castes.processCsvImport');
+    Route::resource('castes', 'CastesController');
+
+    // Designation Type
+    Route::delete('designation-types/destroy', 'DesignationTypeController@massDestroy')->name('designation-types.massDestroy');
+    Route::resource('designation-types', 'DesignationTypeController');
+
+    // Biometrics
+    Route::delete('biometrics/destroy', 'BiometricsController@massDestroy')->name('biometrics.massDestroy');
+    Route::post('biometrics/media', 'BiometricsController@storeMedia')->name('biometrics.storeMedia');
+    Route::post('biometrics/ckmedia', 'BiometricsController@storeCKEditorImages')->name('biometrics.storeCKEditorImages');
+    Route::resource('biometrics', 'BiometricsController');
+
+    // Work Experiences
+    Route::delete('work-experiences/destroy', 'WorkExperiencesController@massDestroy')->name('work-experiences.massDestroy');
+    Route::resource('work-experiences', 'WorkExperiencesController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

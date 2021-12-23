@@ -42,17 +42,16 @@
                 <span class="help-block">{{ trans('cruds.employee.fields.highest_qualification_helper') }}</span>
             </div>
             <div class="form-group">
-                <label>{{ trans('cruds.employee.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Employee::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="employment_status_id">{{ trans('cruds.employee.fields.employment_status') }}</label>
+                <select class="form-control select2 {{ $errors->has('employment_status') ? 'is-invalid' : '' }}" name="employment_status_id" id="employment_status_id">
+                    @foreach($employment_statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ old('employment_status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('status'))
-                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                @if($errors->has('employment_status'))
+                    <span class="text-danger">{{ $errors->first('employment_status') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.employee.fields.status_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.employee.fields.employment_status_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status_date">{{ trans('cruds.employee.fields.status_date') }}</label>
@@ -63,16 +62,26 @@
                 <span class="help-block">{{ trans('cruds.employee.fields.status_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="group">{{ trans('cruds.employee.fields.group') }}</label>
-                <input class="form-control {{ $errors->has('group') ? 'is-invalid' : '' }}" type="text" name="group" id="group" value="{{ old('group', '') }}">
+                <label>{{ trans('cruds.employee.fields.group') }}</label>
+                <select class="form-control {{ $errors->has('group') ? 'is-invalid' : '' }}" name="group" id="group">
+                    <option value disabled {{ old('group', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Employee::GROUP_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('group', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('group'))
                     <span class="text-danger">{{ $errors->first('group') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.employee.fields.group_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="retirement_scheme">{{ trans('cruds.employee.fields.retirement_scheme') }}</label>
-                <input class="form-control {{ $errors->has('retirement_scheme') ? 'is-invalid' : '' }}" type="text" name="retirement_scheme" id="retirement_scheme" value="{{ old('retirement_scheme', '') }}">
+                <label>{{ trans('cruds.employee.fields.retirement_scheme') }}</label>
+                <select class="form-control {{ $errors->has('retirement_scheme') ? 'is-invalid' : '' }}" name="retirement_scheme" id="retirement_scheme">
+                    <option value disabled {{ old('retirement_scheme', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Employee::RETIREMENT_SCHEME_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('retirement_scheme', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('retirement_scheme'))
                     <span class="text-danger">{{ $errors->first('retirement_scheme') }}</span>
                 @endif

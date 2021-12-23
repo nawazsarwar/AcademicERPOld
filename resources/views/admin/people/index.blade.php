@@ -95,18 +95,6 @@
                         {{ trans('cruds.person.fields.status') }}
                     </th>
                     <th>
-                        {{ trans('cruds.person.fields.remarks') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.person.fields.verified') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.person.fields.verified_by') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.person.fields.user') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.person.fields.dob_proof') }}
                     </th>
                     <th>
@@ -120,6 +108,18 @@
                     </th>
                     <th>
                         {{ trans('cruds.person.fields.passport_no') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.person.fields.verified') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.person.fields.verified_by') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.person.fields.user') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.person.fields.remarks') }}
                     </th>
                     <th>
                         &nbsp;
@@ -194,21 +194,21 @@
 { data: 'disability_type', name: 'disability_type' },
 { data: 'aadhaar_no', name: 'aadhaar_no' },
 { data: 'religion_name', name: 'religion.name' },
-{ data: 'caste', name: 'caste' },
+{ data: 'caste_name', name: 'caste.name' },
 { data: 'sub_caste', name: 'sub_caste' },
 { data: 'nationality_name', name: 'nationality.name' },
 { data: 'domicile_province_name', name: 'domicile_province.name' },
 { data: 'identity_marks', name: 'identity_marks' },
 { data: 'status', name: 'status' },
-{ data: 'remarks', name: 'remarks' },
-{ data: 'verified', name: 'verified' },
-{ data: 'verified_by_name', name: 'verified_by.name' },
-{ data: 'user_username', name: 'user.username' },
 { data: 'dob_proof', name: 'dob_proof' },
 { data: 'marital_status', name: 'marital_status' },
 { data: 'spouse_name', name: 'spouse_name' },
 { data: 'pan_no', name: 'pan_no' },
 { data: 'passport_no', name: 'passport_no' },
+{ data: 'verified', name: 'verified' },
+{ data: 'verified_by_name', name: 'verified_by.name' },
+{ data: 'user_username', name: 'user.username' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

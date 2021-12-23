@@ -158,11 +158,10 @@
                 <span class="help-block">{{ trans('cruds.person.fields.religion_helper') }}</span>
             </div>
             <div class="form-group">
-                <label>{{ trans('cruds.person.fields.caste') }}</label>
-                <select class="form-control {{ $errors->has('caste') ? 'is-invalid' : '' }}" name="caste" id="caste">
-                    <option value disabled {{ old('caste', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Person::CASTE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('caste', $person->caste) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="caste_id">{{ trans('cruds.person.fields.caste') }}</label>
+                <select class="form-control select2 {{ $errors->has('caste') ? 'is-invalid' : '' }}" name="caste_id" id="caste_id">
+                    @foreach($castes as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('caste_id') ? old('caste_id') : $person->caste->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('caste'))
@@ -219,46 +218,6 @@
                 <span class="help-block">{{ trans('cruds.person.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="remarks">{{ trans('cruds.person.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', $person->remarks) }}">
-                @if($errors->has('remarks'))
-                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.person.fields.remarks_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="verified">{{ trans('cruds.person.fields.verified') }}</label>
-                <input class="form-control {{ $errors->has('verified') ? 'is-invalid' : '' }}" type="number" name="verified" id="verified" value="{{ old('verified', $person->verified) }}" step="1">
-                @if($errors->has('verified'))
-                    <span class="text-danger">{{ $errors->first('verified') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.person.fields.verified_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="verified_by_id">{{ trans('cruds.person.fields.verified_by') }}</label>
-                <select class="form-control select2 {{ $errors->has('verified_by') ? 'is-invalid' : '' }}" name="verified_by_id" id="verified_by_id">
-                    @foreach($verified_bies as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('verified_by_id') ? old('verified_by_id') : $person->verified_by->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('verified_by'))
-                    <span class="text-danger">{{ $errors->first('verified_by') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.person.fields.verified_by_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="user_id">{{ trans('cruds.person.fields.user') }}</label>
-                <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>
-                    @foreach($users as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('user_id') ? old('user_id') : $person->user->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('user'))
-                    <span class="text-danger">{{ $errors->first('user') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.person.fields.user_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="dob_proof">{{ trans('cruds.person.fields.dob_proof') }}</label>
                 <input class="form-control {{ $errors->has('dob_proof') ? 'is-invalid' : '' }}" type="text" name="dob_proof" id="dob_proof" value="{{ old('dob_proof', $person->dob_proof) }}">
                 @if($errors->has('dob_proof'))
@@ -302,6 +261,46 @@
                     <span class="text-danger">{{ $errors->first('passport_no') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.person.fields.passport_no_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verified">{{ trans('cruds.person.fields.verified') }}</label>
+                <input class="form-control {{ $errors->has('verified') ? 'is-invalid' : '' }}" type="number" name="verified" id="verified" value="{{ old('verified', $person->verified) }}" step="1">
+                @if($errors->has('verified'))
+                    <span class="text-danger">{{ $errors->first('verified') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.person.fields.verified_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verified_by_id">{{ trans('cruds.person.fields.verified_by') }}</label>
+                <select class="form-control select2 {{ $errors->has('verified_by') ? 'is-invalid' : '' }}" name="verified_by_id" id="verified_by_id">
+                    @foreach($verified_bies as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('verified_by_id') ? old('verified_by_id') : $person->verified_by->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('verified_by'))
+                    <span class="text-danger">{{ $errors->first('verified_by') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.person.fields.verified_by_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="user_id">{{ trans('cruds.person.fields.user') }}</label>
+                <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>
+                    @foreach($users as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('user_id') ? old('user_id') : $person->user->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('user'))
+                    <span class="text-danger">{{ $errors->first('user') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.person.fields.user_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="remarks">{{ trans('cruds.person.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $person->remarks) }}</textarea>
+                @if($errors->has('remarks'))
+                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.person.fields.remarks_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

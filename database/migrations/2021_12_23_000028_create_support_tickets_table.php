@@ -4,13 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateSupportTicketsTable extends Migration
 {
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('support_tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('text');
+            $table->string('title');
+            $table->string('content')->nullable();
+            $table->string('auther_name');
+            $table->string('author_email');
             $table->timestamps();
             $table->softDeletes();
         });

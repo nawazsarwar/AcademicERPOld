@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyPersonRequest;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
+use App\Models\Caste;
 use App\Models\Country;
 use App\Models\Person;
 use App\Models\Province;
@@ -26,7 +27,7 @@ class PersonsController extends Controller
         abort_if(Gate::denies('person_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Person::with(['religion', 'nationality', 'domicile_province', 'verified_by', 'user'])->select(sprintf('%s.*', (new Person())->table));
+            $query = Person::with(['religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user'])->select(sprintf('%s.*', (new Person())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -97,9 +98,10 @@ class PersonsController extends Controller
                 return $row->religion ? $row->religion->name : '';
             });
 
-            $table->editColumn('caste', function ($row) {
-                return $row->caste ? Person::CASTE_SELECT[$row->caste] : '';
+            $table->addColumn('caste_name', function ($row) {
+                return $row->caste ? $row->caste->name : '';
             });
+
             $table->editColumn('sub_caste', function ($row) {
                 return $row->sub_caste ? $row->sub_caste : '';
             });
@@ -117,20 +119,6 @@ class PersonsController extends Controller
             $table->editColumn('status', function ($row) {
                 return $row->status ? $row->status : '';
             });
-            $table->editColumn('remarks', function ($row) {
-                return $row->remarks ? $row->remarks : '';
-            });
-            $table->editColumn('verified', function ($row) {
-                return $row->verified ? $row->verified : '';
-            });
-            $table->addColumn('verified_by_name', function ($row) {
-                return $row->verified_by ? $row->verified_by->name : '';
-            });
-
-            $table->addColumn('user_username', function ($row) {
-                return $row->user ? $row->user->username : '';
-            });
-
             $table->editColumn('dob_proof', function ($row) {
                 return $row->dob_proof ? $row->dob_proof : '';
             });
@@ -146,8 +134,22 @@ class PersonsController extends Controller
             $table->editColumn('passport_no', function ($row) {
                 return $row->passport_no ? $row->passport_no : '';
             });
+            $table->editColumn('verified', function ($row) {
+                return $row->verified ? $row->verified : '';
+            });
+            $table->addColumn('verified_by_name', function ($row) {
+                return $row->verified_by ? $row->verified_by->name : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'religion', 'nationality', 'domicile_province', 'verified_by', 'user']);
+            $table->addColumn('user_username', function ($row) {
+                return $row->user ? $row->user->username : '';
+            });
+
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user']);
 
             return $table->make(true);
         }
@@ -161,6 +163,8 @@ class PersonsController extends Controller
 
         $religions = Religion::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $castes = Caste::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $nationalities = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $domicile_provinces = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -169,7 +173,7 @@ class PersonsController extends Controller
 
         $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.people.create', compact('domicile_provinces', 'nationalities', 'religions', 'users', 'verified_bies'));
+        return view('admin.people.create', compact('castes', 'domicile_provinces', 'nationalities', 'religions', 'users', 'verified_bies'));
     }
 
     public function store(StorePersonRequest $request)
@@ -185,6 +189,8 @@ class PersonsController extends Controller
 
         $religions = Religion::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $castes = Caste::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $nationalities = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $domicile_provinces = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -193,9 +199,9 @@ class PersonsController extends Controller
 
         $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $person->load('religion', 'nationality', 'domicile_province', 'verified_by', 'user');
+        $person->load('religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user');
 
-        return view('admin.people.edit', compact('domicile_provinces', 'nationalities', 'person', 'religions', 'users', 'verified_bies'));
+        return view('admin.people.edit', compact('castes', 'domicile_provinces', 'nationalities', 'person', 'religions', 'users', 'verified_bies'));
     }
 
     public function update(UpdatePersonRequest $request, Person $person)
@@ -209,7 +215,7 @@ class PersonsController extends Controller
     {
         abort_if(Gate::denies('person_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $person->load('religion', 'nationality', 'domicile_province', 'verified_by', 'user');
+        $person->load('religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user');
 
         return view('admin.people.show', compact('person'));
     }

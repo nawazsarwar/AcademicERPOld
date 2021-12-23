@@ -81,20 +81,6 @@ class StorePersonRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
-            'remarks' => [
-                'string',
-                'nullable',
-            ],
-            'verified' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'user_id' => [
-                'required',
-                'integer',
-            ],
             'dob_proof' => [
                 'string',
                 'nullable',
@@ -112,6 +98,16 @@ class StorePersonRequest extends FormRequest
             'passport_no' => [
                 'string',
                 'nullable',
+            ],
+            'verified' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'user_id' => [
+                'required',
+                'integer',
             ],
         ];
     }

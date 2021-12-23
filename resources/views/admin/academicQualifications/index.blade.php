@@ -50,7 +50,13 @@
                         {{ trans('cruds.academicQualification.fields.result') }}
                     </th>
                     <th>
-                        {{ trans('cruds.academicQualification.fields.percentage') }}
+                        {{ trans('cruds.academicQualification.fields.grading_type') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.academicQualification.fields.grade') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.academicQualification.fields.certificate') }}
                     </th>
                     <th>
                         {{ trans('cruds.academicQualification.fields.cdn_url') }}
@@ -125,7 +131,9 @@
 { data: 'roll_no', name: 'roll_no' },
 { data: 'board_name', name: 'board.name' },
 { data: 'result', name: 'result' },
-{ data: 'percentage', name: 'percentage' },
+{ data: 'grading_type', name: 'grading_type' },
+{ data: 'grade', name: 'grade' },
+{ data: 'certificate', name: 'certificate', sortable: false, searchable: false },
 { data: 'cdn_url', name: 'cdn_url' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },

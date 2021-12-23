@@ -46,21 +46,21 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Centres
     Route::apiResource('centres', 'CentresApiController');
 
-    // Statuses
-    Route::apiResource('statuses', 'StatusesApiController');
+    // Support Statuses
+    Route::apiResource('support-statuses', 'SupportStatusesApiController');
 
-    // Priorities
-    Route::apiResource('priorities', 'PrioritiesApiController');
+    // Support Priorities
+    Route::apiResource('support-priorities', 'SupportPrioritiesApiController');
 
-    // Categories
-    Route::apiResource('categories', 'CategoriesApiController');
+    // Support Categories
+    Route::apiResource('support-categories', 'SupportCategoriesApiController');
 
-    // Tickets
-    Route::post('tickets/media', 'TicketsApiController@storeMedia')->name('tickets.storeMedia');
-    Route::apiResource('tickets', 'TicketsApiController');
+    // Support Tickets
+    Route::post('support-tickets/media', 'SupportTicketsApiController@storeMedia')->name('support-tickets.storeMedia');
+    Route::apiResource('support-tickets', 'SupportTicketsApiController');
 
-    // Comments
-    Route::apiResource('comments', 'CommentsApiController');
+    // Support Comments
+    Route::apiResource('support-comments', 'SupportCommentsApiController');
 
     // Halls
     Route::apiResource('halls', 'HallsApiController');
@@ -69,6 +69,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('hostels', 'HostelsApiController');
 
     // Academic Qualifications
+    Route::post('academic-qualifications/media', 'AcademicQualificationsApiController@storeMedia')->name('academic-qualifications.storeMedia');
     Route::apiResource('academic-qualifications', 'AcademicQualificationsApiController');
 
     // Qualification Levels
@@ -136,4 +137,20 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Papers Registration
     Route::apiResource('papers-registrations', 'PapersRegistrationApiController');
+
+    // Employment Status
+    Route::apiResource('employment-statuses', 'EmploymentStatusApiController');
+
+    // Castes
+    Route::apiResource('castes', 'CastesApiController');
+
+    // Designation Type
+    Route::apiResource('designation-types', 'DesignationTypeApiController');
+
+    // Biometrics
+    Route::post('biometrics/media', 'BiometricsApiController@storeMedia')->name('biometrics.storeMedia');
+    Route::apiResource('biometrics', 'BiometricsApiController');
+
+    // Work Experiences
+    Route::apiResource('work-experiences', 'WorkExperiencesApiController');
 });

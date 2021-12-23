@@ -44,10 +44,12 @@ class StoreAcademicQualificationRequest extends FormRequest
                 'integer',
             ],
             'result' => [
-                'string',
                 'required',
             ],
-            'percentage' => [
+            'grading_type' => [
+                'required',
+            ],
+            'grade' => [
                 'string',
                 'nullable',
             ],

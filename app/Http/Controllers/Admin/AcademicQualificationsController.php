@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\CsvImportTrait;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyAcademicQualificationRequest;
 use App\Http\Requests\StoreAcademicQualificationRequest;
 use App\Http\Requests\UpdateAcademicQualificationRequest;
@@ -13,11 +14,13 @@ use App\Models\QualificationLevel;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class AcademicQualificationsController extends Controller
 {
+    use MediaUploadingTrait;
     use CsvImportTrait;
 
     public function index(Request $request)
@@ -71,10 +74,16 @@ class AcademicQualificationsController extends Controller
             });
 
             $table->editColumn('result', function ($row) {
-                return $row->result ? $row->result : '';
+                return $row->result ? AcademicQualification::RESULT_SELECT[$row->result] : '';
             });
-            $table->editColumn('percentage', function ($row) {
-                return $row->percentage ? $row->percentage : '';
+            $table->editColumn('grading_type', function ($row) {
+                return $row->grading_type ? AcademicQualification::GRADING_TYPE_SELECT[$row->grading_type] : '';
+            });
+            $table->editColumn('grade', function ($row) {
+                return $row->grade ? $row->grade : '';
+            });
+            $table->editColumn('certificate', function ($row) {
+                return $row->certificate ? '<a href="' . $row->certificate->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
             $table->editColumn('cdn_url', function ($row) {
                 return $row->cdn_url ? $row->cdn_url : '';
@@ -86,7 +95,7 @@ class AcademicQualificationsController extends Controller
                 return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'user', 'qualification_level', 'board']);
+            $table->rawColumns(['actions', 'placeholder', 'user', 'qualification_level', 'board', 'certificate']);
 
             return $table->make(true);
         }
@@ -111,6 +120,14 @@ class AcademicQualificationsController extends Controller
     {
         $academicQualification = AcademicQualification::create($request->all());
 
+        if ($request->input('certificate', false)) {
+            $academicQualification->addMedia(storage_path('tmp/uploads/' . basename($request->input('certificate'))))->toMediaCollection('certificate');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $academicQualification->id]);
+        }
+
         return redirect()->route('admin.academic-qualifications.index');
     }
 
@@ -132,6 +149,17 @@ class AcademicQualificationsController extends Controller
     public function update(UpdateAcademicQualificationRequest $request, AcademicQualification $academicQualification)
     {
         $academicQualification->update($request->all());
+
+        if ($request->input('certificate', false)) {
+            if (!$academicQualification->certificate || $request->input('certificate') !== $academicQualification->certificate->file_name) {
+                if ($academicQualification->certificate) {
+                    $academicQualification->certificate->delete();
+                }
+                $academicQualification->addMedia(storage_path('tmp/uploads/' . basename($request->input('certificate'))))->toMediaCollection('certificate');
+            }
+        } elseif ($academicQualification->certificate) {
+            $academicQualification->certificate->delete();
+        }
 
         return redirect()->route('admin.academic-qualifications.index');
     }
@@ -159,5 +187,17 @@ class AcademicQualificationsController extends Controller
         AcademicQualification::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('academic_qualification_create') && Gate::denies('academic_qualification_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new AcademicQualification();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }

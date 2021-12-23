@@ -15,26 +15,24 @@ class Employee extends Model
     use Auditable;
     use HasFactory;
 
+    public const RETIREMENT_SCHEME_SELECT = [
+        'GPF' => 'GPF',
+        'NPS' => 'NPS',
+    ];
+
+    public const GROUP_SELECT = [
+        'A' => 'A',
+        'B' => 'B',
+        'C' => 'C',
+        'D' => 'D',
+    ];
+
     public const EMPLOYMENT_TYPE_SELECT = [
         'AD-HOC'     => 'AD-HOC',
         'DEPUTATION' => 'DEPUTATION',
         'PERMANENT'  => 'PERMANENT',
         'PROBATION'  => 'PROBATION',
         'TEMPORARY'  => 'TEMPORARY',
-    ];
-
-    public const STATUS_SELECT = [
-        'CONTINUING'                   => 'CONTINUING',
-        'EXPIRED'                      => 'EXPIRED',
-        'ON DEPUTATION'                => 'ON DEPUTATION',
-        'RESIGNED'                     => 'RESIGNED',
-        'RETIRED'                      => 'RETIRED',
-        'E.O.L.'                       => 'E.O.L.',
-        'V.R.S.'                       => 'V.R.S.',
-        'TERMINATED'                   => 'TERMINATED',
-        'COMPULSORILY RETIRED'         => 'COMPULSORILY RETIRED',
-        'DISMISSED'                    => 'DISMISSED',
-        'RETIREMENT ON MEDICAL GROUND' => 'RETIREMENT ON MEDICAL GROUND',
     ];
 
     public $table = 'employees';
@@ -51,7 +49,7 @@ class Employee extends Model
         'service_book_no',
         'application_no',
         'highest_qualification',
-        'status',
+        'employment_status_id',
         'status_date',
         'group',
         'retirement_scheme',
@@ -65,6 +63,11 @@ class Employee extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function employment_status()
+    {
+        return $this->belongsTo(EmploymentStatus::class, 'employment_status_id');
+    }
 
     public function getStatusDateAttribute($value)
     {

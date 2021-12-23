@@ -35,6 +35,34 @@
                 <span class="help-block">{{ trans('cruds.designation.fields.pay_grade_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="type_id">{{ trans('cruds.designation.fields.type') }}</label>
+                <select class="form-control select2 {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type_id" id="type_id" required>
+                    @foreach($types as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('type_id') ? old('type_id') : $designation->type->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.designation.fields.type_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="retirement_age">{{ trans('cruds.designation.fields.retirement_age') }}</label>
+                <input class="form-control {{ $errors->has('retirement_age') ? 'is-invalid' : '' }}" type="number" name="retirement_age" id="retirement_age" value="{{ old('retirement_age', $designation->retirement_age) }}" step="1" required>
+                @if($errors->has('retirement_age'))
+                    <span class="text-danger">{{ $errors->first('retirement_age') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.designation.fields.retirement_age_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="remarks">{{ trans('cruds.designation.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks', $designation->remarks) }}</textarea>
+                @if($errors->has('remarks'))
+                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.designation.fields.remarks_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

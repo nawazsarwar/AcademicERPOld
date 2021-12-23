@@ -12,7 +12,7 @@ class CreateNomineesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');
-            $table->string('relationship_employee')->nullable();
+            $table->string('relationship')->nullable();
             $table->string('age')->nullable();
             $table->string('witness_name_1')->nullable();
             $table->string('designation_witness_1')->nullable();
@@ -21,7 +21,7 @@ class CreateNomineesTable extends Migration
             $table->string('designation_witness_2')->nullable();
             $table->string('department_witness_2')->nullable();
             $table->integer('status')->nullable();
-            $table->string('remarks')->nullable();
+            $table->longText('remarks')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,7 +14,8 @@ class CreateAcademicQualificationsTable extends Migration
             $table->integer('year');
             $table->string('roll_no')->nullable();
             $table->string('result');
-            $table->string('percentage')->nullable();
+            $table->string('grading_type');
+            $table->string('grade')->nullable();
             $table->string('cdn_url')->nullable();
             $table->string('status')->nullable();
             $table->longText('remarks')->nullable();

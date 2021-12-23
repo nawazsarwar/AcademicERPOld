@@ -57,10 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.employee.fields.status') }}
+                            {{ trans('cruds.employee.fields.employment_status') }}
                         </th>
                         <td>
-                            {{ App\Models\Employee::STATUS_SELECT[$employee->status] ?? '' }}
+                            {{ $employee->employment_status->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -76,7 +76,7 @@
                             {{ trans('cruds.employee.fields.group') }}
                         </th>
                         <td>
-                            {{ $employee->group }}
+                            {{ App\Models\Employee::GROUP_SELECT[$employee->group] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -84,7 +84,7 @@
                             {{ trans('cruds.employee.fields.retirement_scheme') }}
                         </th>
                         <td>
-                            {{ $employee->retirement_scheme }}
+                            {{ App\Models\Employee::RETIREMENT_SCHEME_SELECT[$employee->retirement_scheme] ?? '' }}
                         </td>
                     </tr>
                     <tr>

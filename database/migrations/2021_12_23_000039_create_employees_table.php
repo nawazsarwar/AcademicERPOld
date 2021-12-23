@@ -14,7 +14,6 @@ class CreateEmployeesTable extends Migration
             $table->string('service_book_no')->nullable();
             $table->string('application_no')->nullable();
             $table->string('highest_qualification')->nullable();
-            $table->string('status')->nullable();
             $table->date('status_date')->nullable();
             $table->string('group')->nullable();
             $table->string('retirement_scheme')->nullable();
