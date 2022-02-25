@@ -25,10 +25,11 @@ class UpdatePostalCodeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'pincode' => [
-                'string',
+            'code' => [
                 'required',
-                'unique:postal_codes,pincode,' . request()->route('postal_code')->id,
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'sub_district' => [
                 'string',

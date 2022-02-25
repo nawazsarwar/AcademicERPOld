@@ -140,41 +140,48 @@
                 <span class="help-block">{{ trans('cruds.examRegistration.fields.room_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label>{{ trans('cruds.examRegistration.fields.reviewed') }}</label>
-                <select class="form-control {{ $errors->has('reviewed') ? 'is-invalid' : '' }}" name="reviewed" id="reviewed">
-                    <option value disabled {{ old('reviewed', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\ExamRegistration::REVIEWED_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('reviewed', $examRegistration->reviewed) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="verification_status_id">{{ trans('cruds.examRegistration.fields.verification_status') }}</label>
+                <select class="form-control select2 {{ $errors->has('verification_status') ? 'is-invalid' : '' }}" name="verification_status_id" id="verification_status_id">
+                    @foreach($verification_statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('verification_status_id') ? old('verification_status_id') : $examRegistration->verification_status->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('reviewed'))
-                    <span class="text-danger">{{ $errors->first('reviewed') }}</span>
+                @if($errors->has('verification_status'))
+                    <span class="text-danger">{{ $errors->first('verification_status') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.examRegistration.fields.reviewed_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.examRegistration.fields.verification_status_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="reviewed_by_id">{{ trans('cruds.examRegistration.fields.reviewed_by') }}</label>
-                <select class="form-control select2 {{ $errors->has('reviewed_by') ? 'is-invalid' : '' }}" name="reviewed_by_id" id="reviewed_by_id">
-                    @foreach($reviewed_bies as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('reviewed_by_id') ? old('reviewed_by_id') : $examRegistration->reviewed_by->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label for="verified_by_id">{{ trans('cruds.examRegistration.fields.verified_by') }}</label>
+                <select class="form-control select2 {{ $errors->has('verified_by') ? 'is-invalid' : '' }}" name="verified_by_id" id="verified_by_id">
+                    @foreach($verified_bies as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('verified_by_id') ? old('verified_by_id') : $examRegistration->verified_by->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('reviewed_by'))
-                    <span class="text-danger">{{ $errors->first('reviewed_by') }}</span>
+                @if($errors->has('verified_by'))
+                    <span class="text-danger">{{ $errors->first('verified_by') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.examRegistration.fields.reviewed_by_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.examRegistration.fields.verified_by_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="reviewed_at">{{ trans('cruds.examRegistration.fields.reviewed_at') }}</label>
-                <input class="form-control datetime {{ $errors->has('reviewed_at') ? 'is-invalid' : '' }}" type="text" name="reviewed_at" id="reviewed_at" value="{{ old('reviewed_at', $examRegistration->reviewed_at) }}">
-                @if($errors->has('reviewed_at'))
-                    <span class="text-danger">{{ $errors->first('reviewed_at') }}</span>
+                <label for="verified_at">{{ trans('cruds.examRegistration.fields.verified_at') }}</label>
+                <input class="form-control datetime {{ $errors->has('verified_at') ? 'is-invalid' : '' }}" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at', $examRegistration->verified_at) }}">
+                @if($errors->has('verified_at'))
+                    <span class="text-danger">{{ $errors->first('verified_at') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.examRegistration.fields.reviewed_at_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.examRegistration.fields.verified_at_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verification_remark">{{ trans('cruds.examRegistration.fields.verification_remark') }}</label>
+                <textarea class="form-control {{ $errors->has('verification_remark') ? 'is-invalid' : '' }}" name="verification_remark" id="verification_remark">{{ old('verification_remark', $examRegistration->verification_remark) }}</textarea>
+                @if($errors->has('verification_remark'))
+                    <span class="text-danger">{{ $errors->first('verification_remark') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examRegistration.fields.verification_remark_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.examRegistration.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $examRegistration->status) }}">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', $examRegistration->status) }}" step="1">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif

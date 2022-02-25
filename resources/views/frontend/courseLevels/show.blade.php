@@ -1,0 +1,67 @@
+@extends('layouts.frontend')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    {{ trans('global.show') }} {{ trans('cruds.courseLevel.title') }}
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <a class="btn btn-default" href="{{ route('frontend.course-levels.index') }}">
+                                {{ trans('global.back_to_list') }}
+                            </a>
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.courseLevel.fields.id') }}
+                                    </th>
+                                    <td>
+                                        {{ $courseLevel->id }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.courseLevel.fields.name') }}
+                                    </th>
+                                    <td>
+                                        {{ $courseLevel->name }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.courseLevel.fields.status') }}
+                                    </th>
+                                    <td>
+                                        {{ $courseLevel->status }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.courseLevel.fields.remarks') }}
+                                    </th>
+                                    <td>
+                                        {{ $courseLevel->remarks }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="form-group">
+                            <a class="btn btn-default" href="{{ route('frontend.course-levels.index') }}">
+                                {{ trans('global.back_to_list') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection

@@ -47,6 +47,18 @@
                         {{ trans('cruds.user.fields.roles') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.role') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.revoked') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.remarks') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.applications') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -109,6 +121,10 @@
 { data: 'email_verified_at', name: 'email_verified_at' },
 { data: 'two_factor', name: 'two_factor' },
 { data: 'roles', name: 'roles.title' },
+{ data: 'role', name: 'role' },
+{ data: 'revoked', name: 'revoked' },
+{ data: 'remarks', name: 'remarks' },
+{ data: 'applications', name: 'applications' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

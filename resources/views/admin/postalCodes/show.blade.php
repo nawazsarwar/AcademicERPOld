@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.postalCode.fields.pincode') }}
+                            {{ trans('cruds.postalCode.fields.code') }}
                         </th>
                         <td>
-                            {{ $postalCode->pincode }}
+                            {{ $postalCode->code }}
                         </td>
                     </tr>
                     <tr>

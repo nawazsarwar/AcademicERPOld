@@ -26,12 +26,12 @@
                 <span class="help-block">{{ trans('cruds.country.fields.code_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="phone_code">{{ trans('cruds.country.fields.phone_code') }}</label>
-                <input class="form-control {{ $errors->has('phone_code') ? 'is-invalid' : '' }}" type="text" name="phone_code" id="phone_code" value="{{ old('phone_code', '') }}">
-                @if($errors->has('phone_code'))
-                    <span class="text-danger">{{ $errors->first('phone_code') }}</span>
+                <label class="required" for="dialing_code">{{ trans('cruds.country.fields.dialing_code') }}</label>
+                <input class="form-control {{ $errors->has('dialing_code') ? 'is-invalid' : '' }}" type="text" name="dialing_code" id="dialing_code" value="{{ old('dialing_code', '') }}" required>
+                @if($errors->has('dialing_code'))
+                    <span class="text-danger">{{ $errors->first('dialing_code') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.country.fields.phone_code_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.country.fields.dialing_code_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="nationality">{{ trans('cruds.country.fields.nationality') }}</label>
@@ -40,6 +40,14 @@
                     <span class="text-danger">{{ $errors->first('nationality') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.country.fields.nationality_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="sequence">{{ trans('cruds.country.fields.sequence') }}</label>
+                <input class="form-control {{ $errors->has('sequence') ? 'is-invalid' : '' }}" type="number" name="sequence" id="sequence" value="{{ old('sequence', '') }}" step="1">
+                @if($errors->has('sequence'))
+                    <span class="text-danger">{{ $errors->first('sequence') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.country.fields.sequence_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.country.fields.status') }}</label>

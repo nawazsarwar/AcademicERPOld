@@ -27,12 +27,12 @@
                 <span class="help-block">{{ trans('cruds.postalCode.fields.locality_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="pincode">{{ trans('cruds.postalCode.fields.pincode') }}</label>
-                <input class="form-control {{ $errors->has('pincode') ? 'is-invalid' : '' }}" type="text" name="pincode" id="pincode" value="{{ old('pincode', $postalCode->pincode) }}" required>
-                @if($errors->has('pincode'))
-                    <span class="text-danger">{{ $errors->first('pincode') }}</span>
+                <label class="required" for="code">{{ trans('cruds.postalCode.fields.code') }}</label>
+                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="number" name="code" id="code" value="{{ old('code', $postalCode->code) }}" step="1" required>
+                @if($errors->has('code'))
+                    <span class="text-danger">{{ $errors->first('code') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.postalCode.fields.pincode_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.postalCode.fields.code_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="sub_district">{{ trans('cruds.postalCode.fields.sub_district') }}</label>

@@ -29,10 +29,13 @@
                         {{ trans('cruds.address.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.address.fields.country') }}
+                        {{ trans('cruds.address.fields.person') }}
                     </th>
                     <th>
-                        {{ trans('cruds.address.fields.person') }}
+                        {{ trans('cruds.address.fields.type') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.address.fields.country') }}
                     </th>
                     <th>
                         {{ trans('cruds.address.fields.mobile') }}
@@ -121,8 +124,9 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'country_name', name: 'country.name' },
 { data: 'person_first_name', name: 'person.first_name' },
+{ data: 'type', name: 'type' },
+{ data: 'country_name', name: 'country.name' },
 { data: 'mobile', name: 'mobile' },
 { data: 'postal_code_name', name: 'postal_code.name' },
 { data: 'details', name: 'details' },

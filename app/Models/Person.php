@@ -49,6 +49,7 @@ class Person extends Model
     ];
 
     protected $fillable = [
+        'user_id',
         'first_name',
         'middle_name',
         'last_name',
@@ -60,7 +61,7 @@ class Person extends Model
         'mothers_last_name',
         'dob',
         'gender',
-        'blood_group',
+        'blood_group_id',
         'disability',
         'disability_type',
         'aadhaar_no',
@@ -70,20 +71,22 @@ class Person extends Model
         'nationality_id',
         'domicile_province_id',
         'identity_marks',
-        'status',
         'dob_proof',
         'marital_status',
         'spouse_name',
         'pan_no',
         'passport_no',
-        'verified',
-        'verified_by_id',
-        'user_id',
+        'status',
         'remarks',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function getDobAttribute($value)
     {
@@ -93,6 +96,11 @@ class Person extends Model
     public function setDobAttribute($value)
     {
         $this->attributes['dob'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function blood_group()
+    {
+        return $this->belongsTo(BloodGroup::class, 'blood_group_id');
     }
 
     public function religion()
@@ -113,16 +121,6 @@ class Person extends Model
     public function domicile_province()
     {
         return $this->belongsTo(Province::class, 'domicile_province_id');
-    }
-
-    public function verified_by()
-    {
-        return $this->belongsTo(User::class, 'verified_by_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

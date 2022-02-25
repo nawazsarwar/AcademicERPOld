@@ -39,12 +39,14 @@ class Employee extends Model
 
     protected $dates = [
         'status_date',
+        'verified_at',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
     protected $fillable = [
+        'person_id',
         'employee_no',
         'service_book_no',
         'application_no',
@@ -58,10 +60,19 @@ class Employee extends Model
         'pf_account_no',
         'personal_file_no',
         'remarks',
+        'verification_status_id',
+        'verified_by_id',
+        'verified_at',
+        'verification_remark',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class, 'person_id');
+    }
 
     public function employment_status()
     {
@@ -76,6 +87,26 @@ class Employee extends Model
     public function setStatusDateAttribute($value)
     {
         $this->attributes['status_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function verification_status()
+    {
+        return $this->belongsTo(VerificationStatus::class, 'verification_status_id');
+    }
+
+    public function verified_by()
+    {
+        return $this->belongsTo(User::class, 'verified_by_id');
+    }
+
+    public function getVerifiedAtAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setVerifiedAtAttribute($value)
+    {
+        $this->attributes['verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     protected function serializeDate(DateTimeInterface $date)

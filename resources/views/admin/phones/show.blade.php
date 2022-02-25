@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.phone.fields.dialing_code') }}
+                        </th>
+                        <td>
+                            {{ $phone->dialing_code->dialing_code ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.phone.fields.number') }}
                         </th>
                         <td>
@@ -41,18 +49,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.phone.fields.type') }}
+                            {{ trans('cruds.phone.fields.category') }}
                         </th>
                         <td>
-                            {{ $phone->type }}
+                            {{ App\Models\Phone::CATEGORY_SELECT[$phone->category] ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.phone.fields.category') }}
+                            {{ trans('cruds.phone.fields.type') }}
                         </th>
                         <td>
-                            {{ $phone->category }}
+                            {{ App\Models\Phone::TYPE_SELECT[$phone->type] ?? '' }}
                         </td>
                     </tr>
                     <tr>

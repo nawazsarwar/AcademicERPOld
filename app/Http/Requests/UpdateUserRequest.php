@@ -19,7 +19,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'username' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:users,username,' . request()->route('user')->id,
             ],
             'name' => [
                 'string',
@@ -35,6 +36,18 @@ class UpdateUserRequest extends FormRequest
             'roles' => [
                 'required',
                 'array',
+            ],
+            'role' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'revoked' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }

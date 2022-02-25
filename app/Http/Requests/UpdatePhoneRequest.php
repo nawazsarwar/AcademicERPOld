@@ -21,15 +21,11 @@ class UpdatePhoneRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'dialing_code_id' => [
+                'required',
+                'integer',
+            ],
             'number' => [
-                'string',
-                'required',
-            ],
-            'type' => [
-                'string',
-                'required',
-            ],
-            'category' => [
                 'string',
                 'required',
             ],

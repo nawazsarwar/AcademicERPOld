@@ -17,6 +17,10 @@ class UpdatePersonRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => [
+                'required',
+                'integer',
+            ],
             'first_name' => [
                 'string',
                 'required',
@@ -57,9 +61,9 @@ class UpdatePersonRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'blood_group' => [
-                'string',
-                'nullable',
+            'blood_group_id' => [
+                'required',
+                'integer',
             ],
             'aadhaar_no' => [
                 'nullable',
@@ -74,12 +78,6 @@ class UpdatePersonRequest extends FormRequest
             'identity_marks' => [
                 'string',
                 'nullable',
-            ],
-            'status' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'dob_proof' => [
                 'string',
@@ -99,15 +97,11 @@ class UpdatePersonRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'verified' => [
+            'status' => [
                 'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-            ],
-            'user_id' => [
-                'required',
-                'integer',
             ],
         ];
     }

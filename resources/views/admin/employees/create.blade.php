@@ -10,6 +10,18 @@
         <form method="POST" action="{{ route("admin.employees.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label class="required" for="person_id">{{ trans('cruds.employee.fields.person') }}</label>
+                <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id" required>
+                    @foreach($people as $id => $entry)
+                        <option value="{{ $id }}" {{ old('person_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('person'))
+                    <span class="text-danger">{{ $errors->first('person') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.person_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="employee_no">{{ trans('cruds.employee.fields.employee_no') }}</label>
                 <input class="form-control {{ $errors->has('employee_no') ? 'is-invalid' : '' }}" type="text" name="employee_no" id="employee_no" value="{{ old('employee_no', '') }}" required>
                 @if($errors->has('employee_no'))
@@ -126,11 +138,51 @@
             </div>
             <div class="form-group">
                 <label for="remarks">{{ trans('cruds.employee.fields.remarks') }}</label>
-                <input class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" type="text" name="remarks" id="remarks" value="{{ old('remarks', '') }}">
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.employee.fields.remarks_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verification_status_id">{{ trans('cruds.employee.fields.verification_status') }}</label>
+                <select class="form-control select2 {{ $errors->has('verification_status') ? 'is-invalid' : '' }}" name="verification_status_id" id="verification_status_id">
+                    @foreach($verification_statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ old('verification_status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('verification_status'))
+                    <span class="text-danger">{{ $errors->first('verification_status') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.verification_status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verified_by_id">{{ trans('cruds.employee.fields.verified_by') }}</label>
+                <select class="form-control select2 {{ $errors->has('verified_by') ? 'is-invalid' : '' }}" name="verified_by_id" id="verified_by_id">
+                    @foreach($verified_bies as $id => $entry)
+                        <option value="{{ $id }}" {{ old('verified_by_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('verified_by'))
+                    <span class="text-danger">{{ $errors->first('verified_by') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.verified_by_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verified_at">{{ trans('cruds.employee.fields.verified_at') }}</label>
+                <input class="form-control date {{ $errors->has('verified_at') ? 'is-invalid' : '' }}" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at') }}">
+                @if($errors->has('verified_at'))
+                    <span class="text-danger">{{ $errors->first('verified_at') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.verified_at_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verification_remark">{{ trans('cruds.employee.fields.verification_remark') }}</label>
+                <textarea class="form-control {{ $errors->has('verification_remark') ? 'is-invalid' : '' }}" name="verification_remark" id="verification_remark">{{ old('verification_remark') }}</textarea>
+                @if($errors->has('verification_remark'))
+                    <span class="text-danger">{{ $errors->first('verification_remark') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.verification_remark_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -14,6 +14,11 @@ class Address extends Model
     use Auditable;
     use HasFactory;
 
+    public const TYPE_SELECT = [
+        'Correspondence Address' => 'Correspondence Address',
+        'Permanent Address'      => 'Permanent Address',
+    ];
+
     public $table = 'addresses';
 
     protected $dates = [
@@ -23,8 +28,8 @@ class Address extends Model
     ];
 
     protected $fillable = [
-        'country_id',
         'person_id',
+        'country_id',
         'mobile',
         'postal_code_id',
         'details',
@@ -33,6 +38,7 @@ class Address extends Model
         'locality',
         'city',
         'province_id',
+        'type',
         'status',
         'remarks',
         'created_at',
@@ -40,14 +46,14 @@ class Address extends Model
         'deleted_at',
     ];
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id');
-    }
-
     public function person()
     {
         return $this->belongsTo(Person::class, 'person_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
     public function postal_code()

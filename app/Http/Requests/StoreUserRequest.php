@@ -19,7 +19,8 @@ class StoreUserRequest extends FormRequest
         return [
             'username' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:users',
             ],
             'name' => [
                 'string',
@@ -38,6 +39,18 @@ class StoreUserRequest extends FormRequest
             'roles' => [
                 'required',
                 'array',
+            ],
+            'role' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'revoked' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }

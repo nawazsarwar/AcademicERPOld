@@ -17,6 +17,10 @@ class UpdateEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
+            'person_id' => [
+                'required',
+                'integer',
+            ],
             'employee_no' => [
                 'string',
                 'required',
@@ -50,8 +54,8 @@ class UpdateEmployeeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'remarks' => [
-                'string',
+            'verified_at' => [
+                'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
         ];

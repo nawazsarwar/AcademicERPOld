@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.employee.fields.person') }}
+                        </th>
+                        <td>
+                            {{ $employee->person->first_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.employee.fields.employee_no') }}
                         </th>
                         <td>
@@ -125,6 +133,38 @@
                         </th>
                         <td>
                             {{ $employee->remarks }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employee.fields.verification_status') }}
+                        </th>
+                        <td>
+                            {{ $employee->verification_status->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employee.fields.verified_by') }}
+                        </th>
+                        <td>
+                            {{ $employee->verified_by->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employee.fields.verified_at') }}
+                        </th>
+                        <td>
+                            {{ $employee->verified_at }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employee.fields.verification_remark') }}
+                        </th>
+                        <td>
+                            {{ $employee->verification_remark }}
                         </td>
                     </tr>
                 </tbody>

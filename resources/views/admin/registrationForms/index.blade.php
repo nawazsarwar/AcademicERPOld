@@ -57,10 +57,10 @@
                             {{ trans('cruds.registrationForm.fields.fillable_backlog') }}
                         </th>
                         <th>
-                            {{ trans('cruds.registrationForm.fields.remarks') }}
+                            {{ trans('cruds.registrationForm.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.registrationForm.fields.status') }}
+                            {{ trans('cruds.registrationForm.fields.remarks') }}
                         </th>
                         <th>
                             &nbsp;
@@ -104,10 +104,10 @@
                                 {{ App\Models\RegistrationForm::FILLABLE_BACKLOG_RADIO[$registrationForm->fillable_backlog] ?? '' }}
                             </td>
                             <td>
-                                {{ $registrationForm->remarks ?? '' }}
+                                {{ $registrationForm->status ?? '' }}
                             </td>
                             <td>
-                                {{ $registrationForm->status ?? '' }}
+                                {{ $registrationForm->remarks ?? '' }}
                             </td>
                             <td>
                                 @can('registration_form_show')

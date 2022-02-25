@@ -45,6 +45,7 @@ class Course extends Model
         'subsidiarizable',
         'administrable_id',
         'administrable_type',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',

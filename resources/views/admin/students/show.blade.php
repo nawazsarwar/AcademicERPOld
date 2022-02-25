@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.student.fields.person') }}
+                        </th>
+                        <td>
+                            {{ $student->person->first_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.student.fields.enrolment') }}
                         </th>
                         <td>
@@ -37,6 +45,38 @@
                         </th>
                         <td>
                             {{ $student->guardian_mobile_no }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.student.fields.verification_status') }}
+                        </th>
+                        <td>
+                            {{ $student->verification_status->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.student.fields.verified_by') }}
+                        </th>
+                        <td>
+                            {{ $student->verified_by->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.student.fields.verified_at') }}
+                        </th>
+                        <td>
+                            {{ $student->verified_at }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.student.fields.verification_remark') }}
+                        </th>
+                        <td>
+                            {{ $student->verification_remark }}
                         </td>
                     </tr>
                 </tbody>

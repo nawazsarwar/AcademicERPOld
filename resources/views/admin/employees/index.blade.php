@@ -29,6 +29,9 @@
                         {{ trans('cruds.employee.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.employee.fields.person') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.employee.fields.employee_no') }}
                     </th>
                     <th>
@@ -66,6 +69,18 @@
                     </th>
                     <th>
                         {{ trans('cruds.employee.fields.remarks') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employee.fields.verification_status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employee.fields.verified_by') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employee.fields.verified_at') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employee.fields.verification_remark') }}
                     </th>
                     <th>
                         &nbsp;
@@ -124,6 +139,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'person_first_name', name: 'person.first_name' },
 { data: 'employee_no', name: 'employee_no' },
 { data: 'service_book_no', name: 'service_book_no' },
 { data: 'application_no', name: 'application_no' },
@@ -137,6 +153,10 @@
 { data: 'pf_account_no', name: 'pf_account_no' },
 { data: 'personal_file_no', name: 'personal_file_no' },
 { data: 'remarks', name: 'remarks' },
+{ data: 'verification_status_name', name: 'verification_status.name' },
+{ data: 'verified_by_name', name: 'verified_by.name' },
+{ data: 'verified_at', name: 'verified_at' },
+{ data: 'verification_remark', name: 'verification_remark' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

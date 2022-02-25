@@ -17,7 +17,7 @@ class PhonesApiController extends Controller
     {
         abort_if(Gate::denies('phone_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PhoneResource(Phone::with(['user'])->get());
+        return new PhoneResource(Phone::with(['user', 'dialing_code'])->get());
     }
 
     public function store(StorePhoneRequest $request)
@@ -33,7 +33,7 @@ class PhonesApiController extends Controller
     {
         abort_if(Gate::denies('phone_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PhoneResource($phone->load(['user']));
+        return new PhoneResource($phone->load(['user', 'dialing_code']));
     }
 
     public function update(UpdatePhoneRequest $request, Phone $phone)

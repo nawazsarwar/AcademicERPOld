@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.country.fields.phone_code') }}
+                            {{ trans('cruds.country.fields.dialing_code') }}
                         </th>
                         <td>
-                            {{ $country->phone_code }}
+                            {{ $country->dialing_code }}
                         </td>
                     </tr>
                     <tr>
@@ -53,6 +53,14 @@
                         </th>
                         <td>
                             {{ $country->nationality }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.country.fields.sequence') }}
+                        </th>
+                        <td>
+                            {{ $country->sequence }}
                         </td>
                     </tr>
                     <tr>

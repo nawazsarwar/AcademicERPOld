@@ -25,8 +25,9 @@ class Country extends Model
     protected $fillable = [
         'name',
         'code',
-        'phone_code',
+        'dialing_code',
         'nationality',
+        'sequence',
         'status',
         'remarks',
         'created_at',

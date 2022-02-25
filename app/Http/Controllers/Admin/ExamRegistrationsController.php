@@ -13,6 +13,7 @@ use App\Models\Hall;
 use App\Models\Hostel;
 use App\Models\Student;
 use App\Models\User;
+use App\Models\VerificationStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class ExamRegistrationsController extends Controller
     {
         abort_if(Gate::denies('exam_registration_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $examRegistrations = ExamRegistration::with(['student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'reviewed_by'])->get();
+        $examRegistrations = ExamRegistration::with(['student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'verification_status', 'verified_by'])->get();
 
         return view('admin.examRegistrations.index', compact('examRegistrations'));
     }
@@ -46,9 +47,11 @@ class ExamRegistrationsController extends Controller
 
         $hostels = Hostel::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $reviewed_bies = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $verification_statuses = VerificationStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.examRegistrations.create', compact('academic_sessions', 'courses', 'halls', 'hostels', 'reviewed_bies', 'students', 'subsidiary_ones', 'subsidiary_twos'));
+        $verified_bies = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.examRegistrations.create', compact('academic_sessions', 'courses', 'halls', 'hostels', 'students', 'subsidiary_ones', 'subsidiary_twos', 'verification_statuses', 'verified_bies'));
     }
 
     public function store(StoreExamRegistrationRequest $request)
@@ -76,11 +79,13 @@ class ExamRegistrationsController extends Controller
 
         $hostels = Hostel::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $reviewed_bies = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $verification_statuses = VerificationStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $examRegistration->load('student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'reviewed_by');
+        $verified_bies = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.examRegistrations.edit', compact('academic_sessions', 'courses', 'examRegistration', 'halls', 'hostels', 'reviewed_bies', 'students', 'subsidiary_ones', 'subsidiary_twos'));
+        $examRegistration->load('student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'verification_status', 'verified_by');
+
+        return view('admin.examRegistrations.edit', compact('academic_sessions', 'courses', 'examRegistration', 'halls', 'hostels', 'students', 'subsidiary_ones', 'subsidiary_twos', 'verification_statuses', 'verified_bies'));
     }
 
     public function update(UpdateExamRegistrationRequest $request, ExamRegistration $examRegistration)
@@ -94,7 +99,7 @@ class ExamRegistrationsController extends Controller
     {
         abort_if(Gate::denies('exam_registration_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $examRegistration->load('student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'reviewed_by');
+        $examRegistration->load('student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'verification_status', 'verified_by');
 
         return view('admin.examRegistrations.show', compact('examRegistration'));
     }

@@ -17,7 +17,7 @@ class AddressesApiController extends Controller
     {
         abort_if(Gate::denies('address_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new AddressResource(Address::with(['country', 'person', 'postal_code', 'province'])->get());
+        return new AddressResource(Address::with(['person', 'country', 'postal_code', 'province'])->get());
     }
 
     public function store(StoreAddressRequest $request)
@@ -33,7 +33,7 @@ class AddressesApiController extends Controller
     {
         abort_if(Gate::denies('address_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new AddressResource($address->load(['country', 'person', 'postal_code', 'province']));
+        return new AddressResource($address->load(['person', 'country', 'postal_code', 'province']));
     }
 
     public function update(UpdateAddressRequest $request, Address $address)

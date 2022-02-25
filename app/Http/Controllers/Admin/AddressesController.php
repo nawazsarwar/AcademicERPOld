@@ -26,7 +26,7 @@ class AddressesController extends Controller
         abort_if(Gate::denies('address_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Address::with(['country', 'person', 'postal_code', 'province'])->select(sprintf('%s.*', (new Address())->table));
+            $query = Address::with(['person', 'country', 'postal_code', 'province'])->select(sprintf('%s.*', (new Address())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -50,12 +50,12 @@ class AddressesController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->addColumn('country_name', function ($row) {
-                return $row->country ? $row->country->name : '';
-            });
-
             $table->addColumn('person_first_name', function ($row) {
                 return $row->person ? $row->person->first_name : '';
+            });
+
+            $table->addColumn('country_name', function ($row) {
+                return $row->country ? $row->country->name : '';
             });
 
             $table->editColumn('mobile', function ($row) {
@@ -84,6 +84,9 @@ class AddressesController extends Controller
                 return $row->province ? $row->province->name : '';
             });
 
+            $table->editColumn('type', function ($row) {
+                return $row->type ? $row->type : '';
+            });
             $table->editColumn('status', function ($row) {
                 return $row->status ? $row->status : '';
             });
@@ -91,7 +94,7 @@ class AddressesController extends Controller
                 return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'country', 'person', 'postal_code', 'province']);
+            $table->rawColumns(['actions', 'placeholder', 'person', 'country', 'postal_code', 'province']);
 
             return $table->make(true);
         }
@@ -103,9 +106,9 @@ class AddressesController extends Controller
     {
         abort_if(Gate::denies('address_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $postal_codes = PostalCode::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -125,15 +128,15 @@ class AddressesController extends Controller
     {
         abort_if(Gate::denies('address_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $postal_codes = PostalCode::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $provinces = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $address->load('country', 'person', 'postal_code', 'province');
+        $address->load('person', 'country', 'postal_code', 'province');
 
         return view('admin.addresses.edit', compact('address', 'countries', 'people', 'postal_codes', 'provinces'));
     }
@@ -149,7 +152,7 @@ class AddressesController extends Controller
     {
         abort_if(Gate::denies('address_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $address->load('country', 'person', 'postal_code', 'province');
+        $address->load('person', 'country', 'postal_code', 'province');
 
         return view('admin.addresses.show', compact('address'));
     }
