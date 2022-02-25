@@ -32,13 +32,16 @@
                         {{ trans('cruds.phone.fields.user') }}
                     </th>
                     <th>
+                        {{ trans('cruds.phone.fields.dialing_code') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.phone.fields.number') }}
                     </th>
                     <th>
-                        {{ trans('cruds.phone.fields.type') }}
+                        {{ trans('cruds.phone.fields.category') }}
                     </th>
                     <th>
-                        {{ trans('cruds.phone.fields.category') }}
+                        {{ trans('cruds.phone.fields.type') }}
                     </th>
                     <th>
                         {{ trans('cruds.phone.fields.status') }}
@@ -104,9 +107,10 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'user_name', name: 'user.name' },
+{ data: 'dialing_code_dialing_code', name: 'dialing_code.dialing_code' },
 { data: 'number', name: 'number' },
-{ data: 'type', name: 'type' },
 { data: 'category', name: 'category' },
+{ data: 'type', name: 'type' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

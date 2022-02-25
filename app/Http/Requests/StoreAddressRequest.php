@@ -17,11 +17,11 @@ class StoreAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'country_id' => [
+            'person_id' => [
                 'required',
                 'integer',
             ],
-            'person_id' => [
+            'country_id' => [
                 'required',
                 'integer',
             ],
@@ -51,6 +51,10 @@ class StoreAddressRequest extends FormRequest
                 'required',
             ],
             'city' => [
+                'string',
+                'required',
+            ],
+            'type' => [
                 'string',
                 'required',
             ],

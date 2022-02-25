@@ -17,7 +17,7 @@ class EmployeesApiController extends Controller
     {
         abort_if(Gate::denies('employee_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeResource(Employee::with(['employment_status'])->get());
+        return new EmployeeResource(Employee::with(['person', 'employment_status', 'verification_status', 'verified_by'])->get());
     }
 
     public function store(StoreEmployeeRequest $request)
@@ -33,7 +33,7 @@ class EmployeesApiController extends Controller
     {
         abort_if(Gate::denies('employee_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeResource($employee->load(['employment_status']));
+        return new EmployeeResource($employee->load(['person', 'employment_status', 'verification_status', 'verified_by']));
     }
 
     public function update(UpdateEmployeeRequest $request, Employee $employee)

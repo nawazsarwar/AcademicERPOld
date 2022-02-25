@@ -9,7 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "bugsnag/bugsnag-laravel": "^2.21",
         "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -20,7 +19,7 @@
         "yajra/laravel-datatables-oracle": "^9.18",
         "laravel/ui": "^3.3",
         "laraveldaily/laravel-charts": "^0.1.24",
-        "spatie/laravel-medialibrary": "^8.7",
+        "spatie/laravel-medialibrary": "^9.11.2",
         "nuovo/spreadsheet-reader": "^0.5.11",
         "laravel/sanctum": "^2.8"
     },

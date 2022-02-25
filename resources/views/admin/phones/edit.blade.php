@@ -23,6 +23,18 @@
                 <span class="help-block">{{ trans('cruds.phone.fields.user_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="dialing_code_id">{{ trans('cruds.phone.fields.dialing_code') }}</label>
+                <select class="form-control select2 {{ $errors->has('dialing_code') ? 'is-invalid' : '' }}" name="dialing_code_id" id="dialing_code_id" required>
+                    @foreach($dialing_codes as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('dialing_code_id') ? old('dialing_code_id') : $phone->dialing_code->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('dialing_code'))
+                    <span class="text-danger">{{ $errors->first('dialing_code') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.phone.fields.dialing_code_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="number">{{ trans('cruds.phone.fields.number') }}</label>
                 <input class="form-control {{ $errors->has('number') ? 'is-invalid' : '' }}" type="text" name="number" id="number" value="{{ old('number', $phone->number) }}" required>
                 @if($errors->has('number'))
@@ -31,20 +43,30 @@
                 <span class="help-block">{{ trans('cruds.phone.fields.number_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="type">{{ trans('cruds.phone.fields.type') }}</label>
-                <input class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" type="text" name="type" id="type" value="{{ old('type', $phone->type) }}" required>
-                @if($errors->has('type'))
-                    <span class="text-danger">{{ $errors->first('type') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.phone.fields.type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="category">{{ trans('cruds.phone.fields.category') }}</label>
-                <input class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" name="category" id="category" value="{{ old('category', $phone->category) }}" required>
+                <label>{{ trans('cruds.phone.fields.category') }}</label>
+                <select class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category" id="category">
+                    <option value disabled {{ old('category', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Phone::CATEGORY_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('category', $phone->category) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('category'))
                     <span class="text-danger">{{ $errors->first('category') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.phone.fields.category_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label>{{ trans('cruds.phone.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Phone::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', $phone->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.phone.fields.type_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.phone.fields.status') }}</label>

@@ -17,7 +17,7 @@ class ExamRegistrationsApiController extends Controller
     {
         abort_if(Gate::denies('exam_registration_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ExamRegistrationResource(ExamRegistration::with(['student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'reviewed_by'])->get());
+        return new ExamRegistrationResource(ExamRegistration::with(['student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'verification_status', 'verified_by'])->get());
     }
 
     public function store(StoreExamRegistrationRequest $request)
@@ -33,7 +33,7 @@ class ExamRegistrationsApiController extends Controller
     {
         abort_if(Gate::denies('exam_registration_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ExamRegistrationResource($examRegistration->load(['student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'reviewed_by']));
+        return new ExamRegistrationResource($examRegistration->load(['student', 'course', 'subsidiary_one', 'subsidiary_two', 'academic_session', 'hall', 'hostel', 'verification_status', 'verified_by']));
     }
 
     public function update(UpdateExamRegistrationRequest $request, ExamRegistration $examRegistration)

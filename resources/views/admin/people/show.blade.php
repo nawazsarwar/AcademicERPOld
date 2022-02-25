@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.person.fields.user') }}
+                        </th>
+                        <td>
+                            {{ $person->user->username ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.person.fields.first_name') }}
                         </th>
                         <td>
@@ -116,7 +124,7 @@
                             {{ trans('cruds.person.fields.blood_group') }}
                         </th>
                         <td>
-                            {{ $person->blood_group }}
+                            {{ $person->blood_group->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -193,14 +201,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.person.fields.status') }}
-                        </th>
-                        <td>
-                            {{ $person->status }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.person.fields.dob_proof') }}
                         </th>
                         <td>
@@ -241,26 +241,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.person.fields.verified') }}
+                            {{ trans('cruds.person.fields.status') }}
                         </th>
                         <td>
-                            {{ $person->verified }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.person.fields.verified_by') }}
-                        </th>
-                        <td>
-                            {{ $person->verified_by->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.person.fields.user') }}
-                        </th>
-                        <td>
-                            {{ $person->user->username ?? '' }}
+                            {{ $person->status }}
                         </td>
                     </tr>
                     <tr>

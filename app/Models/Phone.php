@@ -14,6 +14,18 @@ class Phone extends Model
     use Auditable;
     use HasFactory;
 
+    public const TYPE_SELECT = [
+        'Normal'   => 'Normal',
+        'WhatsApp' => 'WhatsApp',
+        'Other'    => 'Other',
+    ];
+
+    public const CATEGORY_SELECT = [
+        'Personal'        => 'Personal',
+        'Parent/Guardian' => 'Parent/Guardian',
+        'Emergency'       => 'Emergency',
+    ];
+
     public $table = 'phones';
 
     protected $dates = [
@@ -24,9 +36,10 @@ class Phone extends Model
 
     protected $fillable = [
         'user_id',
+        'dialing_code_id',
         'number',
-        'type',
         'category',
+        'type',
         'status',
         'remarks',
         'created_at',
@@ -37,6 +50,11 @@ class Phone extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function dialing_code()
+    {
+        return $this->belongsTo(Country::class, 'dialing_code_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

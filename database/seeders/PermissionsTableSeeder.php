@@ -1184,6 +1184,274 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 294,
+                'title' => 'blood_group_create',
+            ],
+            [
+                'id'    => 295,
+                'title' => 'blood_group_edit',
+            ],
+            [
+                'id'    => 296,
+                'title' => 'blood_group_show',
+            ],
+            [
+                'id'    => 297,
+                'title' => 'blood_group_delete',
+            ],
+            [
+                'id'    => 298,
+                'title' => 'blood_group_access',
+            ],
+            [
+                'id'    => 299,
+                'title' => 'salary_data_create',
+            ],
+            [
+                'id'    => 300,
+                'title' => 'salary_data_edit',
+            ],
+            [
+                'id'    => 301,
+                'title' => 'salary_data_show',
+            ],
+            [
+                'id'    => 302,
+                'title' => 'salary_data_delete',
+            ],
+            [
+                'id'    => 303,
+                'title' => 'salary_data_access',
+            ],
+            [
+                'id'    => 304,
+                'title' => 'organizational_email_create',
+            ],
+            [
+                'id'    => 305,
+                'title' => 'organizational_email_edit',
+            ],
+            [
+                'id'    => 306,
+                'title' => 'organizational_email_show',
+            ],
+            [
+                'id'    => 307,
+                'title' => 'organizational_email_delete',
+            ],
+            [
+                'id'    => 308,
+                'title' => 'organizational_email_access',
+            ],
+            [
+                'id'    => 309,
+                'title' => 'computer_centre_data_create',
+            ],
+            [
+                'id'    => 310,
+                'title' => 'computer_centre_data_edit',
+            ],
+            [
+                'id'    => 311,
+                'title' => 'computer_centre_data_show',
+            ],
+            [
+                'id'    => 312,
+                'title' => 'computer_centre_data_delete',
+            ],
+            [
+                'id'    => 313,
+                'title' => 'computer_centre_data_access',
+            ],
+            [
+                'id'    => 314,
+                'title' => 'answer_script_create',
+            ],
+            [
+                'id'    => 315,
+                'title' => 'answer_script_edit',
+            ],
+            [
+                'id'    => 316,
+                'title' => 'answer_script_show',
+            ],
+            [
+                'id'    => 317,
+                'title' => 'answer_script_delete',
+            ],
+            [
+                'id'    => 318,
+                'title' => 'answer_script_access',
+            ],
+            [
+                'id'    => 319,
+                'title' => 'course_paper_create',
+            ],
+            [
+                'id'    => 320,
+                'title' => 'course_paper_edit',
+            ],
+            [
+                'id'    => 321,
+                'title' => 'course_paper_show',
+            ],
+            [
+                'id'    => 322,
+                'title' => 'course_paper_delete',
+            ],
+            [
+                'id'    => 323,
+                'title' => 'course_paper_access',
+            ],
+            [
+                'id'    => 324,
+                'title' => 'course_academic_session_create',
+            ],
+            [
+                'id'    => 325,
+                'title' => 'course_academic_session_edit',
+            ],
+            [
+                'id'    => 326,
+                'title' => 'course_academic_session_show',
+            ],
+            [
+                'id'    => 327,
+                'title' => 'course_academic_session_delete',
+            ],
+            [
+                'id'    => 328,
+                'title' => 'course_academic_session_access',
+            ],
+            [
+                'id'    => 329,
+                'title' => 'course_student_create',
+            ],
+            [
+                'id'    => 330,
+                'title' => 'course_student_edit',
+            ],
+            [
+                'id'    => 331,
+                'title' => 'course_student_show',
+            ],
+            [
+                'id'    => 332,
+                'title' => 'course_student_delete',
+            ],
+            [
+                'id'    => 333,
+                'title' => 'course_student_access',
+            ],
+            [
+                'id'    => 334,
+                'title' => 'verification_status_create',
+            ],
+            [
+                'id'    => 335,
+                'title' => 'verification_status_edit',
+            ],
+            [
+                'id'    => 336,
+                'title' => 'verification_status_show',
+            ],
+            [
+                'id'    => 337,
+                'title' => 'verification_status_delete',
+            ],
+            [
+                'id'    => 338,
+                'title' => 'verification_status_access',
+            ],
+            [
+                'id'    => 339,
+                'title' => 'examination_schedule_create',
+            ],
+            [
+                'id'    => 340,
+                'title' => 'examination_schedule_edit',
+            ],
+            [
+                'id'    => 341,
+                'title' => 'examination_schedule_show',
+            ],
+            [
+                'id'    => 342,
+                'title' => 'examination_schedule_delete',
+            ],
+            [
+                'id'    => 343,
+                'title' => 'examination_schedule_access',
+            ],
+            [
+                'id'    => 344,
+                'title' => 'examiner_create',
+            ],
+            [
+                'id'    => 345,
+                'title' => 'examiner_edit',
+            ],
+            [
+                'id'    => 346,
+                'title' => 'examiner_show',
+            ],
+            [
+                'id'    => 347,
+                'title' => 'examiner_delete',
+            ],
+            [
+                'id'    => 348,
+                'title' => 'examiner_access',
+            ],
+            [
+                'id'    => 349,
+                'title' => 'admission_access',
+            ],
+            [
+                'id'    => 350,
+                'title' => 'student_admission_create',
+            ],
+            [
+                'id'    => 351,
+                'title' => 'student_admission_edit',
+            ],
+            [
+                'id'    => 352,
+                'title' => 'student_admission_show',
+            ],
+            [
+                'id'    => 353,
+                'title' => 'student_admission_delete',
+            ],
+            [
+                'id'    => 354,
+                'title' => 'student_admission_access',
+            ],
+            [
+                'id'    => 355,
+                'title' => 'research_unit_access',
+            ],
+            [
+                'id'    => 356,
+                'title' => 'research_scholar_create',
+            ],
+            [
+                'id'    => 357,
+                'title' => 'research_scholar_edit',
+            ],
+            [
+                'id'    => 358,
+                'title' => 'research_scholar_show',
+            ],
+            [
+                'id'    => 359,
+                'title' => 'research_scholar_delete',
+            ],
+            [
+                'id'    => 360,
+                'title' => 'research_scholar_access',
+            ],
+            [
+                'id'    => 361,
                 'title' => 'profile_password_edit',
             ],
         ];

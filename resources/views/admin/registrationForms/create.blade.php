@@ -96,20 +96,20 @@
                 <span class="help-block">{{ trans('cruds.registrationForm.fields.fillable_backlog_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="status">{{ trans('cruds.registrationForm.fields.status') }}</label>
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                @if($errors->has('status'))
+                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.registrationForm.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="remarks">{{ trans('cruds.registrationForm.fields.remarks') }}</label>
                 <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
                 @if($errors->has('remarks'))
                     <span class="text-danger">{{ $errors->first('remarks') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.registrationForm.fields.remarks_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="status">{{ trans('cruds.registrationForm.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', '') }}">
-                @if($errors->has('status'))
-                    <span class="text-danger">{{ $errors->first('status') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.registrationForm.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyPersonRequest;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
+use App\Models\BloodGroup;
 use App\Models\Caste;
 use App\Models\Country;
 use App\Models\Person;
@@ -27,7 +28,7 @@ class PersonsController extends Controller
         abort_if(Gate::denies('person_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Person::with(['religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user'])->select(sprintf('%s.*', (new Person())->table));
+            $query = Person::with(['user', 'blood_group', 'religion', 'caste', 'nationality', 'domicile_province'])->select(sprintf('%s.*', (new Person())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -51,6 +52,10 @@ class PersonsController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->addColumn('user_username', function ($row) {
+                return $row->user ? $row->user->username : '';
+            });
+
             $table->editColumn('first_name', function ($row) {
                 return $row->first_name ? $row->first_name : '';
             });
@@ -82,9 +87,10 @@ class PersonsController extends Controller
             $table->editColumn('gender', function ($row) {
                 return $row->gender ? Person::GENDER_SELECT[$row->gender] : '';
             });
-            $table->editColumn('blood_group', function ($row) {
-                return $row->blood_group ? $row->blood_group : '';
+            $table->addColumn('blood_group_name', function ($row) {
+                return $row->blood_group ? $row->blood_group->name : '';
             });
+
             $table->editColumn('disability', function ($row) {
                 return $row->disability ? Person::DISABILITY_SELECT[$row->disability] : '';
             });
@@ -116,9 +122,6 @@ class PersonsController extends Controller
             $table->editColumn('identity_marks', function ($row) {
                 return $row->identity_marks ? $row->identity_marks : '';
             });
-            $table->editColumn('status', function ($row) {
-                return $row->status ? $row->status : '';
-            });
             $table->editColumn('dob_proof', function ($row) {
                 return $row->dob_proof ? $row->dob_proof : '';
             });
@@ -134,22 +137,14 @@ class PersonsController extends Controller
             $table->editColumn('passport_no', function ($row) {
                 return $row->passport_no ? $row->passport_no : '';
             });
-            $table->editColumn('verified', function ($row) {
-                return $row->verified ? $row->verified : '';
+            $table->editColumn('status', function ($row) {
+                return $row->status ? $row->status : '';
             });
-            $table->addColumn('verified_by_name', function ($row) {
-                return $row->verified_by ? $row->verified_by->name : '';
-            });
-
-            $table->addColumn('user_username', function ($row) {
-                return $row->user ? $row->user->username : '';
-            });
-
             $table->editColumn('remarks', function ($row) {
                 return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user']);
+            $table->rawColumns(['actions', 'placeholder', 'user', 'blood_group', 'religion', 'caste', 'nationality', 'domicile_province']);
 
             return $table->make(true);
         }
@@ -161,6 +156,10 @@ class PersonsController extends Controller
     {
         abort_if(Gate::denies('person_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $blood_groups = BloodGroup::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $religions = Religion::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $castes = Caste::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -169,11 +168,7 @@ class PersonsController extends Controller
 
         $domicile_provinces = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $verified_bies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.people.create', compact('castes', 'domicile_provinces', 'nationalities', 'religions', 'users', 'verified_bies'));
+        return view('admin.people.create', compact('blood_groups', 'castes', 'domicile_provinces', 'nationalities', 'religions', 'users'));
     }
 
     public function store(StorePersonRequest $request)
@@ -187,6 +182,10 @@ class PersonsController extends Controller
     {
         abort_if(Gate::denies('person_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $blood_groups = BloodGroup::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $religions = Religion::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $castes = Caste::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -195,13 +194,9 @@ class PersonsController extends Controller
 
         $domicile_provinces = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $verified_bies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $person->load('user', 'blood_group', 'religion', 'caste', 'nationality', 'domicile_province');
 
-        $users = User::pluck('username', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $person->load('religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user');
-
-        return view('admin.people.edit', compact('castes', 'domicile_provinces', 'nationalities', 'person', 'religions', 'users', 'verified_bies'));
+        return view('admin.people.edit', compact('blood_groups', 'castes', 'domicile_provinces', 'nationalities', 'person', 'religions', 'users'));
     }
 
     public function update(UpdatePersonRequest $request, Person $person)
@@ -215,7 +210,7 @@ class PersonsController extends Controller
     {
         abort_if(Gate::denies('person_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $person->load('religion', 'caste', 'nationality', 'domicile_province', 'verified_by', 'user');
+        $person->load('user', 'blood_group', 'religion', 'caste', 'nationality', 'domicile_province');
 
         return view('admin.people.show', compact('person'));
     }

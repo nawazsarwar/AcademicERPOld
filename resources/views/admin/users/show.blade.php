@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.username') }}
-                        </th>
-                        <td>
-                            {{ $user->username }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.user.fields.name') }}
                         </th>
                         <td>
@@ -71,6 +63,38 @@
                             @foreach($user->roles as $key => $roles)
                                 <span class="label label-info">{{ $roles->title }}</span>
                             @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.role') }}
+                        </th>
+                        <td>
+                            {{ $user->role }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.revoked') }}
+                        </th>
+                        <td>
+                            {{ $user->revoked }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $user->remarks }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.applications') }}
+                        </th>
+                        <td>
+                            {{ $user->applications }}
                         </td>
                     </tr>
                 </tbody>

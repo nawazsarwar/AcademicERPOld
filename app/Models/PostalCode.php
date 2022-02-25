@@ -25,7 +25,7 @@ class PostalCode extends Model
     protected $fillable = [
         'name',
         'locality',
-        'pincode',
+        'code',
         'sub_district',
         'district',
         'province_id',

@@ -58,13 +58,15 @@ class UpdateExamRegistrationRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'reviewed_at' => [
+            'verified_at' => [
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
                 'nullable',
             ],
             'status' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }

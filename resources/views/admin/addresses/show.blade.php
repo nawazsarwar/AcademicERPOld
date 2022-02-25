@@ -25,18 +25,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.country') }}
-                        </th>
-                        <td>
-                            {{ $address->country->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.address.fields.person') }}
                         </th>
                         <td>
                             {{ $address->person->first_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.address.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Address::TYPE_SELECT[$address->type] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.address.fields.country') }}
+                        </th>
+                        <td>
+                            {{ $address->country->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

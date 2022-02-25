@@ -10,8 +10,8 @@
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="username">{{ trans('cruds.user.fields.username') }}</label>
-                <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username" id="username" value="{{ old('username', '') }}">
+                <label class="required" for="username">{{ trans('cruds.user.fields.username') }}</label>
+                <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username" id="username" value="{{ old('username', '') }}" required>
                 @if($errors->has('username'))
                     <span class="text-danger">{{ $errors->first('username') }}</span>
                 @endif
@@ -56,6 +56,38 @@
                     <span class="text-danger">{{ $errors->first('roles') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="role">{{ trans('cruds.user.fields.role') }}</label>
+                <input class="form-control {{ $errors->has('role') ? 'is-invalid' : '' }}" type="number" name="role" id="role" value="{{ old('role', '') }}" step="1">
+                @if($errors->has('role'))
+                    <span class="text-danger">{{ $errors->first('role') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.role_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="revoked">{{ trans('cruds.user.fields.revoked') }}</label>
+                <input class="form-control {{ $errors->has('revoked') ? 'is-invalid' : '' }}" type="number" name="revoked" id="revoked" value="{{ old('revoked', '0') }}" step="1">
+                @if($errors->has('revoked'))
+                    <span class="text-danger">{{ $errors->first('revoked') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.revoked_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="remarks">{{ trans('cruds.user.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
+                @if($errors->has('remarks'))
+                    <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.remarks_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="applications">{{ trans('cruds.user.fields.applications') }}</label>
+                <textarea class="form-control {{ $errors->has('applications') ? 'is-invalid' : '' }}" name="applications" id="applications">{{ old('applications') }}</textarea>
+                @if($errors->has('applications'))
+                    <span class="text-danger">{{ $errors->first('applications') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.applications_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -108,8 +108,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Academic Sessions
     Route::apiResource('academic-sessions', 'AcademicSessionsApiController');
 
-    // Postal Code
-    Route::apiResource('postal-codes', 'PostalCodeApiController');
+    // Postal Codes
+    Route::apiResource('postal-codes', 'PostalCodesApiController');
 
     // Admission Charges
     Route::apiResource('admission-charges', 'AdmissionChargesApiController');
@@ -117,14 +117,14 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Continuation Charges
     Route::apiResource('continuation-charges', 'ContinuationChargesApiController');
 
-    // Programme Delivery Mode
-    Route::apiResource('programme-delivery-modes', 'ProgrammeDeliveryModeApiController');
+    // Programme Delivery Modes
+    Route::apiResource('programme-delivery-modes', 'ProgrammeDeliveryModesApiController');
 
-    // Admission Entrance Type
-    Route::apiResource('admission-entrance-types', 'AdmissionEntranceTypeApiController');
+    // Admission Entrance Types
+    Route::apiResource('admission-entrance-types', 'AdmissionEntranceTypesApiController');
 
-    // Programme Duration Type
-    Route::apiResource('programme-duration-types', 'ProgrammeDurationTypeApiController');
+    // Programme Duration Types
+    Route::apiResource('programme-duration-types', 'ProgrammeDurationTypesApiController');
 
     // Registration Forms
     Route::apiResource('registration-forms', 'RegistrationFormsApiController');
@@ -132,17 +132,17 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Exam Registrations
     Route::apiResource('exam-registrations', 'ExamRegistrationsApiController');
 
-    // Papers Registration
-    Route::apiResource('papers-registrations', 'PapersRegistrationApiController');
+    // Papers Registrations
+    Route::apiResource('papers-registrations', 'PapersRegistrationsApiController');
 
-    // Employment Status
-    Route::apiResource('employment-statuses', 'EmploymentStatusApiController');
+    // Employment Statuses
+    Route::apiResource('employment-statuses', 'EmploymentStatusesApiController');
 
     // Castes
     Route::apiResource('castes', 'CastesApiController');
 
-    // Designation Type
-    Route::apiResource('designation-types', 'DesignationTypeApiController');
+    // Designation Types
+    Route::apiResource('designation-types', 'DesignationTypesApiController');
 
     // Biometrics
     Route::post('biometrics/media', 'BiometricsApiController@storeMedia')->name('biometrics.storeMedia');
@@ -153,4 +153,19 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Countries
     Route::apiResource('countries', 'CountriesApiController');
+
+    // Salary Data
+    Route::apiResource('salary-datas', 'SalaryDataApiController');
+
+    // Organizational Emails
+    Route::apiResource('organizational-emails', 'OrganizationalEmailsApiController');
+
+    // Examination Schedules
+    Route::apiResource('examination-schedules', 'ExaminationSchedulesApiController');
+
+    // Student Admissions
+    Route::apiResource('student-admissions', 'StudentAdmissionsApiController');
+
+    // Research Scholars
+    Route::apiResource('research-scholars', 'ResearchScholarsApiController');
 });

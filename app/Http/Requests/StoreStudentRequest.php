@@ -17,12 +17,20 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
+            'person_id' => [
+                'required',
+                'integer',
+            ],
             'enrolment_id' => [
                 'required',
                 'integer',
             ],
             'guardian_mobile_no' => [
                 'string',
+                'nullable',
+            ],
+            'verified_at' => [
+                'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
         ];

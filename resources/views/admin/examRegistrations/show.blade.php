@@ -121,26 +121,34 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.examRegistration.fields.reviewed') }}
+                            {{ trans('cruds.examRegistration.fields.verification_status') }}
                         </th>
                         <td>
-                            {{ App\Models\ExamRegistration::REVIEWED_SELECT[$examRegistration->reviewed] ?? '' }}
+                            {{ $examRegistration->verification_status->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.examRegistration.fields.reviewed_by') }}
+                            {{ trans('cruds.examRegistration.fields.verified_by') }}
                         </th>
                         <td>
-                            {{ $examRegistration->reviewed_by->username ?? '' }}
+                            {{ $examRegistration->verified_by->username ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.examRegistration.fields.reviewed_at') }}
+                            {{ trans('cruds.examRegistration.fields.verified_at') }}
                         </th>
                         <td>
-                            {{ $examRegistration->reviewed_at }}
+                            {{ $examRegistration->verified_at }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.examRegistration.fields.verification_remark') }}
+                        </th>
+                        <td>
+                            {{ $examRegistration->verification_remark }}
                         </td>
                     </tr>
                     <tr>

@@ -1,17 +1,9 @@
 <?php
 
-Route::redirect('/', '/login');
-Route::get('/home', function () {
-    if (session('status')) {
-        return redirect()->route('admin.home')->with('status', session('status'));
-    }
-
-    return redirect()->route('admin.home');
-});
-
+Route::view('/', 'welcome');
 Auth::routes(['register' => false]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -78,11 +70,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('religions/destroy', 'ReligionsController@massDestroy')->name('religions.massDestroy');
     Route::resource('religions', 'ReligionsController');
 
-    // Peoples
-    Route::delete('people/destroy', 'PeoplesController@massDestroy')->name('people.massDestroy');
-    Route::post('people/parse-csv-import', 'PeoplesController@parseCsvImport')->name('people.parseCsvImport');
-    Route::post('people/process-csv-import', 'PeoplesController@processCsvImport')->name('people.processCsvImport');
-    Route::resource('people', 'PeoplesController');
+    // Persons
+    Route::delete('people/destroy', 'PersonsController@massDestroy')->name('people.massDestroy');
+    Route::post('people/parse-csv-import', 'PersonsController@parseCsvImport')->name('people.parseCsvImport');
+    Route::post('people/process-csv-import', 'PersonsController@processCsvImport')->name('people.processCsvImport');
+    Route::resource('people', 'PersonsController');
 
     // Boards
     Route::delete('boards/destroy', 'BoardsController@massDestroy')->name('boards.massDestroy');
@@ -254,11 +246,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('academic-sessions/process-csv-import', 'AcademicSessionsController@processCsvImport')->name('academic-sessions.processCsvImport');
     Route::resource('academic-sessions', 'AcademicSessionsController');
 
-    // Postal Code
-    Route::delete('postal-codes/destroy', 'PostalCodeController@massDestroy')->name('postal-codes.massDestroy');
-    Route::post('postal-codes/parse-csv-import', 'PostalCodeController@parseCsvImport')->name('postal-codes.parseCsvImport');
-    Route::post('postal-codes/process-csv-import', 'PostalCodeController@processCsvImport')->name('postal-codes.processCsvImport');
-    Route::resource('postal-codes', 'PostalCodeController');
+    // Postal Codes
+    Route::delete('postal-codes/destroy', 'PostalCodesController@massDestroy')->name('postal-codes.massDestroy');
+    Route::post('postal-codes/parse-csv-import', 'PostalCodesController@parseCsvImport')->name('postal-codes.parseCsvImport');
+    Route::post('postal-codes/process-csv-import', 'PostalCodesController@processCsvImport')->name('postal-codes.processCsvImport');
+    Route::resource('postal-codes', 'PostalCodesController');
 
     // Admission Charges
     Route::delete('admission-charges/destroy', 'AdmissionChargesController@massDestroy')->name('admission-charges.massDestroy');
@@ -272,17 +264,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('continuation-charges/process-csv-import', 'ContinuationChargesController@processCsvImport')->name('continuation-charges.processCsvImport');
     Route::resource('continuation-charges', 'ContinuationChargesController');
 
-    // Programme Delivery Mode
-    Route::delete('programme-delivery-modes/destroy', 'ProgrammeDeliveryModeController@massDestroy')->name('programme-delivery-modes.massDestroy');
-    Route::resource('programme-delivery-modes', 'ProgrammeDeliveryModeController');
+    // Programme Delivery Modes
+    Route::delete('programme-delivery-modes/destroy', 'ProgrammeDeliveryModesController@massDestroy')->name('programme-delivery-modes.massDestroy');
+    Route::resource('programme-delivery-modes', 'ProgrammeDeliveryModesController');
 
-    // Admission Entrance Type
-    Route::delete('admission-entrance-types/destroy', 'AdmissionEntranceTypeController@massDestroy')->name('admission-entrance-types.massDestroy');
-    Route::resource('admission-entrance-types', 'AdmissionEntranceTypeController');
+    // Admission Entrance Types
+    Route::delete('admission-entrance-types/destroy', 'AdmissionEntranceTypesController@massDestroy')->name('admission-entrance-types.massDestroy');
+    Route::resource('admission-entrance-types', 'AdmissionEntranceTypesController');
 
-    // Programme Duration Type
-    Route::delete('programme-duration-types/destroy', 'ProgrammeDurationTypeController@massDestroy')->name('programme-duration-types.massDestroy');
-    Route::resource('programme-duration-types', 'ProgrammeDurationTypeController');
+    // Programme Duration Types
+    Route::delete('programme-duration-types/destroy', 'ProgrammeDurationTypesController@massDestroy')->name('programme-duration-types.massDestroy');
+    Route::resource('programme-duration-types', 'ProgrammeDurationTypesController');
 
     // Registration Forms
     Route::delete('registration-forms/destroy', 'RegistrationFormsController@massDestroy')->name('registration-forms.massDestroy');
@@ -294,13 +286,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('exam-registrations/destroy', 'ExamRegistrationsController@massDestroy')->name('exam-registrations.massDestroy');
     Route::resource('exam-registrations', 'ExamRegistrationsController');
 
-    // Papers Registration
-    Route::delete('papers-registrations/destroy', 'PapersRegistrationController@massDestroy')->name('papers-registrations.massDestroy');
-    Route::resource('papers-registrations', 'PapersRegistrationController');
+    // Papers Registrations
+    Route::delete('papers-registrations/destroy', 'PapersRegistrationsController@massDestroy')->name('papers-registrations.massDestroy');
+    Route::post('papers-registrations/parse-csv-import', 'PapersRegistrationsController@parseCsvImport')->name('papers-registrations.parseCsvImport');
+    Route::post('papers-registrations/process-csv-import', 'PapersRegistrationsController@processCsvImport')->name('papers-registrations.processCsvImport');
+    Route::resource('papers-registrations', 'PapersRegistrationsController');
 
-    // Employment Status
-    Route::delete('employment-statuses/destroy', 'EmploymentStatusController@massDestroy')->name('employment-statuses.massDestroy');
-    Route::resource('employment-statuses', 'EmploymentStatusController');
+    // Employment Statuses
+    Route::delete('employment-statuses/destroy', 'EmploymentStatusesController@massDestroy')->name('employment-statuses.massDestroy');
+    Route::resource('employment-statuses', 'EmploymentStatusesController');
 
     // Castes
     Route::delete('castes/destroy', 'CastesController@massDestroy')->name('castes.massDestroy');
@@ -308,9 +302,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('castes/process-csv-import', 'CastesController@processCsvImport')->name('castes.processCsvImport');
     Route::resource('castes', 'CastesController');
 
-    // Designation Type
-    Route::delete('designation-types/destroy', 'DesignationTypeController@massDestroy')->name('designation-types.massDestroy');
-    Route::resource('designation-types', 'DesignationTypeController');
+    // Designation Types
+    Route::delete('designation-types/destroy', 'DesignationTypesController@massDestroy')->name('designation-types.massDestroy');
+    Route::resource('designation-types', 'DesignationTypesController');
 
     // Biometrics
     Route::delete('biometrics/destroy', 'BiometricsController@massDestroy')->name('biometrics.massDestroy');
@@ -325,6 +319,74 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Countries
     Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
     Route::resource('countries', 'CountriesController');
+
+    // Blood Groups
+    Route::delete('blood-groups/destroy', 'BloodGroupsController@massDestroy')->name('blood-groups.massDestroy');
+    Route::resource('blood-groups', 'BloodGroupsController');
+
+    // Salary Data
+    Route::delete('salary-datas/destroy', 'SalaryDataController@massDestroy')->name('salary-datas.massDestroy');
+    Route::post('salary-datas/parse-csv-import', 'SalaryDataController@parseCsvImport')->name('salary-datas.parseCsvImport');
+    Route::post('salary-datas/process-csv-import', 'SalaryDataController@processCsvImport')->name('salary-datas.processCsvImport');
+    Route::resource('salary-datas', 'SalaryDataController');
+
+    // Organizational Emails
+    Route::delete('organizational-emails/destroy', 'OrganizationalEmailsController@massDestroy')->name('organizational-emails.massDestroy');
+    Route::post('organizational-emails/parse-csv-import', 'OrganizationalEmailsController@parseCsvImport')->name('organizational-emails.parseCsvImport');
+    Route::post('organizational-emails/process-csv-import', 'OrganizationalEmailsController@processCsvImport')->name('organizational-emails.processCsvImport');
+    Route::resource('organizational-emails', 'OrganizationalEmailsController');
+
+    // Computer Centre Data
+    Route::delete('computer-centre-datas/destroy', 'ComputerCentreDataController@massDestroy')->name('computer-centre-datas.massDestroy');
+    Route::resource('computer-centre-datas', 'ComputerCentreDataController');
+
+    // Answer Scripts
+    Route::delete('answer-scripts/destroy', 'AnswerScriptsController@massDestroy')->name('answer-scripts.massDestroy');
+    Route::post('answer-scripts/media', 'AnswerScriptsController@storeMedia')->name('answer-scripts.storeMedia');
+    Route::post('answer-scripts/ckmedia', 'AnswerScriptsController@storeCKEditorImages')->name('answer-scripts.storeCKEditorImages');
+    Route::resource('answer-scripts', 'AnswerScriptsController');
+
+    // Course Papers
+    Route::delete('course-papers/destroy', 'CoursePapersController@massDestroy')->name('course-papers.massDestroy');
+    Route::resource('course-papers', 'CoursePapersController');
+
+    // Course Academic Sessions
+    Route::delete('course-academic-sessions/destroy', 'CourseAcademicSessionsController@massDestroy')->name('course-academic-sessions.massDestroy');
+    Route::post('course-academic-sessions/parse-csv-import', 'CourseAcademicSessionsController@parseCsvImport')->name('course-academic-sessions.parseCsvImport');
+    Route::post('course-academic-sessions/process-csv-import', 'CourseAcademicSessionsController@processCsvImport')->name('course-academic-sessions.processCsvImport');
+    Route::resource('course-academic-sessions', 'CourseAcademicSessionsController');
+
+    // Course Student
+    Route::delete('course-students/destroy', 'CourseStudentController@massDestroy')->name('course-students.massDestroy');
+    Route::resource('course-students', 'CourseStudentController');
+
+    // Verification Statuses
+    Route::delete('verification-statuses/destroy', 'VerificationStatusesController@massDestroy')->name('verification-statuses.massDestroy');
+    Route::resource('verification-statuses', 'VerificationStatusesController');
+
+    // Examination Schedules
+    Route::delete('examination-schedules/destroy', 'ExaminationSchedulesController@massDestroy')->name('examination-schedules.massDestroy');
+    Route::post('examination-schedules/parse-csv-import', 'ExaminationSchedulesController@parseCsvImport')->name('examination-schedules.parseCsvImport');
+    Route::post('examination-schedules/process-csv-import', 'ExaminationSchedulesController@processCsvImport')->name('examination-schedules.processCsvImport');
+    Route::resource('examination-schedules', 'ExaminationSchedulesController');
+
+    // Examiners
+    Route::delete('examiners/destroy', 'ExaminersController@massDestroy')->name('examiners.massDestroy');
+    Route::post('examiners/media', 'ExaminersController@storeMedia')->name('examiners.storeMedia');
+    Route::post('examiners/ckmedia', 'ExaminersController@storeCKEditorImages')->name('examiners.storeCKEditorImages');
+    Route::resource('examiners', 'ExaminersController');
+
+    // Student Admissions
+    Route::delete('student-admissions/destroy', 'StudentAdmissionsController@massDestroy')->name('student-admissions.massDestroy');
+    Route::post('student-admissions/parse-csv-import', 'StudentAdmissionsController@parseCsvImport')->name('student-admissions.parseCsvImport');
+    Route::post('student-admissions/process-csv-import', 'StudentAdmissionsController@processCsvImport')->name('student-admissions.processCsvImport');
+    Route::resource('student-admissions', 'StudentAdmissionsController');
+
+    // Research Scholars
+    Route::delete('research-scholars/destroy', 'ResearchScholarsController@massDestroy')->name('research-scholars.massDestroy');
+    Route::post('research-scholars/parse-csv-import', 'ResearchScholarsController@parseCsvImport')->name('research-scholars.parseCsvImport');
+    Route::post('research-scholars/process-csv-import', 'ResearchScholarsController@processCsvImport')->name('research-scholars.processCsvImport');
+    Route::resource('research-scholars', 'ResearchScholarsController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
@@ -346,6 +408,306 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
         Route::post('profile/two-factor', 'ChangePasswordController@toggleTwoFactor')->name('password.toggleTwoFactor');
     }
+});
+Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['auth', '2fa']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    // Permissions
+    Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
+    Route::resource('permissions', 'PermissionsController');
+
+    // Roles
+    Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
+    Route::resource('roles', 'RolesController');
+
+    // Users
+    Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::resource('users', 'UsersController');
+
+    // User Alerts
+    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
+    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
+    // Asset Category
+    Route::delete('asset-categories/destroy', 'AssetCategoryController@massDestroy')->name('asset-categories.massDestroy');
+    Route::resource('asset-categories', 'AssetCategoryController');
+
+    // Asset Location
+    Route::delete('asset-locations/destroy', 'AssetLocationController@massDestroy')->name('asset-locations.massDestroy');
+    Route::resource('asset-locations', 'AssetLocationController');
+
+    // Asset Status
+    Route::delete('asset-statuses/destroy', 'AssetStatusController@massDestroy')->name('asset-statuses.massDestroy');
+    Route::resource('asset-statuses', 'AssetStatusController');
+
+    // Asset
+    Route::delete('assets/destroy', 'AssetController@massDestroy')->name('assets.massDestroy');
+    Route::post('assets/media', 'AssetController@storeMedia')->name('assets.storeMedia');
+    Route::post('assets/ckmedia', 'AssetController@storeCKEditorImages')->name('assets.storeCKEditorImages');
+    Route::resource('assets', 'AssetController');
+
+    // Assets History
+    Route::resource('assets-histories', 'AssetsHistoryController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
+    // Campuses
+    Route::delete('campuses/destroy', 'CampusesController@massDestroy')->name('campuses.massDestroy');
+    Route::resource('campuses', 'CampusesController');
+
+    // Provinces
+    Route::delete('provinces/destroy', 'ProvincesController@massDestroy')->name('provinces.massDestroy');
+    Route::resource('provinces', 'ProvincesController');
+
+    // Cities
+    Route::delete('cities/destroy', 'CitiesController@massDestroy')->name('cities.massDestroy');
+    Route::resource('cities', 'CitiesController');
+
+    // Religions
+    Route::delete('religions/destroy', 'ReligionsController@massDestroy')->name('religions.massDestroy');
+    Route::resource('religions', 'ReligionsController');
+
+    // Persons
+    Route::delete('people/destroy', 'PersonsController@massDestroy')->name('people.massDestroy');
+    Route::resource('people', 'PersonsController');
+
+    // Boards
+    Route::delete('boards/destroy', 'BoardsController@massDestroy')->name('boards.massDestroy');
+    Route::resource('boards', 'BoardsController');
+
+    // Addresses
+    Route::delete('addresses/destroy', 'AddressesController@massDestroy')->name('addresses.massDestroy');
+    Route::resource('addresses', 'AddressesController');
+
+    // Courses
+    Route::delete('courses/destroy', 'CoursesController@massDestroy')->name('courses.massDestroy');
+    Route::resource('courses', 'CoursesController');
+
+    // Faculties
+    Route::delete('faculties/destroy', 'FacultiesController@massDestroy')->name('faculties.massDestroy');
+    Route::resource('faculties', 'FacultiesController');
+
+    // Degrees
+    Route::delete('degrees/destroy', 'DegreesController@massDestroy')->name('degrees.massDestroy');
+    Route::resource('degrees', 'DegreesController');
+
+    // Departments
+    Route::delete('departments/destroy', 'DepartmentsController@massDestroy')->name('departments.massDestroy');
+    Route::resource('departments', 'DepartmentsController');
+
+    // Centres
+    Route::delete('centres/destroy', 'CentresController@massDestroy')->name('centres.massDestroy');
+    Route::resource('centres', 'CentresController');
+
+    // Support Statuses
+    Route::delete('support-statuses/destroy', 'SupportStatusesController@massDestroy')->name('support-statuses.massDestroy');
+    Route::resource('support-statuses', 'SupportStatusesController');
+
+    // Support Priorities
+    Route::delete('support-priorities/destroy', 'SupportPrioritiesController@massDestroy')->name('support-priorities.massDestroy');
+    Route::resource('support-priorities', 'SupportPrioritiesController');
+
+    // Support Categories
+    Route::delete('support-categories/destroy', 'SupportCategoriesController@massDestroy')->name('support-categories.massDestroy');
+    Route::resource('support-categories', 'SupportCategoriesController');
+
+    // Support Tickets
+    Route::delete('support-tickets/destroy', 'SupportTicketsController@massDestroy')->name('support-tickets.massDestroy');
+    Route::post('support-tickets/media', 'SupportTicketsController@storeMedia')->name('support-tickets.storeMedia');
+    Route::post('support-tickets/ckmedia', 'SupportTicketsController@storeCKEditorImages')->name('support-tickets.storeCKEditorImages');
+    Route::resource('support-tickets', 'SupportTicketsController');
+
+    // Support Comments
+    Route::delete('support-comments/destroy', 'SupportCommentsController@massDestroy')->name('support-comments.massDestroy');
+    Route::resource('support-comments', 'SupportCommentsController');
+
+    // Halls
+    Route::delete('halls/destroy', 'HallsController@massDestroy')->name('halls.massDestroy');
+    Route::resource('halls', 'HallsController');
+
+    // Hostels
+    Route::delete('hostels/destroy', 'HostelsController@massDestroy')->name('hostels.massDestroy');
+    Route::resource('hostels', 'HostelsController');
+
+    // Academic Qualifications
+    Route::delete('academic-qualifications/destroy', 'AcademicQualificationsController@massDestroy')->name('academic-qualifications.massDestroy');
+    Route::post('academic-qualifications/media', 'AcademicQualificationsController@storeMedia')->name('academic-qualifications.storeMedia');
+    Route::post('academic-qualifications/ckmedia', 'AcademicQualificationsController@storeCKEditorImages')->name('academic-qualifications.storeCKEditorImages');
+    Route::resource('academic-qualifications', 'AcademicQualificationsController');
+
+    // Qualification Levels
+    Route::delete('qualification-levels/destroy', 'QualificationLevelsController@massDestroy')->name('qualification-levels.massDestroy');
+    Route::resource('qualification-levels', 'QualificationLevelsController');
+
+    // Phones
+    Route::delete('phones/destroy', 'PhonesController@massDestroy')->name('phones.massDestroy');
+    Route::resource('phones', 'PhonesController');
+
+    // Paper Types
+    Route::delete('paper-types/destroy', 'PaperTypesController@massDestroy')->name('paper-types.massDestroy');
+    Route::resource('paper-types', 'PaperTypesController');
+
+    // Papers
+    Route::delete('papers/destroy', 'PapersController@massDestroy')->name('papers.massDestroy');
+    Route::resource('papers', 'PapersController');
+
+    // Enrolments
+    Route::delete('enrolments/destroy', 'EnrolmentsController@massDestroy')->name('enrolments.massDestroy');
+    Route::resource('enrolments', 'EnrolmentsController');
+
+    // Students
+    Route::delete('students/destroy', 'StudentsController@massDestroy')->name('students.massDestroy');
+    Route::resource('students', 'StudentsController');
+
+    // Employees
+    Route::delete('employees/destroy', 'EmployeesController@massDestroy')->name('employees.massDestroy');
+    Route::resource('employees', 'EmployeesController');
+
+    // Designations
+    Route::delete('designations/destroy', 'DesignationsController@massDestroy')->name('designations.massDestroy');
+    Route::resource('designations', 'DesignationsController');
+
+    // Nominees
+    Route::delete('nominees/destroy', 'NomineesController@massDestroy')->name('nominees.massDestroy');
+    Route::resource('nominees', 'NomineesController');
+
+    // Family Members
+    Route::delete('family-members/destroy', 'FamilyMembersController@massDestroy')->name('family-members.massDestroy');
+    Route::resource('family-members', 'FamilyMembersController');
+
+    // Hostel Rooms
+    Route::delete('hostel-rooms/destroy', 'HostelRoomsController@massDestroy')->name('hostel-rooms.massDestroy');
+    Route::resource('hostel-rooms', 'HostelRoomsController');
+
+    // Course Levels
+    Route::delete('course-levels/destroy', 'CourseLevelsController@massDestroy')->name('course-levels.massDestroy');
+    Route::resource('course-levels', 'CourseLevelsController');
+
+    // Academic Sessions
+    Route::delete('academic-sessions/destroy', 'AcademicSessionsController@massDestroy')->name('academic-sessions.massDestroy');
+    Route::resource('academic-sessions', 'AcademicSessionsController');
+
+    // Postal Codes
+    Route::delete('postal-codes/destroy', 'PostalCodesController@massDestroy')->name('postal-codes.massDestroy');
+    Route::resource('postal-codes', 'PostalCodesController');
+
+    // Admission Charges
+    Route::delete('admission-charges/destroy', 'AdmissionChargesController@massDestroy')->name('admission-charges.massDestroy');
+    Route::resource('admission-charges', 'AdmissionChargesController');
+
+    // Continuation Charges
+    Route::delete('continuation-charges/destroy', 'ContinuationChargesController@massDestroy')->name('continuation-charges.massDestroy');
+    Route::resource('continuation-charges', 'ContinuationChargesController');
+
+    // Programme Delivery Modes
+    Route::delete('programme-delivery-modes/destroy', 'ProgrammeDeliveryModesController@massDestroy')->name('programme-delivery-modes.massDestroy');
+    Route::resource('programme-delivery-modes', 'ProgrammeDeliveryModesController');
+
+    // Admission Entrance Types
+    Route::delete('admission-entrance-types/destroy', 'AdmissionEntranceTypesController@massDestroy')->name('admission-entrance-types.massDestroy');
+    Route::resource('admission-entrance-types', 'AdmissionEntranceTypesController');
+
+    // Programme Duration Types
+    Route::delete('programme-duration-types/destroy', 'ProgrammeDurationTypesController@massDestroy')->name('programme-duration-types.massDestroy');
+    Route::resource('programme-duration-types', 'ProgrammeDurationTypesController');
+
+    // Registration Forms
+    Route::delete('registration-forms/destroy', 'RegistrationFormsController@massDestroy')->name('registration-forms.massDestroy');
+    Route::resource('registration-forms', 'RegistrationFormsController');
+
+    // Exam Registrations
+    Route::delete('exam-registrations/destroy', 'ExamRegistrationsController@massDestroy')->name('exam-registrations.massDestroy');
+    Route::resource('exam-registrations', 'ExamRegistrationsController');
+
+    // Papers Registrations
+    Route::delete('papers-registrations/destroy', 'PapersRegistrationsController@massDestroy')->name('papers-registrations.massDestroy');
+    Route::resource('papers-registrations', 'PapersRegistrationsController');
+
+    // Employment Statuses
+    Route::delete('employment-statuses/destroy', 'EmploymentStatusesController@massDestroy')->name('employment-statuses.massDestroy');
+    Route::resource('employment-statuses', 'EmploymentStatusesController');
+
+    // Castes
+    Route::delete('castes/destroy', 'CastesController@massDestroy')->name('castes.massDestroy');
+    Route::resource('castes', 'CastesController');
+
+    // Designation Types
+    Route::delete('designation-types/destroy', 'DesignationTypesController@massDestroy')->name('designation-types.massDestroy');
+    Route::resource('designation-types', 'DesignationTypesController');
+
+    // Biometrics
+    Route::delete('biometrics/destroy', 'BiometricsController@massDestroy')->name('biometrics.massDestroy');
+    Route::post('biometrics/media', 'BiometricsController@storeMedia')->name('biometrics.storeMedia');
+    Route::post('biometrics/ckmedia', 'BiometricsController@storeCKEditorImages')->name('biometrics.storeCKEditorImages');
+    Route::resource('biometrics', 'BiometricsController');
+
+    // Work Experiences
+    Route::delete('work-experiences/destroy', 'WorkExperiencesController@massDestroy')->name('work-experiences.massDestroy');
+    Route::resource('work-experiences', 'WorkExperiencesController');
+
+    // Countries
+    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountriesController');
+
+    // Blood Groups
+    Route::delete('blood-groups/destroy', 'BloodGroupsController@massDestroy')->name('blood-groups.massDestroy');
+    Route::resource('blood-groups', 'BloodGroupsController');
+
+    // Salary Data
+    Route::delete('salary-datas/destroy', 'SalaryDataController@massDestroy')->name('salary-datas.massDestroy');
+    Route::resource('salary-datas', 'SalaryDataController');
+
+    // Organizational Emails
+    Route::delete('organizational-emails/destroy', 'OrganizationalEmailsController@massDestroy')->name('organizational-emails.massDestroy');
+    Route::resource('organizational-emails', 'OrganizationalEmailsController');
+
+    // Computer Centre Data
+    Route::delete('computer-centre-datas/destroy', 'ComputerCentreDataController@massDestroy')->name('computer-centre-datas.massDestroy');
+    Route::resource('computer-centre-datas', 'ComputerCentreDataController');
+
+    // Answer Scripts
+    Route::delete('answer-scripts/destroy', 'AnswerScriptsController@massDestroy')->name('answer-scripts.massDestroy');
+    Route::post('answer-scripts/media', 'AnswerScriptsController@storeMedia')->name('answer-scripts.storeMedia');
+    Route::post('answer-scripts/ckmedia', 'AnswerScriptsController@storeCKEditorImages')->name('answer-scripts.storeCKEditorImages');
+    Route::resource('answer-scripts', 'AnswerScriptsController');
+
+    // Course Papers
+    Route::delete('course-papers/destroy', 'CoursePapersController@massDestroy')->name('course-papers.massDestroy');
+    Route::resource('course-papers', 'CoursePapersController');
+
+    // Course Academic Sessions
+    Route::delete('course-academic-sessions/destroy', 'CourseAcademicSessionsController@massDestroy')->name('course-academic-sessions.massDestroy');
+    Route::resource('course-academic-sessions', 'CourseAcademicSessionsController');
+
+    // Course Student
+    Route::delete('course-students/destroy', 'CourseStudentController@massDestroy')->name('course-students.massDestroy');
+    Route::resource('course-students', 'CourseStudentController');
+
+    // Verification Statuses
+    Route::delete('verification-statuses/destroy', 'VerificationStatusesController@massDestroy')->name('verification-statuses.massDestroy');
+    Route::resource('verification-statuses', 'VerificationStatusesController');
+
+    // Examination Schedules
+    Route::delete('examination-schedules/destroy', 'ExaminationSchedulesController@massDestroy')->name('examination-schedules.massDestroy');
+    Route::resource('examination-schedules', 'ExaminationSchedulesController');
+
+    // Examiners
+    Route::delete('examiners/destroy', 'ExaminersController@massDestroy')->name('examiners.massDestroy');
+    Route::post('examiners/media', 'ExaminersController@storeMedia')->name('examiners.storeMedia');
+    Route::post('examiners/ckmedia', 'ExaminersController@storeCKEditorImages')->name('examiners.storeCKEditorImages');
+    Route::resource('examiners', 'ExaminersController');
+
+    // Student Admissions
+    Route::delete('student-admissions/destroy', 'StudentAdmissionsController@massDestroy')->name('student-admissions.massDestroy');
+    Route::resource('student-admissions', 'StudentAdmissionsController');
+
+    // Research Scholars
+    Route::delete('research-scholars/destroy', 'ResearchScholarsController@massDestroy')->name('research-scholars.massDestroy');
+    Route::resource('research-scholars', 'ResearchScholarsController');
+
+    Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
+    Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
+    Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
+    Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
+    Route::post('profile/toggle-two-factor', 'ProfileController@toggleTwoFactor')->name('profile.toggle-two-factor');
 });
 Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Two Factor Authentication

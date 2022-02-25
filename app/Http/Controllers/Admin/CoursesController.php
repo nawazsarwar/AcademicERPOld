@@ -111,6 +111,9 @@ class CoursesController extends Controller
             $table->editColumn('administrable_type', function ($row) {
                 return $row->administrable_type ? $row->administrable_type : '';
             });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'degree', 'campus', 'level', 'entrance_type', 'mode', 'duration_type', 'administrable']);
 

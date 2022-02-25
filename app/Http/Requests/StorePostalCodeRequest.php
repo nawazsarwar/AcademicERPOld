@@ -25,10 +25,11 @@ class StorePostalCodeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'pincode' => [
-                'string',
+            'code' => [
                 'required',
-                'unique:postal_codes',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'sub_district' => [
                 'string',

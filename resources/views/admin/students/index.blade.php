@@ -29,10 +29,25 @@
                         {{ trans('cruds.student.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.student.fields.person') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.student.fields.enrolment') }}
                     </th>
                     <th>
                         {{ trans('cruds.student.fields.guardian_mobile_no') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.verification_status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.verified_by') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.verified_at') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.verification_remark') }}
                     </th>
                     <th>
                         &nbsp;
@@ -91,8 +106,13 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'person_first_name', name: 'person.first_name' },
 { data: 'enrolment_number', name: 'enrolment.number' },
 { data: 'guardian_mobile_no', name: 'guardian_mobile_no' },
+{ data: 'verification_status_name', name: 'verification_status.name' },
+{ data: 'verified_by_name', name: 'verified_by.name' },
+{ data: 'verified_at', name: 'verified_at' },
+{ data: 'verification_remark', name: 'verification_remark' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

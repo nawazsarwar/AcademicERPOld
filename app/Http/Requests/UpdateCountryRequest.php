@@ -29,15 +29,22 @@ class UpdateCountryRequest extends FormRequest
                 'required',
                 'unique:countries,code,' . request()->route('country')->id,
             ],
-            'phone_code' => [
+            'dialing_code' => [
                 'string',
                 'max:190',
-                'nullable',
+                'required',
+                'unique:countries,dialing_code,' . request()->route('country')->id,
             ],
             'nationality' => [
                 'string',
                 'max:190',
                 'nullable',
+            ],
+            'sequence' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'status' => [
                 'string',

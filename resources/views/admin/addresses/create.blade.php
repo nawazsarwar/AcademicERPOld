@@ -10,18 +10,6 @@
         <form method="POST" action="{{ route("admin.addresses.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="country_id">{{ trans('cruds.address.fields.country') }}</label>
-                <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
-                    @foreach($countries as $id => $entry)
-                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('country'))
-                    <span class="text-danger">{{ $errors->first('country') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.address.fields.country_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="person_id">{{ trans('cruds.address.fields.person') }}</label>
                 <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id" required>
                     @foreach($people as $id => $entry)
@@ -32,6 +20,31 @@
                     <span class="text-danger">{{ $errors->first('person') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.address.fields.person_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.address.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type" required>
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Address::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.address.fields.type_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="country_id">{{ trans('cruds.address.fields.country') }}</label>
+                <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
+                    @foreach($countries as $id => $entry)
+                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('country'))
+                    <span class="text-danger">{{ $errors->first('country') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.address.fields.country_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="mobile">{{ trans('cruds.address.fields.mobile') }}</label>

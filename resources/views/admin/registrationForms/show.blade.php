@@ -89,18 +89,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.registrationForm.fields.remarks') }}
-                        </th>
-                        <td>
-                            {{ $registrationForm->remarks }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.registrationForm.fields.status') }}
                         </th>
                         <td>
                             {{ $registrationForm->status }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.registrationForm.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $registrationForm->remarks }}
                         </td>
                     </tr>
                 </tbody>

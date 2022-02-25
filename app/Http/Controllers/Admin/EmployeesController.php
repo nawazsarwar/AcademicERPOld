@@ -9,6 +9,9 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
 use App\Models\EmploymentStatus;
+use App\Models\Person;
+use App\Models\User;
+use App\Models\VerificationStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +26,7 @@ class EmployeesController extends Controller
         abort_if(Gate::denies('employee_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Employee::with(['employment_status'])->select(sprintf('%s.*', (new Employee())->table));
+            $query = Employee::with(['person', 'employment_status', 'verification_status', 'verified_by'])->select(sprintf('%s.*', (new Employee())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -47,6 +50,10 @@ class EmployeesController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->addColumn('person_first_name', function ($row) {
+                return $row->person ? $row->person->first_name : '';
+            });
+
             $table->editColumn('employee_no', function ($row) {
                 return $row->employee_no ? $row->employee_no : '';
             });
@@ -84,8 +91,19 @@ class EmployeesController extends Controller
             $table->editColumn('remarks', function ($row) {
                 return $row->remarks ? $row->remarks : '';
             });
+            $table->addColumn('verification_status_name', function ($row) {
+                return $row->verification_status ? $row->verification_status->name : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'employment_status']);
+            $table->addColumn('verified_by_name', function ($row) {
+                return $row->verified_by ? $row->verified_by->name : '';
+            });
+
+            $table->editColumn('verification_remark', function ($row) {
+                return $row->verification_remark ? $row->verification_remark : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'person', 'employment_status', 'verification_status', 'verified_by']);
 
             return $table->make(true);
         }
@@ -97,9 +115,15 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $employment_statuses = EmploymentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employees.create', compact('employment_statuses'));
+        $verification_statuses = VerificationStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $verified_bies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.employees.create', compact('employment_statuses', 'people', 'verification_statuses', 'verified_bies'));
     }
 
     public function store(StoreEmployeeRequest $request)
@@ -113,11 +137,17 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $people = Person::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $employment_statuses = EmploymentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employee->load('employment_status');
+        $verification_statuses = VerificationStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employees.edit', compact('employee', 'employment_statuses'));
+        $verified_bies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employee->load('person', 'employment_status', 'verification_status', 'verified_by');
+
+        return view('admin.employees.edit', compact('employee', 'employment_statuses', 'people', 'verification_statuses', 'verified_bies'));
     }
 
     public function update(UpdateEmployeeRequest $request, Employee $employee)
@@ -131,7 +161,7 @@ class EmployeesController extends Controller
     {
         abort_if(Gate::denies('employee_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employee->load('employment_status');
+        $employee->load('person', 'employment_status', 'verification_status', 'verified_by');
 
         return view('admin.employees.show', compact('employee'));
     }

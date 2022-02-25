@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyPhoneRequest;
 use App\Http\Requests\StorePhoneRequest;
 use App\Http\Requests\UpdatePhoneRequest;
+use App\Models\Country;
 use App\Models\Phone;
 use App\Models\User;
 use Gate;
@@ -23,7 +24,7 @@ class PhonesController extends Controller
         abort_if(Gate::denies('phone_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Phone::with(['user'])->select(sprintf('%s.*', (new Phone())->table));
+            $query = Phone::with(['user', 'dialing_code'])->select(sprintf('%s.*', (new Phone())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -51,6 +52,10 @@ class PhonesController extends Controller
                 return $row->user ? $row->user->name : '';
             });
 
+            $table->addColumn('dialing_code_dialing_code', function ($row) {
+                return $row->dialing_code ? $row->dialing_code->dialing_code : '';
+            });
+
             $table->editColumn('number', function ($row) {
                 return $row->number ? $row->number : '';
             });
@@ -67,7 +72,7 @@ class PhonesController extends Controller
                 return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'user']);
+            $table->rawColumns(['actions', 'placeholder', 'user', 'dialing_code']);
 
             return $table->make(true);
         }
@@ -81,7 +86,9 @@ class PhonesController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.phones.create', compact('users'));
+        $dialing_codes = Country::pluck('dialing_code', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.phones.create', compact('dialing_codes', 'users'));
     }
 
     public function store(StorePhoneRequest $request)
@@ -97,9 +104,11 @@ class PhonesController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $phone->load('user');
+        $dialing_codes = Country::pluck('dialing_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.phones.edit', compact('users', 'phone'));
+        $phone->load('user', 'dialing_code');
+
+        return view('admin.phones.edit', compact('dialing_codes', 'phone', 'users'));
     }
 
     public function update(UpdatePhoneRequest $request, Phone $phone)
@@ -113,7 +122,7 @@ class PhonesController extends Controller
     {
         abort_if(Gate::denies('phone_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $phone->load('user');
+        $phone->load('user', 'dialing_code');
 
         return view('admin.phones.show', compact('phone'));
     }

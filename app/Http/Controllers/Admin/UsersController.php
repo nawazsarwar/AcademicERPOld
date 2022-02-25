@@ -68,6 +68,18 @@ class UsersController extends Controller
 
                 return implode(' ', $labels);
             });
+            $table->editColumn('role', function ($row) {
+                return $row->role ? $row->role : '';
+            });
+            $table->editColumn('revoked', function ($row) {
+                return $row->revoked ? $row->revoked : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
+            });
+            $table->editColumn('applications', function ($row) {
+                return $row->applications ? $row->applications : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'two_factor', 'roles']);
 

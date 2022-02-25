@@ -31,7 +31,7 @@
                                 {{ trans('cruds.postalCode.fields.locality') }}
                             </th>
                             <th>
-                                {{ trans('cruds.postalCode.fields.pincode') }}
+                                {{ trans('cruds.postalCode.fields.code') }}
                             </th>
                             <th>
                                 {{ trans('cruds.postalCode.fields.sub_district') }}
@@ -63,7 +63,7 @@
                                     {{ $postalCode->locality ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $postalCode->pincode ?? '' }}
+                                    {{ $postalCode->code ?? '' }}
                                 </td>
                                 <td>
                                     {{ $postalCode->sub_district ?? '' }}

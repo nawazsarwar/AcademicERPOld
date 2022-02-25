@@ -159,6 +159,14 @@
                             {{ $course->administrable_type }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.remarks') }}
+                        </th>
+                        <td>
+                            {{ $course->remarks }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

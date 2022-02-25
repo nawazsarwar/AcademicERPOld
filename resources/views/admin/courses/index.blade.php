@@ -80,6 +80,9 @@
                         {{ trans('cruds.course.fields.administrable_type') }}
                     </th>
                     <th>
+                        {{ trans('cruds.course.fields.remarks') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -153,6 +156,7 @@
 { data: 'subsidiarizable', name: 'subsidiarizable' },
 { data: 'administrable_name', name: 'administrable.name' },
 { data: 'administrable_type', name: 'administrable_type' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
