@@ -42,6 +42,16 @@
                             <span class="help-block">{{ trans('cruds.student.fields.enrolment_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <label class="required" for="enrolment_no">{{ trans('cruds.student.fields.enrolment_no') }}</label>
+                            <input class="form-control" type="text" name="enrolment_no" id="enrolment_no" value="{{ old('enrolment_no', '') }}" required>
+                            @if($errors->has('enrolment_no'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('enrolment_no') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.student.fields.enrolment_no_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label for="guardian_mobile_no">{{ trans('cruds.student.fields.guardian_mobile_no') }}</label>
                             <input class="form-control" type="text" name="guardian_mobile_no" id="guardian_mobile_no" value="{{ old('guardian_mobile_no', '') }}">
                             @if($errors->has('guardian_mobile_no'))

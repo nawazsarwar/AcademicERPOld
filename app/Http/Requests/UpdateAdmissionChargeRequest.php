@@ -21,11 +21,7 @@ class UpdateAdmissionChargeRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'girls_nr_internal' => [
-                'string',
-                'nullable',
-            ],
-            'girls_resident_internal' => [
+            'code' => [
                 'string',
                 'nullable',
             ],

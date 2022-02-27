@@ -26,6 +26,9 @@
                                         {{ trans('cruds.workExperience.fields.id') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.workExperience.fields.user') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.workExperience.fields.employer') }}
                                     </th>
                                     <th>
@@ -56,9 +59,6 @@
                                         {{ trans('cruds.workExperience.fields.gross_pay') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.workExperience.fields.user') }}
-                                    </th>
-                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -68,6 +68,9 @@
                                     <tr data-entry-id="{{ $workExperience->id }}">
                                         <td>
                                             {{ $workExperience->id ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $workExperience->user->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $workExperience->employer ?? '' }}
@@ -98,9 +101,6 @@
                                         </td>
                                         <td>
                                             {{ $workExperience->gross_pay ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $workExperience->user->name ?? '' }}
                                         </td>
                                         <td>
                                             @can('work_experience_show')

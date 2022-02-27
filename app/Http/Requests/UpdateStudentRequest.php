@@ -25,6 +25,11 @@ class UpdateStudentRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'enrolment_no' => [
+                'string',
+                'required',
+                'unique:students,enrolment_no,' . request()->route('student')->id,
+            ],
             'guardian_mobile_no' => [
                 'string',
                 'nullable',

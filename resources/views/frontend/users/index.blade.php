@@ -54,10 +54,10 @@
                                         {{ trans('cruds.user.fields.revoked') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.remarks') }}
+                                        {{ trans('cruds.user.fields.applications') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.applications') }}
+                                        {{ trans('cruds.user.fields.remarks') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -88,7 +88,7 @@
                                         </td>
                                         <td>
                                             @foreach($user->roles as $key => $item)
-                                                <span>{{ $item->title }}</span>
+                                                <span>{{ $item->name }}</span>
                                             @endforeach
                                         </td>
                                         <td>
@@ -98,10 +98,10 @@
                                             {{ $user->revoked ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $user->remarks ?? '' }}
+                                            {{ $user->applications ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $user->applications ?? '' }}
+                                            {{ $user->remarks ?? '' }}
                                         </td>
                                         <td>
                                             @can('user_show')

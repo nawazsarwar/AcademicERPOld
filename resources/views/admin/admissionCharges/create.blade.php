@@ -22,6 +22,14 @@
                 <span class="help-block">{{ trans('cruds.admissionCharge.fields.course_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="code">{{ trans('cruds.admissionCharge.fields.code') }}</label>
+                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', '') }}">
+                @if($errors->has('code'))
+                    <span class="text-danger">{{ $errors->first('code') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.admissionCharge.fields.code_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="boys_nr_external">{{ trans('cruds.admissionCharge.fields.boys_nr_external') }}</label>
                 <input class="form-control {{ $errors->has('boys_nr_external') ? 'is-invalid' : '' }}" type="number" name="boys_nr_external" id="boys_nr_external" value="{{ old('boys_nr_external', '') }}" step="0.01">
                 @if($errors->has('boys_nr_external'))
@@ -63,7 +71,7 @@
             </div>
             <div class="form-group">
                 <label for="girls_nr_internal">{{ trans('cruds.admissionCharge.fields.girls_nr_internal') }}</label>
-                <input class="form-control {{ $errors->has('girls_nr_internal') ? 'is-invalid' : '' }}" type="text" name="girls_nr_internal" id="girls_nr_internal" value="{{ old('girls_nr_internal', '') }}">
+                <input class="form-control {{ $errors->has('girls_nr_internal') ? 'is-invalid' : '' }}" type="number" name="girls_nr_internal" id="girls_nr_internal" value="{{ old('girls_nr_internal', '') }}" step="0.01">
                 @if($errors->has('girls_nr_internal'))
                     <span class="text-danger">{{ $errors->first('girls_nr_internal') }}</span>
                 @endif
@@ -79,7 +87,7 @@
             </div>
             <div class="form-group">
                 <label for="girls_resident_internal">{{ trans('cruds.admissionCharge.fields.girls_resident_internal') }}</label>
-                <input class="form-control {{ $errors->has('girls_resident_internal') ? 'is-invalid' : '' }}" type="text" name="girls_resident_internal" id="girls_resident_internal" value="{{ old('girls_resident_internal', '') }}">
+                <input class="form-control {{ $errors->has('girls_resident_internal') ? 'is-invalid' : '' }}" type="number" name="girls_resident_internal" id="girls_resident_internal" value="{{ old('girls_resident_internal', '') }}" step="0.01">
                 @if($errors->has('girls_resident_internal'))
                     <span class="text-danger">{{ $errors->first('girls_resident_internal') }}</span>
                 @endif

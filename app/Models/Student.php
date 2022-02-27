@@ -27,6 +27,7 @@ class Student extends Model
     protected $fillable = [
         'person_id',
         'enrolment_id',
+        'enrolment_no',
         'guardian_mobile_no',
         'verification_status_id',
         'verified_by_id',

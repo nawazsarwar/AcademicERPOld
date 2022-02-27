@@ -36,6 +36,9 @@
                                         {{ trans('cruds.course.fields.code') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.admissionCharge.fields.code') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.admissionCharge.fields.boys_nr_external') }}
                                     </th>
                                     <th>
@@ -81,6 +84,9 @@
                                         </td>
                                         <td>
                                             {{ $admissionCharge->course->code ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $admissionCharge->code ?? '' }}
                                         </td>
                                         <td>
                                             {{ $admissionCharge->boys_nr_external ?? '' }}

@@ -92,16 +92,6 @@
                             <span class="help-block">{{ trans('cruds.user.fields.revoked_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="remarks">{{ trans('cruds.user.fields.remarks') }}</label>
-                            <textarea class="form-control" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
-                            @if($errors->has('remarks'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('remarks') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.user.fields.remarks_helper') }}</span>
-                        </div>
-                        <div class="form-group">
                             <label for="applications">{{ trans('cruds.user.fields.applications') }}</label>
                             <textarea class="form-control" name="applications" id="applications">{{ old('applications') }}</textarea>
                             @if($errors->has('applications'))
@@ -110,6 +100,16 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.applications_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="remarks">{{ trans('cruds.user.fields.remarks') }}</label>
+                            <textarea class="form-control" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
+                            @if($errors->has('remarks'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('remarks') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.user.fields.remarks_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

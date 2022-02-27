@@ -129,7 +129,7 @@
                         </div>
                         <div class="form-group">
                             <label for="status">{{ trans('cruds.nominee.fields.status') }}</label>
-                            <input class="form-control" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                            <input class="form-control" type="text" name="status" id="status" value="{{ old('status', '') }}">
                             @if($errors->has('status'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('status') }}

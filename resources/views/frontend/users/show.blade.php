@@ -64,7 +64,7 @@
                                     </th>
                                     <td>
                                         @foreach($user->roles as $key => $roles)
-                                            <span class="label label-info">{{ $roles->title }}</span>
+                                            <span class="label label-info">{{ $roles->name }}</span>
                                         @endforeach
                                     </td>
                                 </tr>
@@ -86,18 +86,18 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.remarks') }}
-                                    </th>
-                                    <td>
-                                        {{ $user->remarks }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.user.fields.applications') }}
                                     </th>
                                     <td>
                                         {{ $user->applications }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.user.fields.remarks') }}
+                                    </th>
+                                    <td>
+                                        {{ $user->remarks }}
                                     </td>
                                 </tr>
                             </tbody>

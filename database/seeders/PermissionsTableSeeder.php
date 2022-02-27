@@ -1452,6 +1452,110 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 361,
+                'title' => 'content_management_system_access',
+            ],
+            [
+                'id'    => 362,
+                'title' => 'content_category_create',
+            ],
+            [
+                'id'    => 363,
+                'title' => 'content_category_edit',
+            ],
+            [
+                'id'    => 364,
+                'title' => 'content_category_show',
+            ],
+            [
+                'id'    => 365,
+                'title' => 'content_category_delete',
+            ],
+            [
+                'id'    => 366,
+                'title' => 'content_category_access',
+            ],
+            [
+                'id'    => 367,
+                'title' => 'content_tag_create',
+            ],
+            [
+                'id'    => 368,
+                'title' => 'content_tag_edit',
+            ],
+            [
+                'id'    => 369,
+                'title' => 'content_tag_show',
+            ],
+            [
+                'id'    => 370,
+                'title' => 'content_tag_delete',
+            ],
+            [
+                'id'    => 371,
+                'title' => 'content_tag_access',
+            ],
+            [
+                'id'    => 372,
+                'title' => 'content_page_create',
+            ],
+            [
+                'id'    => 373,
+                'title' => 'content_page_edit',
+            ],
+            [
+                'id'    => 374,
+                'title' => 'content_page_show',
+            ],
+            [
+                'id'    => 375,
+                'title' => 'content_page_delete',
+            ],
+            [
+                'id'    => 376,
+                'title' => 'content_page_access',
+            ],
+            [
+                'id'    => 377,
+                'title' => 'website_create',
+            ],
+            [
+                'id'    => 378,
+                'title' => 'website_edit',
+            ],
+            [
+                'id'    => 379,
+                'title' => 'website_show',
+            ],
+            [
+                'id'    => 380,
+                'title' => 'website_delete',
+            ],
+            [
+                'id'    => 381,
+                'title' => 'website_access',
+            ],
+            [
+                'id'    => 382,
+                'title' => 'examination_mark_create',
+            ],
+            [
+                'id'    => 383,
+                'title' => 'examination_mark_edit',
+            ],
+            [
+                'id'    => 384,
+                'title' => 'examination_mark_show',
+            ],
+            [
+                'id'    => 385,
+                'title' => 'examination_mark_delete',
+            ],
+            [
+                'id'    => 386,
+                'title' => 'examination_mark_access',
+            ],
+            [
+                'id'    => 387,
                 'title' => 'profile_password_edit',
             ],
         ];
