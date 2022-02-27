@@ -24,6 +24,7 @@ class AdmissionCharge extends Model
 
     protected $fillable = [
         'course_id',
+        'code',
         'boys_nr_external',
         'boys_nr_internal',
         'boys_resident_external',

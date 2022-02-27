@@ -28,7 +28,15 @@
                             {{ trans('cruds.admissionCharge.fields.course') }}
                         </th>
                         <td>
-                            {{ $admissionCharge->course->name ?? '' }}
+                            {{ $admissionCharge->course->title ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.code') }}
+                        </th>
+                        <td>
+                            {{ $admissionCharge->code }}
                         </td>
                     </tr>
                     <tr>

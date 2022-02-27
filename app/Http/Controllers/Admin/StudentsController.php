@@ -58,6 +58,9 @@ class StudentsController extends Controller
                 return $row->enrolment ? $row->enrolment->number : '';
             });
 
+            $table->editColumn('enrolment_no', function ($row) {
+                return $row->enrolment_no ? $row->enrolment_no : '';
+            });
             $table->editColumn('guardian_mobile_no', function ($row) {
                 return $row->guardian_mobile_no ? $row->guardian_mobile_no : '';
             });

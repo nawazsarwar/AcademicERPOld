@@ -28,6 +28,16 @@
                             <span class="help-block">{{ trans('cruds.admissionCharge.fields.course_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <label for="code">{{ trans('cruds.admissionCharge.fields.code') }}</label>
+                            <input class="form-control" type="text" name="code" id="code" value="{{ old('code', '') }}">
+                            @if($errors->has('code'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('code') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.admissionCharge.fields.code_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label for="boys_nr_external">{{ trans('cruds.admissionCharge.fields.boys_nr_external') }}</label>
                             <input class="form-control" type="number" name="boys_nr_external" id="boys_nr_external" value="{{ old('boys_nr_external', '') }}" step="0.01">
                             @if($errors->has('boys_nr_external'))
@@ -109,7 +119,7 @@
                         </div>
                         <div class="form-group">
                             <label for="status">{{ trans('cruds.admissionCharge.fields.status') }}</label>
-                            <input class="form-control" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                            <input class="form-control" type="text" name="status" id="status" value="{{ old('status', '') }}">
                             @if($errors->has('status'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('status') }}

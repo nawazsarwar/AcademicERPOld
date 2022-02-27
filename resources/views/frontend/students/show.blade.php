@@ -44,6 +44,14 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.student.fields.enrolment_no') }}
+                                    </th>
+                                    <td>
+                                        {{ $student->enrolment_no }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.student.fields.guardian_mobile_no') }}
                                     </th>
                                     <td>

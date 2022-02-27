@@ -53,10 +53,10 @@
                         {{ trans('cruds.user.fields.revoked') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.remarks') }}
+                        {{ trans('cruds.user.fields.applications') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.applications') }}
+                        {{ trans('cruds.user.fields.remarks') }}
                     </th>
                     <th>
                         &nbsp;
@@ -120,11 +120,11 @@
 { data: 'email', name: 'email' },
 { data: 'email_verified_at', name: 'email_verified_at' },
 { data: 'two_factor', name: 'two_factor' },
-{ data: 'roles', name: 'roles.title' },
+{ data: 'roles', name: 'roles.name' },
 { data: 'role', name: 'role' },
 { data: 'revoked', name: 'revoked' },
-{ data: 'remarks', name: 'remarks' },
 { data: 'applications', name: 'applications' },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

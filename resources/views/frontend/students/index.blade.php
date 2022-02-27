@@ -36,6 +36,9 @@
                                         {{ trans('cruds.student.fields.enrolment') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.student.fields.enrolment_no') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.student.fields.guardian_mobile_no') }}
                                     </th>
                                     <th>
@@ -66,6 +69,9 @@
                                         </td>
                                         <td>
                                             {{ $student->enrolment->number ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $student->enrolment_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ $student->guardian_mobile_no ?? '' }}

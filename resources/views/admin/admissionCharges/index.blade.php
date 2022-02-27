@@ -19,57 +19,136 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-AdmissionCharge">
-            <thead>
-                <tr>
-                    <th width="10">
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-AdmissionCharge">
+                <thead>
+                    <tr>
+                        <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.course') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.course.fields.code') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.boys_nr_external') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.boys_nr_internal') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.boys_resident_external') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.boys_resident_internal') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.girls_nr_external') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.girls_nr_internal') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.girls_resident_external') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.girls_resident_internal') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.status') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.admissionCharge.fields.remarks') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.course') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.code') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.code') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.boys_nr_external') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.boys_nr_internal') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.boys_resident_external') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.boys_resident_internal') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.girls_nr_external') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.girls_nr_internal') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.girls_resident_external') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.girls_resident_internal') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionCharge.fields.remarks') }}
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($admissionCharges as $key => $admissionCharge)
+                        <tr data-entry-id="{{ $admissionCharge->id }}">
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $admissionCharge->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->course->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->course->code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->boys_nr_external ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->boys_nr_internal ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->boys_resident_external ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->boys_resident_internal ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->girls_nr_external ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->girls_nr_internal ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->girls_resident_external ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->girls_resident_internal ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->status ?? '' }}
+                            </td>
+                            <td>
+                                {{ $admissionCharge->remarks ?? '' }}
+                            </td>
+                            <td>
+                                @can('admission_charge_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.admission-charges.show', $admissionCharge->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('admission_charge_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.admission-charges.edit', $admissionCharge->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+
+                                @can('admission_charge_delete')
+                                    <form action="{{ route('admin.admission-charges.destroy', $admissionCharge->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
+
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -82,14 +161,14 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('admission_charge_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.admission-charges.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
       });
 
       if (ids.length === 0) {
@@ -111,41 +190,18 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  let dtOverrideGlobals = {
-    buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: "{{ route('admin.admission-charges.index') }}",
-    columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'course_name', name: 'course.name' },
-{ data: 'course.code', name: 'course.code' },
-{ data: 'boys_nr_external', name: 'boys_nr_external' },
-{ data: 'boys_nr_internal', name: 'boys_nr_internal' },
-{ data: 'boys_resident_external', name: 'boys_resident_external' },
-{ data: 'boys_resident_internal', name: 'boys_resident_internal' },
-{ data: 'girls_nr_external', name: 'girls_nr_external' },
-{ data: 'girls_nr_internal', name: 'girls_nr_internal' },
-{ data: 'girls_resident_external', name: 'girls_resident_external' },
-{ data: 'girls_resident_internal', name: 'girls_resident_internal' },
-{ data: 'status', name: 'status' },
-{ data: 'remarks', name: 'remarks' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
+  $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
-  };
-  let table = $('.datatable-AdmissionCharge').DataTable(dtOverrideGlobals);
+  });
+  let table = $('.datatable-AdmissionCharge:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
   
-});
+})
 
 </script>
 @endsection

@@ -35,6 +35,9 @@
                         {{ trans('cruds.student.fields.enrolment') }}
                     </th>
                     <th>
+                        {{ trans('cruds.student.fields.enrolment_no') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.student.fields.guardian_mobile_no') }}
                     </th>
                     <th>
@@ -108,6 +111,7 @@
 { data: 'id', name: 'id' },
 { data: 'person_first_name', name: 'person.first_name' },
 { data: 'enrolment_number', name: 'enrolment.number' },
+{ data: 'enrolment_no', name: 'enrolment_no' },
 { data: 'guardian_mobile_no', name: 'guardian_mobile_no' },
 { data: 'verification_status_name', name: 'verification_status.name' },
 { data: 'verified_by_name', name: 'verified_by.name' },

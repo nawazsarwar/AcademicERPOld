@@ -388,6 +388,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('research-scholars/process-csv-import', 'ResearchScholarsController@processCsvImport')->name('research-scholars.processCsvImport');
     Route::resource('research-scholars', 'ResearchScholarsController');
 
+    // Content Categories
+    Route::delete('content-categories/destroy', 'ContentCategoriesController@massDestroy')->name('content-categories.massDestroy');
+    Route::resource('content-categories', 'ContentCategoriesController');
+
+    // Content Tags
+    Route::delete('content-tags/destroy', 'ContentTagsController@massDestroy')->name('content-tags.massDestroy');
+    Route::resource('content-tags', 'ContentTagsController');
+
+    // Content Pages
+    Route::delete('content-pages/destroy', 'ContentPagesController@massDestroy')->name('content-pages.massDestroy');
+    Route::post('content-pages/media', 'ContentPagesController@storeMedia')->name('content-pages.storeMedia');
+    Route::post('content-pages/ckmedia', 'ContentPagesController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
+    Route::resource('content-pages', 'ContentPagesController');
+
+    // Websites
+    Route::delete('websites/destroy', 'WebsitesController@massDestroy')->name('websites.massDestroy');
+    Route::resource('websites', 'WebsitesController');
+
+    // Examination Marks
+    Route::delete('examination-marks/destroy', 'ExaminationMarksController@massDestroy')->name('examination-marks.massDestroy');
+    Route::resource('examination-marks', 'ExaminationMarksController');
+
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
@@ -702,6 +724,28 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Research Scholars
     Route::delete('research-scholars/destroy', 'ResearchScholarsController@massDestroy')->name('research-scholars.massDestroy');
     Route::resource('research-scholars', 'ResearchScholarsController');
+
+    // Content Categories
+    Route::delete('content-categories/destroy', 'ContentCategoriesController@massDestroy')->name('content-categories.massDestroy');
+    Route::resource('content-categories', 'ContentCategoriesController');
+
+    // Content Tags
+    Route::delete('content-tags/destroy', 'ContentTagsController@massDestroy')->name('content-tags.massDestroy');
+    Route::resource('content-tags', 'ContentTagsController');
+
+    // Content Pages
+    Route::delete('content-pages/destroy', 'ContentPagesController@massDestroy')->name('content-pages.massDestroy');
+    Route::post('content-pages/media', 'ContentPagesController@storeMedia')->name('content-pages.storeMedia');
+    Route::post('content-pages/ckmedia', 'ContentPagesController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
+    Route::resource('content-pages', 'ContentPagesController');
+
+    // Websites
+    Route::delete('websites/destroy', 'WebsitesController@massDestroy')->name('websites.massDestroy');
+    Route::resource('websites', 'WebsitesController');
+
+    // Examination Marks
+    Route::delete('examination-marks/destroy', 'ExaminationMarksController@massDestroy')->name('examination-marks.massDestroy');
+    Route::resource('examination-marks', 'ExaminationMarksController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

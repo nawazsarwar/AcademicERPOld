@@ -25,6 +25,11 @@ class StoreStudentRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'enrolment_no' => [
+                'string',
+                'required',
+                'unique:students',
+            ],
             'guardian_mobile_no' => [
                 'string',
                 'nullable',
