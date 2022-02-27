@@ -4,7 +4,6 @@ deployment:
  - export REPOPATH=/home/unideskamu/repositories/AcademicERP
  - export DEPLOYPATH=/home/unideskamu/application
  - cd $REPOPATH
- - composer install --no-dev
  - composer update --no-dev
  - cd ~
  - rm -rf /home/unideskamu/application_backup
