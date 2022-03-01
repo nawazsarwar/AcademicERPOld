@@ -21,6 +21,10 @@ class StoreContinuationChargeRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'code' => [
+                'string',
+                'nullable',
+            ],
             'status' => [
                 'string',
                 'nullable',

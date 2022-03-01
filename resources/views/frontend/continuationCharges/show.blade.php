@@ -36,6 +36,14 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.continuationCharge.fields.code') }}
+                                    </th>
+                                    <td>
+                                        {{ $continuationCharge->code }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.continuationCharge.fields.nr_total') }}
                                     </th>
                                     <td>

@@ -50,7 +50,7 @@
                                         {{ trans('cruds.examRegistration.fields.faculty_no') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.examRegistration.fields.fraction') }}
+                                        {{ trans('cruds.examRegistration.fields.part') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.examRegistration.fields.hall') }}
@@ -115,7 +115,7 @@
                                             {{ $examRegistration->faculty_no ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $examRegistration->fraction ?? '' }}
+                                            {{ $examRegistration->part ?? '' }}
                                         </td>
                                         <td>
                                             {{ $examRegistration->hall->code ?? '' }}

@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyStudentAdmissionRequest;
 use App\Http\Requests\StoreStudentAdmissionRequest;
 use App\Http\Requests\UpdateStudentAdmissionRequest;
+use App\Models\AcademicSession;
 use App\Models\Course;
 use App\Models\Enrolment;
 use App\Models\StudentAdmission;
@@ -22,7 +23,7 @@ class StudentAdmissionsController extends Controller
     {
         abort_if(Gate::denies('student_admission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $studentAdmissions = StudentAdmission::with(['course', 'enrolment'])->get();
+        $studentAdmissions = StudentAdmission::with(['course', 'enrolment', 'session'])->get();
 
         return view('admin.studentAdmissions.index', compact('studentAdmissions'));
     }
@@ -35,7 +36,9 @@ class StudentAdmissionsController extends Controller
 
         $enrolments = Enrolment::pluck('number', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.studentAdmissions.create', compact('courses', 'enrolments'));
+        $sessions = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.studentAdmissions.create', compact('courses', 'enrolments', 'sessions'));
     }
 
     public function store(StoreStudentAdmissionRequest $request)
@@ -53,9 +56,11 @@ class StudentAdmissionsController extends Controller
 
         $enrolments = Enrolment::pluck('number', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $studentAdmission->load('course', 'enrolment');
+        $sessions = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.studentAdmissions.edit', compact('courses', 'enrolments', 'studentAdmission'));
+        $studentAdmission->load('course', 'enrolment', 'session');
+
+        return view('admin.studentAdmissions.edit', compact('courses', 'enrolments', 'sessions', 'studentAdmission'));
     }
 
     public function update(UpdateStudentAdmissionRequest $request, StudentAdmission $studentAdmission)
@@ -69,7 +74,7 @@ class StudentAdmissionsController extends Controller
     {
         abort_if(Gate::denies('student_admission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $studentAdmission->load('course', 'enrolment');
+        $studentAdmission->load('course', 'enrolment', 'session');
 
         return view('admin.studentAdmissions.show', compact('studentAdmission'));
     }

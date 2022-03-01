@@ -28,10 +28,10 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.role.fields.name') }}
+                                        {{ trans('cruds.role.fields.title') }}
                                     </th>
                                     <td>
-                                        {{ $role->name }}
+                                        {{ $role->title }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -48,7 +48,7 @@
                                     </th>
                                     <td>
                                         @foreach($role->permissions as $key => $permissions)
-                                            <span class="label label-info">{{ $permissions->name }}</span>
+                                            <span class="label label-info">{{ $permissions->title }}</span>
                                         @endforeach
                                     </td>
                                 </tr>

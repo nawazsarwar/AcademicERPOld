@@ -39,7 +39,7 @@ class ExamRegistration extends Model
         'season',
         'faculty_no',
         'faculty_code',
-        'fraction',
+        'part',
         'hall_id',
         'hostel_id',
         'room_no',

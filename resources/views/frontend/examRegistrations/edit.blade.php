@@ -119,14 +119,14 @@
                             <span class="help-block">{{ trans('cruds.examRegistration.fields.faculty_no_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label class="required" for="fraction">{{ trans('cruds.examRegistration.fields.fraction') }}</label>
-                            <input class="form-control" type="number" name="fraction" id="fraction" value="{{ old('fraction', $examRegistration->fraction) }}" step="1" required>
-                            @if($errors->has('fraction'))
+                            <label class="required" for="part">{{ trans('cruds.examRegistration.fields.part') }}</label>
+                            <input class="form-control" type="number" name="part" id="part" value="{{ old('part', $examRegistration->part) }}" step="1" required>
+                            @if($errors->has('part'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('fraction') }}
+                                    {{ $errors->first('part') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.examRegistration.fields.fraction_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.examRegistration.fields.part_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label class="required" for="hall_id">{{ trans('cruds.examRegistration.fields.hall') }}</label>

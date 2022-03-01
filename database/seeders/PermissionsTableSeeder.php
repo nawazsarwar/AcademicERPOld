@@ -1556,6 +1556,234 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 387,
+                'title' => 'receivable_create',
+            ],
+            [
+                'id'    => 388,
+                'title' => 'receivable_edit',
+            ],
+            [
+                'id'    => 389,
+                'title' => 'receivable_show',
+            ],
+            [
+                'id'    => 390,
+                'title' => 'receivable_delete',
+            ],
+            [
+                'id'    => 391,
+                'title' => 'receivable_access',
+            ],
+            [
+                'id'    => 392,
+                'title' => 'pay_hub_access',
+            ],
+            [
+                'id'    => 393,
+                'title' => 'client_create',
+            ],
+            [
+                'id'    => 394,
+                'title' => 'client_edit',
+            ],
+            [
+                'id'    => 395,
+                'title' => 'client_show',
+            ],
+            [
+                'id'    => 396,
+                'title' => 'client_delete',
+            ],
+            [
+                'id'    => 397,
+                'title' => 'client_access',
+            ],
+            [
+                'id'    => 398,
+                'title' => 'merchant_create',
+            ],
+            [
+                'id'    => 399,
+                'title' => 'merchant_edit',
+            ],
+            [
+                'id'    => 400,
+                'title' => 'merchant_show',
+            ],
+            [
+                'id'    => 401,
+                'title' => 'merchant_delete',
+            ],
+            [
+                'id'    => 402,
+                'title' => 'merchant_access',
+            ],
+            [
+                'id'    => 403,
+                'title' => 'service_create',
+            ],
+            [
+                'id'    => 404,
+                'title' => 'service_edit',
+            ],
+            [
+                'id'    => 405,
+                'title' => 'service_show',
+            ],
+            [
+                'id'    => 406,
+                'title' => 'service_delete',
+            ],
+            [
+                'id'    => 407,
+                'title' => 'service_access',
+            ],
+            [
+                'id'    => 408,
+                'title' => 'transaction_create',
+            ],
+            [
+                'id'    => 409,
+                'title' => 'transaction_edit',
+            ],
+            [
+                'id'    => 410,
+                'title' => 'transaction_show',
+            ],
+            [
+                'id'    => 411,
+                'title' => 'transaction_delete',
+            ],
+            [
+                'id'    => 412,
+                'title' => 'transaction_access',
+            ],
+            [
+                'id'    => 413,
+                'title' => 'dialogue_create',
+            ],
+            [
+                'id'    => 414,
+                'title' => 'dialogue_edit',
+            ],
+            [
+                'id'    => 415,
+                'title' => 'dialogue_show',
+            ],
+            [
+                'id'    => 416,
+                'title' => 'dialogue_delete',
+            ],
+            [
+                'id'    => 417,
+                'title' => 'dialogue_access',
+            ],
+            [
+                'id'    => 418,
+                'title' => 'order_create',
+            ],
+            [
+                'id'    => 419,
+                'title' => 'order_edit',
+            ],
+            [
+                'id'    => 420,
+                'title' => 'order_show',
+            ],
+            [
+                'id'    => 421,
+                'title' => 'order_delete',
+            ],
+            [
+                'id'    => 422,
+                'title' => 'order_access',
+            ],
+            [
+                'id'    => 423,
+                'title' => 'hall_student_create',
+            ],
+            [
+                'id'    => 424,
+                'title' => 'hall_student_edit',
+            ],
+            [
+                'id'    => 425,
+                'title' => 'hall_student_show',
+            ],
+            [
+                'id'    => 426,
+                'title' => 'hall_student_delete',
+            ],
+            [
+                'id'    => 427,
+                'title' => 'hall_student_access',
+            ],
+            [
+                'id'    => 428,
+                'title' => 'user_request_create',
+            ],
+            [
+                'id'    => 429,
+                'title' => 'user_request_edit',
+            ],
+            [
+                'id'    => 430,
+                'title' => 'user_request_show',
+            ],
+            [
+                'id'    => 431,
+                'title' => 'user_request_delete',
+            ],
+            [
+                'id'    => 432,
+                'title' => 'user_request_access',
+            ],
+            [
+                'id'    => 433,
+                'title' => 'result_processing_access',
+            ],
+            [
+                'id'    => 434,
+                'title' => 'reevaluation_paper_create',
+            ],
+            [
+                'id'    => 435,
+                'title' => 'reevaluation_paper_edit',
+            ],
+            [
+                'id'    => 436,
+                'title' => 'reevaluation_paper_show',
+            ],
+            [
+                'id'    => 437,
+                'title' => 'reevaluation_paper_delete',
+            ],
+            [
+                'id'    => 438,
+                'title' => 'reevaluation_paper_access',
+            ],
+            [
+                'id'    => 439,
+                'title' => 'reevaluation_create',
+            ],
+            [
+                'id'    => 440,
+                'title' => 'reevaluation_edit',
+            ],
+            [
+                'id'    => 441,
+                'title' => 'reevaluation_show',
+            ],
+            [
+                'id'    => 442,
+                'title' => 'reevaluation_delete',
+            ],
+            [
+                'id'    => 443,
+                'title' => 'reevaluation_access',
+            ],
+            [
+                'id'    => 444,
                 'title' => 'profile_password_edit',
             ],
         ];

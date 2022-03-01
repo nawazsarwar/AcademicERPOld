@@ -104,6 +104,9 @@ class CoursesController extends Controller
             $table->editColumn('subsidiarizable', function ($row) {
                 return $row->subsidiarizable ? Course::SUBSIDIARIZABLE_RADIO[$row->subsidiarizable] : '';
             });
+            $table->editColumn('creditizable', function ($row) {
+                return $row->creditizable ? Course::CREDITIZABLE_RADIO[$row->creditizable] : '';
+            });
             $table->addColumn('administrable_name', function ($row) {
                 return $row->administrable ? $row->administrable->name : '';
             });

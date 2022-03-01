@@ -34,6 +34,38 @@
                 <span class="help-block">{{ trans('cruds.examinationMark.fields.academic_session_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="season">{{ trans('cruds.examinationMark.fields.season') }}</label>
+                <input class="form-control {{ $errors->has('season') ? 'is-invalid' : '' }}" type="text" name="season" id="season" value="{{ old('season', '') }}">
+                @if($errors->has('season'))
+                    <span class="text-danger">{{ $errors->first('season') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.season_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="registration_id">{{ trans('cruds.examinationMark.fields.registration') }}</label>
+                <select class="form-control select2 {{ $errors->has('registration') ? 'is-invalid' : '' }}" name="registration_id" id="registration_id">
+                    @foreach($registrations as $id => $entry)
+                        <option value="{{ $id }}" {{ old('registration_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('registration'))
+                    <span class="text-danger">{{ $errors->first('registration') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.registration_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="paper_id">{{ trans('cruds.examinationMark.fields.paper') }}</label>
+                <select class="form-control select2 {{ $errors->has('paper') ? 'is-invalid' : '' }}" name="paper_id" id="paper_id" required>
+                    @foreach($papers as $id => $entry)
+                        <option value="{{ $id }}" {{ old('paper_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('paper'))
+                    <span class="text-danger">{{ $errors->first('paper') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.paper_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="sessional">{{ trans('cruds.examinationMark.fields.sessional') }}</label>
                 <input class="form-control {{ $errors->has('sessional') ? 'is-invalid' : '' }}" type="number" name="sessional" id="sessional" value="{{ old('sessional', '') }}" step="1">
                 @if($errors->has('sessional'))
@@ -104,6 +136,54 @@
                     <span class="text-danger">{{ $errors->first('final_result') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.examinationMark.fields.final_result_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="entered_by_id">{{ trans('cruds.examinationMark.fields.entered_by') }}</label>
+                <select class="form-control select2 {{ $errors->has('entered_by') ? 'is-invalid' : '' }}" name="entered_by_id" id="entered_by_id" required>
+                    @foreach($entered_bies as $id => $entry)
+                        <option value="{{ $id }}" {{ old('entered_by_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('entered_by'))
+                    <span class="text-danger">{{ $errors->first('entered_by') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.entered_by_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="entered_at">{{ trans('cruds.examinationMark.fields.entered_at') }}</label>
+                <input class="form-control datetime {{ $errors->has('entered_at') ? 'is-invalid' : '' }}" type="text" name="entered_at" id="entered_at" value="{{ old('entered_at') }}" required>
+                @if($errors->has('entered_at'))
+                    <span class="text-danger">{{ $errors->first('entered_at') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.entered_at_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verified_by_id">{{ trans('cruds.examinationMark.fields.verified_by') }}</label>
+                <select class="form-control select2 {{ $errors->has('verified_by') ? 'is-invalid' : '' }}" name="verified_by_id" id="verified_by_id">
+                    @foreach($verified_bies as $id => $entry)
+                        <option value="{{ $id }}" {{ old('verified_by_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('verified_by'))
+                    <span class="text-danger">{{ $errors->first('verified_by') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.verified_by_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="verified_at">{{ trans('cruds.examinationMark.fields.verified_at') }}</label>
+                <input class="form-control datetime {{ $errors->has('verified_at') ? 'is-invalid' : '' }}" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at') }}">
+                @if($errors->has('verified_at'))
+                    <span class="text-danger">{{ $errors->first('verified_at') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.verified_at_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="result_declaration_date">{{ trans('cruds.examinationMark.fields.result_declaration_date') }}</label>
+                <input class="form-control date {{ $errors->has('result_declaration_date') ? 'is-invalid' : '' }}" type="text" name="result_declaration_date" id="result_declaration_date" value="{{ old('result_declaration_date') }}">
+                @if($errors->has('result_declaration_date'))
+                    <span class="text-danger">{{ $errors->first('result_declaration_date') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.examinationMark.fields.result_declaration_date_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

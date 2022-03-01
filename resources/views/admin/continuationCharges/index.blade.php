@@ -35,6 +35,9 @@
                         {{ trans('cruds.course.fields.code') }}
                     </th>
                     <th>
+                        {{ trans('cruds.continuationCharge.fields.code') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.continuationCharge.fields.nr_total') }}
                     </th>
                     <th>
@@ -115,8 +118,9 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'course_name', name: 'course.name' },
+{ data: 'course_title', name: 'course.title' },
 { data: 'course.code', name: 'course.code' },
+{ data: 'code', name: 'code' },
 { data: 'nr_total', name: 'nr_total' },
 { data: 'nr_first_installment', name: 'nr_first_installment' },
 { data: 'nr_second_installment', name: 'nr_second_installment' },

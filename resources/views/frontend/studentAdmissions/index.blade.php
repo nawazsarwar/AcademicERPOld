@@ -45,6 +45,15 @@
                                         {{ trans('cruds.studentAdmission.fields.faculty_no') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.studentAdmission.fields.session') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.studentAdmission.fields.admission_date') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.studentAdmission.fields.counselling_data') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -69,6 +78,15 @@
                                         </td>
                                         <td>
                                             {{ $studentAdmission->faculty_no ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $studentAdmission->session->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $studentAdmission->admission_date ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $studentAdmission->counselling_data ?? '' }}
                                         </td>
                                         <td>
                                             @can('student_admission_show')

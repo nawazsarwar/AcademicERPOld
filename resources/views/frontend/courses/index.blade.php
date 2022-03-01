@@ -75,6 +75,9 @@
                                         {{ trans('cruds.course.fields.subsidiarizable') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.course.fields.creditizable') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.course.fields.administrable') }}
                                     </th>
                                     <th>
@@ -138,6 +141,9 @@
                                         </td>
                                         <td>
                                             {{ App\Models\Course::SUBSIDIARIZABLE_RADIO[$course->subsidiarizable] ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ App\Models\Course::CREDITIZABLE_RADIO[$course->creditizable] ?? '' }}
                                         </td>
                                         <td>
                                             {{ $course->administrable->name ?? '' }}

@@ -72,6 +72,40 @@
                             <span class="help-block">{{ trans('cruds.studentAdmission.fields.faculty_no_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <label class="required" for="session_id">{{ trans('cruds.studentAdmission.fields.session') }}</label>
+                            <select class="form-control select2" name="session_id" id="session_id" required>
+                                @foreach($sessions as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('session_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('session'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('session') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.studentAdmission.fields.session_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="admission_date">{{ trans('cruds.studentAdmission.fields.admission_date') }}</label>
+                            <input class="form-control date" type="text" name="admission_date" id="admission_date" value="{{ old('admission_date') }}">
+                            @if($errors->has('admission_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('admission_date') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.studentAdmission.fields.admission_date_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="counselling_data">{{ trans('cruds.studentAdmission.fields.counselling_data') }}</label>
+                            <textarea class="form-control" name="counselling_data" id="counselling_data">{{ old('counselling_data') }}</textarea>
+                            @if($errors->has('counselling_data'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('counselling_data') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.studentAdmission.fields.counselling_data_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}
                             </button>

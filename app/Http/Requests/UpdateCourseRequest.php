@@ -42,6 +42,7 @@ class UpdateCourseRequest extends FormRequest
             'code' => [
                 'string',
                 'required',
+                'unique:courses,code,' . request()->route('course')->id,
             ],
             'course_code' => [
                 'string',
@@ -76,6 +77,9 @@ class UpdateCourseRequest extends FormRequest
                 'max:2147483647',
             ],
             'subsidiarizable' => [
+                'required',
+            ],
+            'creditizable' => [
                 'required',
             ],
             'administrable_id' => [

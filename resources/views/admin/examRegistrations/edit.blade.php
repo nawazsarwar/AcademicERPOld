@@ -100,12 +100,12 @@
                 <span class="help-block">{{ trans('cruds.examRegistration.fields.faculty_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="fraction">{{ trans('cruds.examRegistration.fields.fraction') }}</label>
-                <input class="form-control {{ $errors->has('fraction') ? 'is-invalid' : '' }}" type="number" name="fraction" id="fraction" value="{{ old('fraction', $examRegistration->fraction) }}" step="1" required>
-                @if($errors->has('fraction'))
-                    <span class="text-danger">{{ $errors->first('fraction') }}</span>
+                <label class="required" for="part">{{ trans('cruds.examRegistration.fields.part') }}</label>
+                <input class="form-control {{ $errors->has('part') ? 'is-invalid' : '' }}" type="number" name="part" id="part" value="{{ old('part', $examRegistration->part) }}" step="1" required>
+                @if($errors->has('part'))
+                    <span class="text-danger">{{ $errors->first('part') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.examRegistration.fields.fraction_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.examRegistration.fields.part_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="hall_id">{{ trans('cruds.examRegistration.fields.hall') }}</label>
@@ -181,7 +181,7 @@
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.examRegistration.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', $examRegistration->status) }}" step="1">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $examRegistration->status) }}">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif

@@ -89,10 +89,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.examRegistration.fields.fraction') }}
+                            {{ trans('cruds.examRegistration.fields.part') }}
                         </th>
                         <td>
-                            {{ $examRegistration->fraction }}
+                            {{ $examRegistration->part }}
                         </td>
                     </tr>
                     <tr>

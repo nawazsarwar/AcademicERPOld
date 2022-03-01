@@ -74,6 +74,9 @@
                         {{ trans('cruds.course.fields.subsidiarizable') }}
                     </th>
                     <th>
+                        {{ trans('cruds.course.fields.creditizable') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.course.fields.administrable') }}
                     </th>
                     <th>
@@ -154,6 +157,7 @@
 { data: 'duration', name: 'duration' },
 { data: 'total_intake', name: 'total_intake' },
 { data: 'subsidiarizable', name: 'subsidiarizable' },
+{ data: 'creditizable', name: 'creditizable' },
 { data: 'administrable_name', name: 'administrable.name' },
 { data: 'administrable_type', name: 'administrable_type' },
 { data: 'remarks', name: 'remarks' },

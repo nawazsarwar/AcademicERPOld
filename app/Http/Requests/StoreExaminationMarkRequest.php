@@ -25,6 +25,14 @@ class StoreExaminationMarkRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'season' => [
+                'string',
+                'nullable',
+            ],
+            'paper_id' => [
+                'required',
+                'integer',
+            ],
             'sessional' => [
                 'nullable',
                 'integer',
@@ -69,6 +77,22 @@ class StoreExaminationMarkRequest extends FormRequest
             ],
             'final_result' => [
                 'string',
+                'nullable',
+            ],
+            'entered_by_id' => [
+                'required',
+                'integer',
+            ],
+            'entered_at' => [
+                'required',
+                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+            ],
+            'verified_at' => [
+                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+                'nullable',
+            ],
+            'result_declaration_date' => [
+                'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
         ];

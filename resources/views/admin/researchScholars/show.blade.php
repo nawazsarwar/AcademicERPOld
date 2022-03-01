@@ -41,10 +41,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.researchScholar.fields.admission_date') }}
+                        </th>
+                        <td>
+                            {{ $researchScholar->admission_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.researchScholar.fields.supervisor') }}
                         </th>
                         <td>
                             {{ $researchScholar->supervisor->employee_no ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.researchScholar.fields.supervisor_name') }}
+                        </th>
+                        <td>
+                            {{ $researchScholar->supervisor_name }}
                         </td>
                     </tr>
                     <tr>

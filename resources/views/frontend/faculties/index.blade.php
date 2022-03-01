@@ -30,10 +30,10 @@
                                         {{ trans('cruds.faculty.fields.id') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.faculty.fields.name') }}
+                                        {{ trans('cruds.faculty.fields.code') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.faculty.fields.code') }}
+                                        {{ trans('cruds.faculty.fields.name') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.faculty.fields.color') }}
@@ -56,10 +56,10 @@
                                             {{ $faculty->id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $faculty->name ?? '' }}
+                                            {{ $faculty->code ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $faculty->code ?? '' }}
+                                            {{ $faculty->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $faculty->color ?? '' }}

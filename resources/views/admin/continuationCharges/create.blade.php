@@ -22,6 +22,14 @@
                 <span class="help-block">{{ trans('cruds.continuationCharge.fields.course_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="code">{{ trans('cruds.continuationCharge.fields.code') }}</label>
+                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', '') }}">
+                @if($errors->has('code'))
+                    <span class="text-danger">{{ $errors->first('code') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.continuationCharge.fields.code_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="nr_total">{{ trans('cruds.continuationCharge.fields.nr_total') }}</label>
                 <input class="form-control {{ $errors->has('nr_total') ? 'is-invalid' : '' }}" type="number" name="nr_total" id="nr_total" value="{{ old('nr_total', '') }}" step="0.01">
                 @if($errors->has('nr_total'))

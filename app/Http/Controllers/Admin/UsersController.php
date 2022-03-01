@@ -63,7 +63,7 @@ class UsersController extends Controller
             $table->editColumn('roles', function ($row) {
                 $labels = [];
                 foreach ($row->roles as $role) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->name);
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
                 }
 
                 return implode(' ', $labels);
@@ -74,11 +74,11 @@ class UsersController extends Controller
             $table->editColumn('revoked', function ($row) {
                 return $row->revoked ? $row->revoked : '';
             });
-            $table->editColumn('remarks', function ($row) {
-                return $row->remarks ? $row->remarks : '';
-            });
             $table->editColumn('applications', function ($row) {
                 return $row->applications ? $row->applications : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'two_factor', 'roles']);
@@ -93,7 +93,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('name', 'id');
+        $roles = Role::pluck('title', 'id');
 
         return view('admin.users.create', compact('roles'));
     }
@@ -110,7 +110,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('name', 'id');
+        $roles = Role::pluck('title', 'id');
 
         $user->load('roles');
 

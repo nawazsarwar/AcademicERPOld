@@ -120,7 +120,7 @@
 { data: 'email', name: 'email' },
 { data: 'email_verified_at', name: 'email_verified_at' },
 { data: 'two_factor', name: 'two_factor' },
-{ data: 'roles', name: 'roles.name' },
+{ data: 'roles', name: 'roles.title' },
 { data: 'role', name: 'role' },
 { data: 'revoked', name: 'revoked' },
 { data: 'applications', name: 'applications' },

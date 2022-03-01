@@ -56,19 +56,19 @@
                             <span class="help-block">{{ trans('cruds.papersRegistration.fields.student_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label class="required">{{ trans('cruds.papersRegistration.fields.registration_mode') }}</label>
-                            @foreach(App\Models\PapersRegistration::REGISTRATION_MODE_RADIO as $key => $label)
+                            <label class="required">{{ trans('cruds.papersRegistration.fields.mode') }}</label>
+                            @foreach(App\Models\PapersRegistration::MODE_RADIO as $key => $label)
                                 <div>
-                                    <input type="radio" id="registration_mode_{{ $key }}" name="registration_mode" value="{{ $key }}" {{ old('registration_mode', $papersRegistration->registration_mode) === (string) $key ? 'checked' : '' }} required>
-                                    <label for="registration_mode_{{ $key }}">{{ $label }}</label>
+                                    <input type="radio" id="mode_{{ $key }}" name="mode" value="{{ $key }}" {{ old('mode', $papersRegistration->mode) === (string) $key ? 'checked' : '' }} required>
+                                    <label for="mode_{{ $key }}">{{ $label }}</label>
                                 </div>
                             @endforeach
-                            @if($errors->has('registration_mode'))
+                            @if($errors->has('mode'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('registration_mode') }}
+                                    {{ $errors->first('mode') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.papersRegistration.fields.registration_mode_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.papersRegistration.fields.mode_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="profile">{{ trans('cruds.papersRegistration.fields.profile') }}</label>
@@ -131,14 +131,14 @@
                             <span class="help-block">{{ trans('cruds.papersRegistration.fields.paper_title_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="fraction">{{ trans('cruds.papersRegistration.fields.fraction') }}</label>
-                            <input class="form-control" type="number" name="fraction" id="fraction" value="{{ old('fraction', $papersRegistration->fraction) }}" step="1">
-                            @if($errors->has('fraction'))
+                            <label for="part">{{ trans('cruds.papersRegistration.fields.part') }}</label>
+                            <input class="form-control" type="number" name="part" id="part" value="{{ old('part', $papersRegistration->part) }}" step="1">
+                            @if($errors->has('part'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('fraction') }}
+                                    {{ $errors->first('part') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.papersRegistration.fields.fraction_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.papersRegistration.fields.part_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="credits">{{ trans('cruds.papersRegistration.fields.credits') }}</label>
