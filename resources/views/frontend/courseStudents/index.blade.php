@@ -41,7 +41,7 @@
                                         {{ trans('cruds.courseStudent.fields.faculty_no') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.courseStudent.fields.admitted_in') }}
+                                        {{ trans('cruds.courseStudent.fields.session_admitted') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.courseStudent.fields.admitted_on') }}
@@ -94,7 +94,7 @@
                                             {{ $courseStudent->faculty_no ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $courseStudent->admitted_in->name ?? '' }}
+                                            {{ $courseStudent->session_admitted->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $courseStudent->admitted_on ?? '' }}

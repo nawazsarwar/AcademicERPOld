@@ -60,10 +60,10 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.courseStudent.fields.admitted_in') }}
+                                        {{ trans('cruds.courseStudent.fields.session_admitted') }}
                                     </th>
                                     <td>
-                                        {{ $courseStudent->admitted_in->name ?? '' }}
+                                        {{ $courseStudent->session_admitted->name ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>

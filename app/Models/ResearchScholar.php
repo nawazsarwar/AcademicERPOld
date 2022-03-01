@@ -59,6 +59,7 @@ class ResearchScholar extends Model
     public $table = 'research_scholars';
 
     protected $dates = [
+        'admission_date',
         'bos_date',
         'casr_date',
         'pre_submission_date',
@@ -71,7 +72,9 @@ class ResearchScholar extends Model
     protected $fillable = [
         'registration_id',
         'status',
+        'admission_date',
         'supervisor_id',
+        'supervisor_name',
         'co_supervisor_name',
         'co_supervisor_address',
         'research_topic',
@@ -96,6 +99,16 @@ class ResearchScholar extends Model
     public function registration()
     {
         return $this->belongsTo(ExamRegistration::class, 'registration_id');
+    }
+
+    public function getAdmissionDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setAdmissionDateAttribute($value)
+    {
+        $this->attributes['admission_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function supervisor()

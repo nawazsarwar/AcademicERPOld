@@ -181,7 +181,7 @@
                             <label class="required">{{ trans('cruds.course.fields.subsidiarizable') }}</label>
                             @foreach(App\Models\Course::SUBSIDIARIZABLE_RADIO as $key => $label)
                                 <div>
-                                    <input type="radio" id="subsidiarizable_{{ $key }}" name="subsidiarizable" value="{{ $key }}" {{ old('subsidiarizable', '0') === (string) $key ? 'checked' : '' }} required>
+                                    <input type="radio" id="subsidiarizable_{{ $key }}" name="subsidiarizable" value="{{ $key }}" {{ old('subsidiarizable', '') === (string) $key ? 'checked' : '' }} required>
                                     <label for="subsidiarizable_{{ $key }}">{{ $label }}</label>
                                 </div>
                             @endforeach
@@ -191,6 +191,21 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.course.fields.subsidiarizable_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required">{{ trans('cruds.course.fields.creditizable') }}</label>
+                            @foreach(App\Models\Course::CREDITIZABLE_RADIO as $key => $label)
+                                <div>
+                                    <input type="radio" id="creditizable_{{ $key }}" name="creditizable" value="{{ $key }}" {{ old('creditizable', '') === (string) $key ? 'checked' : '' }} required>
+                                    <label for="creditizable_{{ $key }}">{{ $label }}</label>
+                                </div>
+                            @endforeach
+                            @if($errors->has('creditizable'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('creditizable') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.course.fields.creditizable_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label class="required" for="administrable_id">{{ trans('cruds.course.fields.administrable') }}</label>

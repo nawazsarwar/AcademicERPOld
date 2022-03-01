@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 @can('controllers_office_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/students*") ? "menu-open" : "" }} {{ request()->is("admin/degrees*") ? "menu-open" : "" }} {{ request()->is("admin/courses*") ? "menu-open" : "" }} {{ request()->is("admin/papers*") ? "menu-open" : "" }} {{ request()->is("admin/enrolments*") ? "menu-open" : "" }} {{ request()->is("admin/boards*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/students*") ? "menu-open" : "" }} {{ request()->is("admin/degrees*") ? "menu-open" : "" }} {{ request()->is("admin/courses*") ? "menu-open" : "" }} {{ request()->is("admin/papers*") ? "menu-open" : "" }} {{ request()->is("admin/enrolments*") ? "menu-open" : "" }} {{ request()->is("admin/boards*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -109,8 +109,35 @@
                                     </a>
                                 </li>
                             @endcan
+                            @can('admission_access')
+                                <li class="nav-item has-treeview {{ request()->is("admin/student-admissions*") ? "menu-open" : "" }}">
+                                    <a class="nav-link nav-dropdown-toggle" href="#">
+                                        <i class="fa-fw nav-icon fas fa-sign-in-alt">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.admission.title') }}
+                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @can('student_admission_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.student-admissions.index") }}" class="nav-link {{ request()->is("admin/student-admissions") || request()->is("admin/student-admissions/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.studentAdmission.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                    </ul>
+                                </li>
+                            @endcan
                             @can('examination_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/course-students*") ? "menu-open" : "" }} {{ request()->is("admin/registration-forms*") ? "menu-open" : "" }} {{ request()->is("admin/exam-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/papers-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/examination-schedules*") ? "menu-open" : "" }} {{ request()->is("admin/examiners*") ? "menu-open" : "" }} {{ request()->is("admin/examination-marks*") ? "menu-open" : "" }}">
+                                <li class="nav-item has-treeview {{ request()->is("admin/course-students*") ? "menu-open" : "" }} {{ request()->is("admin/registration-forms*") ? "menu-open" : "" }} {{ request()->is("admin/exam-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/papers-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/examination-schedules*") ? "menu-open" : "" }} {{ request()->is("admin/examiners*") ? "menu-open" : "" }}">
                                     <a class="nav-link nav-dropdown-toggle" href="#">
                                         <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -193,6 +220,21 @@
                                                 </a>
                                             </li>
                                         @endcan
+                                    </ul>
+                                </li>
+                            @endcan
+                            @can('result_processing_access')
+                                <li class="nav-item has-treeview {{ request()->is("admin/examination-marks*") ? "menu-open" : "" }} {{ request()->is("admin/reevaluation-papers*") ? "menu-open" : "" }} {{ request()->is("admin/reevaluations*") ? "menu-open" : "" }}">
+                                    <a class="nav-link nav-dropdown-toggle" href="#">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.resultProcessing.title') }}
+                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
                                         @can('examination_mark_access')
                                             <li class="nav-item">
                                                 <a href="{{ route("admin.examination-marks.index") }}" class="nav-link {{ request()->is("admin/examination-marks") || request()->is("admin/examination-marks/*") ? "active" : "" }}">
@@ -201,6 +243,57 @@
                                                     </i>
                                                     <p>
                                                         {{ trans('cruds.examinationMark.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('reevaluation_paper_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.reevaluation-papers.index") }}" class="nav-link {{ request()->is("admin/reevaluation-papers") || request()->is("admin/reevaluation-papers/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.reevaluationPaper.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('reevaluation_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.reevaluations.index") }}" class="nav-link {{ request()->is("admin/reevaluations") || request()->is("admin/reevaluations/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.reevaluation.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                    </ul>
+                                </li>
+                            @endcan
+                            @can('research_unit_access')
+                                <li class="nav-item has-treeview {{ request()->is("admin/research-scholars*") ? "menu-open" : "" }}">
+                                    <a class="nav-link nav-dropdown-toggle" href="#">
+                                        <i class="fa-fw nav-icon fab fa-researchgate">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.researchUnit.title') }}
+                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @can('research_scholar_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.research-scholars.index") }}" class="nav-link {{ request()->is("admin/research-scholars") || request()->is("admin/research-scholars/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.researchScholar.title') }}
                                                     </p>
                                                 </a>
                                             </li>
@@ -343,65 +436,11 @@
                                     </ul>
                                 </li>
                             @endcan
-                            @can('admission_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/student-admissions*") ? "menu-open" : "" }}">
-                                    <a class="nav-link nav-dropdown-toggle" href="#">
-                                        <i class="fa-fw nav-icon fas fa-sign-in-alt">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.admission.title') }}
-                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        @can('student_admission_access')
-                                            <li class="nav-item">
-                                                <a href="{{ route("admin.student-admissions.index") }}" class="nav-link {{ request()->is("admin/student-admissions") || request()->is("admin/student-admissions/*") ? "active" : "" }}">
-                                                    <i class="fa-fw nav-icon fas fa-cogs">
-
-                                                    </i>
-                                                    <p>
-                                                        {{ trans('cruds.studentAdmission.title') }}
-                                                    </p>
-                                                </a>
-                                            </li>
-                                        @endcan
-                                    </ul>
-                                </li>
-                            @endcan
-                            @can('research_unit_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/research-scholars*") ? "menu-open" : "" }}">
-                                    <a class="nav-link nav-dropdown-toggle" href="#">
-                                        <i class="fa-fw nav-icon fab fa-researchgate">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.researchUnit.title') }}
-                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        @can('research_scholar_access')
-                                            <li class="nav-item">
-                                                <a href="{{ route("admin.research-scholars.index") }}" class="nav-link {{ request()->is("admin/research-scholars") || request()->is("admin/research-scholars/*") ? "active" : "" }}">
-                                                    <i class="fa-fw nav-icon fas fa-cogs">
-
-                                                    </i>
-                                                    <p>
-                                                        {{ trans('cruds.researchScholar.title') }}
-                                                    </p>
-                                                </a>
-                                            </li>
-                                        @endcan
-                                    </ul>
-                                </li>
-                            @endcan
                         </ul>
                     </li>
                 @endcan
                 @can('demographic_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/people*") ? "menu-open" : "" }} {{ request()->is("admin/addresses*") ? "menu-open" : "" }} {{ request()->is("admin/phones*") ? "menu-open" : "" }} {{ request()->is("admin/biometrics*") ? "menu-open" : "" }} {{ request()->is("admin/academic-qualifications*") ? "menu-open" : "" }} {{ request()->is("admin/work-experiences*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/people*") ? "menu-open" : "" }} {{ request()->is("admin/addresses*") ? "menu-open" : "" }} {{ request()->is("admin/phones*") ? "menu-open" : "" }} {{ request()->is("admin/biometrics*") ? "menu-open" : "" }} {{ request()->is("admin/academic-qualifications*") ? "menu-open" : "" }} {{ request()->is("admin/work-experiences*") ? "menu-open" : "" }} {{ request()->is("admin/orders*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-user-astronaut">
 
@@ -480,6 +519,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.workExperience.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('order_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.orders.index") }}" class="nav-link {{ request()->is("admin/orders") || request()->is("admin/orders/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cart-plus">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.order.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -734,7 +785,7 @@
                     </li>
                 @endcan
                 @can('dean_students_welfare_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/halls*") ? "menu-open" : "" }} {{ request()->is("admin/hostels*") ? "menu-open" : "" }} {{ request()->is("admin/hostel-rooms*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/halls*") ? "menu-open" : "" }} {{ request()->is("admin/hostels*") ? "menu-open" : "" }} {{ request()->is("admin/hostel-rooms*") ? "menu-open" : "" }} {{ request()->is("admin/hall-students*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -781,11 +832,23 @@
                                     </a>
                                 </li>
                             @endcan
+                            @can('hall_student_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.hall-students.index") }}" class="nav-link {{ request()->is("admin/hall-students") || request()->is("admin/hall-students/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-h-square">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.hallStudent.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                 @endcan
                 @can('user_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/organizational-emails*") ? "menu-open" : "" }} {{ request()->is("admin/user-alerts*") ? "menu-open" : "" }} {{ request()->is("admin/audit-logs*") ? "menu-open" : "" }} {{ request()->is("admin/computer-centre-datas*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/organizational-emails*") ? "menu-open" : "" }} {{ request()->is("admin/user-alerts*") ? "menu-open" : "" }} {{ request()->is("admin/audit-logs*") ? "menu-open" : "" }} {{ request()->is("admin/computer-centre-datas*") ? "menu-open" : "" }} {{ request()->is("admin/user-requests*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-users">
 
@@ -876,6 +939,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.computerCentreData.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('user_request_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.user-requests.index") }}" class="nav-link {{ request()->is("admin/user-requests") || request()->is("admin/user-requests/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-code">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.userRequest.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -1034,7 +1109,7 @@
                     </li>
                 @endcan
                 @can('finance_office_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/admission-charges*") ? "menu-open" : "" }} {{ request()->is("admin/continuation-charges*") ? "menu-open" : "" }} {{ request()->is("admin/salary-datas*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/admission-charges*") ? "menu-open" : "" }} {{ request()->is("admin/continuation-charges*") ? "menu-open" : "" }} {{ request()->is("admin/salary-datas*") ? "menu-open" : "" }} {{ request()->is("admin/receivables*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-file-invoice-dollar">
 
@@ -1077,6 +1152,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.salaryData.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('receivable_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.receivables.index") }}" class="nav-link {{ request()->is("admin/receivables") || request()->is("admin/receivables/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-dollar-sign">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.receivable.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -1140,6 +1227,81 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.contentTag.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('pay_hub_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/clients*") ? "menu-open" : "" }} {{ request()->is("admin/merchants*") ? "menu-open" : "" }} {{ request()->is("admin/services*") ? "menu-open" : "" }} {{ request()->is("admin/transactions*") ? "menu-open" : "" }} {{ request()->is("admin/dialogues*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-money-bill-wave">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.payHub.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('client_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.clients.index") }}" class="nav-link {{ request()->is("admin/clients") || request()->is("admin/clients/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.client.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('merchant_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.merchants.index") }}" class="nav-link {{ request()->is("admin/merchants") || request()->is("admin/merchants/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.merchant.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('service_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.services.index") }}" class="nav-link {{ request()->is("admin/services") || request()->is("admin/services/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.service.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('transaction_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.transactions.index") }}" class="nav-link {{ request()->is("admin/transactions") || request()->is("admin/transactions/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.transaction.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('dialogue_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.dialogues.index") }}" class="nav-link {{ request()->is("admin/dialogues") || request()->is("admin/dialogues/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.dialogue.title') }}
                                         </p>
                                     </a>
                                 </li>

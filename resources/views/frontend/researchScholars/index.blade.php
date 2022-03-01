@@ -36,7 +36,13 @@
                                         {{ trans('cruds.researchScholar.fields.status') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.researchScholar.fields.admission_date') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.researchScholar.fields.supervisor') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.researchScholar.fields.supervisor_name') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.researchScholar.fields.co_supervisor_name') }}
@@ -104,7 +110,13 @@
                                             {{ App\Models\ResearchScholar::STATUS_SELECT[$researchScholar->status] ?? '' }}
                                         </td>
                                         <td>
+                                            {{ $researchScholar->admission_date ?? '' }}
+                                        </td>
+                                        <td>
                                             {{ $researchScholar->supervisor->employee_no ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $researchScholar->supervisor_name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $researchScholar->co_supervisor_name ?? '' }}

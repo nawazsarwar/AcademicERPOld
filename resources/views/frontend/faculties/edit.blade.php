@@ -14,16 +14,6 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group">
-                            <label class="required" for="name">{{ trans('cruds.faculty.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $faculty->name) }}" required>
-                            @if($errors->has('name'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('name') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.faculty.fields.name_helper') }}</span>
-                        </div>
-                        <div class="form-group">
                             <label for="code">{{ trans('cruds.faculty.fields.code') }}</label>
                             <input class="form-control" type="text" name="code" id="code" value="{{ old('code', $faculty->code) }}">
                             @if($errors->has('code'))
@@ -32,6 +22,16 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.faculty.fields.code_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="name">{{ trans('cruds.faculty.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $faculty->name) }}" required>
+                            @if($errors->has('name'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.faculty.fields.name_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="color">{{ trans('cruds.faculty.fields.color') }}</label>

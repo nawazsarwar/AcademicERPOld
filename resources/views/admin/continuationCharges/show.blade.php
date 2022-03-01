@@ -28,7 +28,15 @@
                             {{ trans('cruds.continuationCharge.fields.course') }}
                         </th>
                         <td>
-                            {{ $continuationCharge->course->name ?? '' }}
+                            {{ $continuationCharge->course->title ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.continuationCharge.fields.code') }}
+                        </th>
+                        <td>
+                            {{ $continuationCharge->code }}
                         </td>
                     </tr>
                     <tr>

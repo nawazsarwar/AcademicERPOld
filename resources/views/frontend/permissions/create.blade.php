@@ -14,14 +14,14 @@
                         @method('POST')
                         @csrf
                         <div class="form-group">
-                            <label class="required" for="name">{{ trans('cruds.permission.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                            @if($errors->has('name'))
+                            <label class="required" for="title">{{ trans('cruds.permission.fields.title') }}</label>
+                            <input class="form-control" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                            @if($errors->has('title'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('name') }}
+                                    {{ $errors->first('title') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.permission.fields.name_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.permission.fields.title_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="guard_name">{{ trans('cruds.permission.fields.guard_name') }}</label>

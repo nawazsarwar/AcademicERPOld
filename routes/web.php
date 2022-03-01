@@ -410,6 +410,54 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('examination-marks/destroy', 'ExaminationMarksController@massDestroy')->name('examination-marks.massDestroy');
     Route::resource('examination-marks', 'ExaminationMarksController');
 
+    // Receivables
+    Route::delete('receivables/destroy', 'ReceivablesController@massDestroy')->name('receivables.massDestroy');
+    Route::post('receivables/parse-csv-import', 'ReceivablesController@parseCsvImport')->name('receivables.parseCsvImport');
+    Route::post('receivables/process-csv-import', 'ReceivablesController@processCsvImport')->name('receivables.processCsvImport');
+    Route::resource('receivables', 'ReceivablesController');
+
+    // Clients
+    Route::delete('clients/destroy', 'ClientsController@massDestroy')->name('clients.massDestroy');
+    Route::resource('clients', 'ClientsController');
+
+    // Merchants
+    Route::delete('merchants/destroy', 'MerchantsController@massDestroy')->name('merchants.massDestroy');
+    Route::resource('merchants', 'MerchantsController');
+
+    // Services
+    Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
+    Route::resource('services', 'ServicesController');
+
+    // Transactions
+    Route::delete('transactions/destroy', 'TransactionsController@massDestroy')->name('transactions.massDestroy');
+    Route::resource('transactions', 'TransactionsController');
+
+    // Dialogues
+    Route::delete('dialogues/destroy', 'DialoguesController@massDestroy')->name('dialogues.massDestroy');
+    Route::resource('dialogues', 'DialoguesController');
+
+    // Orders
+    Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
+    Route::resource('orders', 'OrdersController');
+
+    // Hall Student
+    Route::delete('hall-students/destroy', 'HallStudentController@massDestroy')->name('hall-students.massDestroy');
+    Route::post('hall-students/parse-csv-import', 'HallStudentController@parseCsvImport')->name('hall-students.parseCsvImport');
+    Route::post('hall-students/process-csv-import', 'HallStudentController@processCsvImport')->name('hall-students.processCsvImport');
+    Route::resource('hall-students', 'HallStudentController');
+
+    // User Requests
+    Route::delete('user-requests/destroy', 'UserRequestsController@massDestroy')->name('user-requests.massDestroy');
+    Route::resource('user-requests', 'UserRequestsController');
+
+    // Reevaluation Papers
+    Route::delete('reevaluation-papers/destroy', 'ReevaluationPapersController@massDestroy')->name('reevaluation-papers.massDestroy');
+    Route::resource('reevaluation-papers', 'ReevaluationPapersController');
+
+    // Reevaluations
+    Route::delete('reevaluations/destroy', 'ReevaluationsController@massDestroy')->name('reevaluations.massDestroy');
+    Route::resource('reevaluations', 'ReevaluationsController');
+
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
@@ -746,6 +794,50 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Examination Marks
     Route::delete('examination-marks/destroy', 'ExaminationMarksController@massDestroy')->name('examination-marks.massDestroy');
     Route::resource('examination-marks', 'ExaminationMarksController');
+
+    // Receivables
+    Route::delete('receivables/destroy', 'ReceivablesController@massDestroy')->name('receivables.massDestroy');
+    Route::resource('receivables', 'ReceivablesController');
+
+    // Clients
+    Route::delete('clients/destroy', 'ClientsController@massDestroy')->name('clients.massDestroy');
+    Route::resource('clients', 'ClientsController');
+
+    // Merchants
+    Route::delete('merchants/destroy', 'MerchantsController@massDestroy')->name('merchants.massDestroy');
+    Route::resource('merchants', 'MerchantsController');
+
+    // Services
+    Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
+    Route::resource('services', 'ServicesController');
+
+    // Transactions
+    Route::delete('transactions/destroy', 'TransactionsController@massDestroy')->name('transactions.massDestroy');
+    Route::resource('transactions', 'TransactionsController');
+
+    // Dialogues
+    Route::delete('dialogues/destroy', 'DialoguesController@massDestroy')->name('dialogues.massDestroy');
+    Route::resource('dialogues', 'DialoguesController');
+
+    // Orders
+    Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
+    Route::resource('orders', 'OrdersController');
+
+    // Hall Student
+    Route::delete('hall-students/destroy', 'HallStudentController@massDestroy')->name('hall-students.massDestroy');
+    Route::resource('hall-students', 'HallStudentController');
+
+    // User Requests
+    Route::delete('user-requests/destroy', 'UserRequestsController@massDestroy')->name('user-requests.massDestroy');
+    Route::resource('user-requests', 'UserRequestsController');
+
+    // Reevaluation Papers
+    Route::delete('reevaluation-papers/destroy', 'ReevaluationPapersController@massDestroy')->name('reevaluation-papers.massDestroy');
+    Route::resource('reevaluation-papers', 'ReevaluationPapersController');
+
+    // Reevaluations
+    Route::delete('reevaluations/destroy', 'ReevaluationsController@massDestroy')->name('reevaluations.massDestroy');
+    Route::resource('reevaluations', 'ReevaluationsController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

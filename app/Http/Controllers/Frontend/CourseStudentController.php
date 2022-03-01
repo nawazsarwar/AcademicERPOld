@@ -22,7 +22,7 @@ class CourseStudentController extends Controller
     {
         abort_if(Gate::denies('course_student_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $courseStudents = CourseStudent::with(['course', 'user', 'student', 'admitted_in', 'verification_status', 'verified_by'])->get();
+        $courseStudents = CourseStudent::with(['course', 'user', 'student', 'session_admitted', 'verification_status', 'verified_by'])->get();
 
         return view('frontend.courseStudents.index', compact('courseStudents'));
     }
@@ -37,13 +37,13 @@ class CourseStudentController extends Controller
 
         $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $admitted_ins = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $session_admitteds = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $verification_statuses = VerificationStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $verified_bies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.courseStudents.create', compact('admitted_ins', 'courses', 'students', 'users', 'verification_statuses', 'verified_bies'));
+        return view('frontend.courseStudents.create', compact('courses', 'session_admitteds', 'students', 'users', 'verification_statuses', 'verified_bies'));
     }
 
     public function store(StoreCourseStudentRequest $request)
@@ -63,15 +63,15 @@ class CourseStudentController extends Controller
 
         $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $admitted_ins = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $session_admitteds = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $verification_statuses = VerificationStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $verified_bies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $courseStudent->load('course', 'user', 'student', 'admitted_in', 'verification_status', 'verified_by');
+        $courseStudent->load('course', 'user', 'student', 'session_admitted', 'verification_status', 'verified_by');
 
-        return view('frontend.courseStudents.edit', compact('admitted_ins', 'courseStudent', 'courses', 'students', 'users', 'verification_statuses', 'verified_bies'));
+        return view('frontend.courseStudents.edit', compact('courseStudent', 'courses', 'session_admitteds', 'students', 'users', 'verification_statuses', 'verified_bies'));
     }
 
     public function update(UpdateCourseStudentRequest $request, CourseStudent $courseStudent)
@@ -85,7 +85,7 @@ class CourseStudentController extends Controller
     {
         abort_if(Gate::denies('course_student_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $courseStudent->load('course', 'user', 'student', 'admitted_in', 'verification_status', 'verified_by');
+        $courseStudent->load('course', 'user', 'student', 'session_admitted', 'verification_status', 'verified_by');
 
         return view('frontend.courseStudents.show', compact('courseStudent'));
     }

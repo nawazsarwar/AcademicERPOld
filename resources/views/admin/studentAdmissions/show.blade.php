@@ -63,6 +63,30 @@
                             {{ $studentAdmission->faculty_no }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.studentAdmission.fields.session') }}
+                        </th>
+                        <td>
+                            {{ $studentAdmission->session->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.studentAdmission.fields.admission_date') }}
+                        </th>
+                        <td>
+                            {{ $studentAdmission->admission_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.studentAdmission.fields.counselling_data') }}
+                        </th>
+                        <td>
+                            {{ $studentAdmission->counselling_data }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

@@ -168,4 +168,19 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Research Scholars
     Route::apiResource('research-scholars', 'ResearchScholarsApiController');
+
+    // Receivables
+    Route::apiResource('receivables', 'ReceivablesApiController');
+
+    // Transactions
+    Route::apiResource('transactions', 'TransactionsApiController');
+
+    // Dialogues
+    Route::apiResource('dialogues', 'DialoguesApiController');
+
+    // Orders
+    Route::apiResource('orders', 'OrdersApiController');
+
+    // Hall Student
+    Route::apiResource('hall-students', 'HallStudentApiController');
 });

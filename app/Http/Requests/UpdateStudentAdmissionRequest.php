@@ -41,6 +41,14 @@ class UpdateStudentAdmissionRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'session_id' => [
+                'required',
+                'integer',
+            ],
+            'admission_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
         ];
     }
 }

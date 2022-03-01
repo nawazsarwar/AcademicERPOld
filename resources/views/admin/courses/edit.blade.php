@@ -160,6 +160,19 @@
                 <span class="help-block">{{ trans('cruds.course.fields.subsidiarizable_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required">{{ trans('cruds.course.fields.creditizable') }}</label>
+                @foreach(App\Models\Course::CREDITIZABLE_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('creditizable') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="creditizable_{{ $key }}" name="creditizable" value="{{ $key }}" {{ old('creditizable', $course->creditizable) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="creditizable_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('creditizable'))
+                    <span class="text-danger">{{ $errors->first('creditizable') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.creditizable_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="administrable_id">{{ trans('cruds.course.fields.administrable') }}</label>
                 <select class="form-control select2 {{ $errors->has('administrable') ? 'is-invalid' : '' }}" name="administrable_id" id="administrable_id" required>
                     @foreach($administrables as $id => $entry)

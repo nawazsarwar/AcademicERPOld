@@ -14,9 +14,14 @@ class Course extends Model
     use Auditable;
     use HasFactory;
 
+    public const CREDITIZABLE_RADIO = [
+        'Yes' => 'Yes',
+        'No'  => 'No',
+    ];
+
     public const SUBSIDIARIZABLE_RADIO = [
-        '1' => 'Yes',
-        '0' => 'No',
+        'Yes' => 'Yes',
+        'No'  => 'No',
     ];
 
     public $table = 'courses';
@@ -43,6 +48,7 @@ class Course extends Model
         'duration',
         'total_intake',
         'subsidiarizable',
+        'creditizable',
         'administrable_id',
         'administrable_type',
         'remarks',

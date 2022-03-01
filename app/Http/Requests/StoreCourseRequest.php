@@ -42,6 +42,7 @@ class StoreCourseRequest extends FormRequest
             'code' => [
                 'string',
                 'required',
+                'unique:courses',
             ],
             'course_code' => [
                 'string',
@@ -76,6 +77,9 @@ class StoreCourseRequest extends FormRequest
                 'max:2147483647',
             ],
             'subsidiarizable' => [
+                'required',
+            ],
+            'creditizable' => [
                 'required',
             ],
             'administrable_id' => [

@@ -42,6 +42,44 @@
                             <span class="help-block">{{ trans('cruds.examinationMark.fields.academic_session_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <label for="season">{{ trans('cruds.examinationMark.fields.season') }}</label>
+                            <input class="form-control" type="text" name="season" id="season" value="{{ old('season', $examinationMark->season) }}">
+                            @if($errors->has('season'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('season') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.season_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="registration_id">{{ trans('cruds.examinationMark.fields.registration') }}</label>
+                            <select class="form-control select2" name="registration_id" id="registration_id">
+                                @foreach($registrations as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('registration_id') ? old('registration_id') : $examinationMark->registration->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('registration'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('registration') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.registration_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="paper_id">{{ trans('cruds.examinationMark.fields.paper') }}</label>
+                            <select class="form-control select2" name="paper_id" id="paper_id" required>
+                                @foreach($papers as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('paper_id') ? old('paper_id') : $examinationMark->paper->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('paper'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('paper') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.paper_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label for="sessional">{{ trans('cruds.examinationMark.fields.sessional') }}</label>
                             <input class="form-control" type="number" name="sessional" id="sessional" value="{{ old('sessional', $examinationMark->sessional) }}" step="1">
                             @if($errors->has('sessional'))
@@ -130,6 +168,64 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.examinationMark.fields.final_result_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="entered_by_id">{{ trans('cruds.examinationMark.fields.entered_by') }}</label>
+                            <select class="form-control select2" name="entered_by_id" id="entered_by_id" required>
+                                @foreach($entered_bies as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('entered_by_id') ? old('entered_by_id') : $examinationMark->entered_by->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('entered_by'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('entered_by') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.entered_by_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="entered_at">{{ trans('cruds.examinationMark.fields.entered_at') }}</label>
+                            <input class="form-control datetime" type="text" name="entered_at" id="entered_at" value="{{ old('entered_at', $examinationMark->entered_at) }}" required>
+                            @if($errors->has('entered_at'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('entered_at') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.entered_at_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="verified_by_id">{{ trans('cruds.examinationMark.fields.verified_by') }}</label>
+                            <select class="form-control select2" name="verified_by_id" id="verified_by_id">
+                                @foreach($verified_bies as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('verified_by_id') ? old('verified_by_id') : $examinationMark->verified_by->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('verified_by'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('verified_by') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.verified_by_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="verified_at">{{ trans('cruds.examinationMark.fields.verified_at') }}</label>
+                            <input class="form-control datetime" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at', $examinationMark->verified_at) }}">
+                            @if($errors->has('verified_at'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('verified_at') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.verified_at_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="result_declaration_date">{{ trans('cruds.examinationMark.fields.result_declaration_date') }}</label>
+                            <input class="form-control date" type="text" name="result_declaration_date" id="result_declaration_date" value="{{ old('result_declaration_date', $examinationMark->result_declaration_date) }}">
+                            @if($errors->has('result_declaration_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('result_declaration_date') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.examinationMark.fields.result_declaration_date_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

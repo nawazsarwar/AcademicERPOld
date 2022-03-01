@@ -25,18 +25,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.faculty.fields.name') }}
-                        </th>
-                        <td>
-                            {{ $faculty->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.faculty.fields.code') }}
                         </th>
                         <td>
                             {{ $faculty->code }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.faculty.fields.name') }}
+                        </th>
+                        <td>
+                            {{ $faculty->name }}
                         </td>
                     </tr>
                     <tr>

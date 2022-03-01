@@ -24,9 +24,17 @@ class UpdateResearchScholarRequest extends FormRequest
             'status' => [
                 'required',
             ],
+            'admission_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
             'supervisor_id' => [
                 'required',
                 'integer',
+            ],
+            'supervisor_name' => [
+                'string',
+                'nullable',
             ],
             'co_supervisor_name' => [
                 'string',

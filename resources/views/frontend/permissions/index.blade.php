@@ -26,7 +26,7 @@
                                         {{ trans('cruds.permission.fields.id') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.permission.fields.name') }}
+                                        {{ trans('cruds.permission.fields.title') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.permission.fields.guard_name') }}
@@ -43,7 +43,7 @@
                                             {{ $permission->id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $permission->name ?? '' }}
+                                            {{ $permission->title ?? '' }}
                                         </td>
                                         <td>
                                             {{ $permission->guard_name ?? '' }}

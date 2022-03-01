@@ -29,10 +29,10 @@
                         {{ trans('cruds.faculty.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.faculty.fields.name') }}
+                        {{ trans('cruds.faculty.fields.code') }}
                     </th>
                     <th>
-                        {{ trans('cruds.faculty.fields.code') }}
+                        {{ trans('cruds.faculty.fields.name') }}
                     </th>
                     <th>
                         {{ trans('cruds.faculty.fields.color') }}
@@ -100,8 +100,8 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
 { data: 'code', name: 'code' },
+{ data: 'name', name: 'name' },
 { data: 'color', name: 'color' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },

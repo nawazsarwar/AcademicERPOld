@@ -40,7 +40,7 @@ class UpdateExamRegistrationRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'fraction' => [
+            'part' => [
                 'required',
                 'integer',
                 'min:-2147483648',
@@ -63,10 +63,8 @@ class UpdateExamRegistrationRequest extends FormRequest
                 'nullable',
             ],
             'status' => [
+                'string',
                 'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
         ];
     }

@@ -43,6 +43,16 @@
                             <span class="help-block">{{ trans('cruds.researchScholar.fields.status_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <label for="admission_date">{{ trans('cruds.researchScholar.fields.admission_date') }}</label>
+                            <input class="form-control date" type="text" name="admission_date" id="admission_date" value="{{ old('admission_date') }}">
+                            @if($errors->has('admission_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('admission_date') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.researchScholar.fields.admission_date_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label class="required" for="supervisor_id">{{ trans('cruds.researchScholar.fields.supervisor') }}</label>
                             <select class="form-control select2" name="supervisor_id" id="supervisor_id" required>
                                 @foreach($supervisors as $id => $entry)
@@ -55,6 +65,16 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.researchScholar.fields.supervisor_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisor_name">{{ trans('cruds.researchScholar.fields.supervisor_name') }}</label>
+                            <input class="form-control" type="text" name="supervisor_name" id="supervisor_name" value="{{ old('supervisor_name', '') }}">
+                            @if($errors->has('supervisor_name'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('supervisor_name') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.researchScholar.fields.supervisor_name_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="co_supervisor_name">{{ trans('cruds.researchScholar.fields.co_supervisor_name') }}</label>

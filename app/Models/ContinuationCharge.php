@@ -24,6 +24,7 @@ class ContinuationCharge extends Model
 
     protected $fillable = [
         'course_id',
+        'code',
         'nr_total',
         'nr_first_installment',
         'nr_second_installment',

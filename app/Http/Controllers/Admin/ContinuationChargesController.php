@@ -47,12 +47,15 @@ class ContinuationChargesController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->addColumn('course_name', function ($row) {
-                return $row->course ? $row->course->name : '';
+            $table->addColumn('course_title', function ($row) {
+                return $row->course ? $row->course->title : '';
             });
 
             $table->editColumn('course.code', function ($row) {
                 return $row->course ? (is_string($row->course) ? $row->course : $row->course->code) : '';
+            });
+            $table->editColumn('code', function ($row) {
+                return $row->code ? $row->code : '';
             });
             $table->editColumn('nr_total', function ($row) {
                 return $row->nr_total ? $row->nr_total : '';
@@ -91,7 +94,7 @@ class ContinuationChargesController extends Controller
     {
         abort_if(Gate::denies('continuation_charge_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $courses = Course::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $courses = Course::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.continuationCharges.create', compact('courses'));
     }
@@ -107,7 +110,7 @@ class ContinuationChargesController extends Controller
     {
         abort_if(Gate::denies('continuation_charge_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $courses = Course::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $courses = Course::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $continuationCharge->load('course');
 

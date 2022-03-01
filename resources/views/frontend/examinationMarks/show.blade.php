@@ -44,6 +44,30 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.examinationMark.fields.season') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->season }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.registration') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->registration->faculty_no ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.paper') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->paper->code ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.examinationMark.fields.sessional') }}
                                     </th>
                                     <td>
@@ -112,6 +136,46 @@
                                     </th>
                                     <td>
                                         {{ $examinationMark->final_result }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.entered_by') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->entered_by->name ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.entered_at') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->entered_at }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.verified_by') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->verified_by->name ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.verified_at') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->verified_at }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.examinationMark.fields.result_declaration_date') }}
+                                    </th>
+                                    <td>
+                                        {{ $examinationMark->result_declaration_date }}
                                     </td>
                                 </tr>
                             </tbody>

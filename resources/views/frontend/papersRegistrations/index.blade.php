@@ -39,7 +39,7 @@
                                         {{ trans('cruds.papersRegistration.fields.student') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.papersRegistration.fields.registration_mode') }}
+                                        {{ trans('cruds.papersRegistration.fields.mode') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.papersRegistration.fields.profile') }}
@@ -60,7 +60,7 @@
                                         {{ trans('cruds.papersRegistration.fields.paper_title') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.papersRegistration.fields.fraction') }}
+                                        {{ trans('cruds.papersRegistration.fields.part') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.papersRegistration.fields.credits') }}
@@ -92,7 +92,7 @@
                                             {{ $papersRegistration->student->guardian_mobile_no ?? '' }}
                                         </td>
                                         <td>
-                                            {{ App\Models\PapersRegistration::REGISTRATION_MODE_RADIO[$papersRegistration->registration_mode] ?? '' }}
+                                            {{ App\Models\PapersRegistration::MODE_RADIO[$papersRegistration->mode] ?? '' }}
                                         </td>
                                         <td>
                                             {{ $papersRegistration->profile ?? '' }}
@@ -113,7 +113,7 @@
                                             {{ $papersRegistration->paper_title ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $papersRegistration->fraction ?? '' }}
+                                            {{ $papersRegistration->part ?? '' }}
                                         </td>
                                         <td>
                                             {{ $papersRegistration->credits ?? '' }}

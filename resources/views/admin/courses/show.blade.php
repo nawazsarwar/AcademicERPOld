@@ -145,6 +145,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.course.fields.creditizable') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Course::CREDITIZABLE_RADIO[$course->creditizable] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.course.fields.administrable') }}
                         </th>
                         <td>
