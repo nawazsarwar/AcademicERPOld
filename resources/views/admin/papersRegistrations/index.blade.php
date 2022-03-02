@@ -38,7 +38,7 @@
                         {{ trans('cruds.papersRegistration.fields.student') }}
                     </th>
                     <th>
-                        {{ trans('cruds.papersRegistration.fields.registration_mode') }}
+                        {{ trans('cruds.papersRegistration.fields.mode') }}
                     </th>
                     <th>
                         {{ trans('cruds.papersRegistration.fields.profile') }}
@@ -59,7 +59,7 @@
                         {{ trans('cruds.papersRegistration.fields.paper_title') }}
                     </th>
                     <th>
-                        {{ trans('cruds.papersRegistration.fields.fraction') }}
+                        {{ trans('cruds.papersRegistration.fields.part') }}
                     </th>
                     <th>
                         {{ trans('cruds.papersRegistration.fields.credits') }}
@@ -129,15 +129,15 @@
 { data: 'id', name: 'id' },
 { data: 'paper_code', name: 'paper.code' },
 { data: 'registration_type', name: 'registration.type' },
-{ data: 'student_guardian_mobile_no', name: 'student.guardian_mobile_no' },
-{ data: 'registration_mode', name: 'registration_mode' },
+{ data: 'student_enrolment_no', name: 'student.enrolment_no' },
+{ data: 'mode', name: 'mode' },
 { data: 'profile', name: 'profile' },
 { data: 'faculty', name: 'faculty' },
 { data: 'department', name: 'department' },
 { data: 'department_code', name: 'department_code' },
 { data: 'paper_code', name: 'paper_code' },
 { data: 'paper_title', name: 'paper_title' },
-{ data: 'fraction', name: 'fraction' },
+{ data: 'part', name: 'part' },
 { data: 'credits', name: 'credits' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },

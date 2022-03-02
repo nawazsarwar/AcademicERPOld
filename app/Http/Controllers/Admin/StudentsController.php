@@ -61,8 +61,14 @@ class StudentsController extends Controller
             $table->editColumn('enrolment_no', function ($row) {
                 return $row->enrolment_no ? $row->enrolment_no : '';
             });
-            $table->editColumn('guardian_mobile_no', function ($row) {
-                return $row->guardian_mobile_no ? $row->guardian_mobile_no : '';
+            $table->editColumn('mobile_no', function ($row) {
+                return $row->mobile_no ? $row->mobile_no : '';
+            });
+            $table->editColumn('guardians_mobile_no', function ($row) {
+                return $row->guardians_mobile_no ? $row->guardians_mobile_no : '';
+            });
+            $table->editColumn('emergency_mobile_no', function ($row) {
+                return $row->emergency_mobile_no ? $row->emergency_mobile_no : '';
             });
             $table->addColumn('verification_status_name', function ($row) {
                 return $row->verification_status ? $row->verification_status->name : '';
@@ -74,6 +80,12 @@ class StudentsController extends Controller
 
             $table->editColumn('verification_remark', function ($row) {
                 return $row->verification_remark ? $row->verification_remark : '';
+            });
+            $table->editColumn('detained', function ($row) {
+                return $row->detained ? $row->detained : '';
+            });
+            $table->editColumn('detention_reason', function ($row) {
+                return $row->detention_reason ? $row->detention_reason : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'person', 'enrolment', 'verification_status', 'verified_by']);

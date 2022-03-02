@@ -19,7 +19,7 @@ class StoreCityRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'status' => [
                 'string',

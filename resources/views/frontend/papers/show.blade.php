@@ -52,10 +52,10 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.paper.fields.fraction') }}
+                                        {{ trans('cruds.paper.fields.part') }}
                                     </th>
                                     <td>
-                                        {{ $paper->fraction }}
+                                        {{ $paper->part }}
                                     </td>
                                 </tr>
                                 <tr>

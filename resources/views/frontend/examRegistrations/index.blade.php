@@ -91,7 +91,7 @@
                                             {{ $examRegistration->id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $examRegistration->student->guardian_mobile_no ?? '' }}
+                                            {{ $examRegistration->student->enrolment_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ $examRegistration->course->title ?? '' }}

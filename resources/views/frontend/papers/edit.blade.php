@@ -48,14 +48,14 @@
                             <span class="help-block">{{ trans('cruds.paper.fields.paper_type_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="fraction">{{ trans('cruds.paper.fields.fraction') }}</label>
-                            <input class="form-control" type="number" name="fraction" id="fraction" value="{{ old('fraction', $paper->fraction) }}" step="1">
-                            @if($errors->has('fraction'))
+                            <label for="part">{{ trans('cruds.paper.fields.part') }}</label>
+                            <input class="form-control" type="number" name="part" id="part" value="{{ old('part', $paper->part) }}" step="1">
+                            @if($errors->has('part'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('fraction') }}
+                                    {{ $errors->first('part') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.paper.fields.fraction_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.paper.fields.part_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label>{{ trans('cruds.paper.fields.teaching_status') }}</label>

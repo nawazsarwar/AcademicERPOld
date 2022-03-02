@@ -22,7 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->string('pf_account_no')->nullable();
             $table->string('personal_file_no')->nullable();
             $table->longText('remarks')->nullable();
-            $table->date('verified_at')->nullable();
+            $table->datetime('verified_at')->nullable();
             $table->longText('verification_remark')->nullable();
             $table->timestamps();
             $table->softDeletes();

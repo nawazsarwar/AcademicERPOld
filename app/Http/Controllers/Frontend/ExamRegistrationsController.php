@@ -33,7 +33,7 @@ class ExamRegistrationsController extends Controller
     {
         abort_if(Gate::denies('exam_registration_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $courses = Course::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -65,7 +65,7 @@ class ExamRegistrationsController extends Controller
     {
         abort_if(Gate::denies('exam_registration_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $courses = Course::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 

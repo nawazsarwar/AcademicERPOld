@@ -1036,23 +1036,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 257,
-                'title' => 'papers_registration_create',
+                'title' => 'registration_paper_create',
             ],
             [
                 'id'    => 258,
-                'title' => 'papers_registration_edit',
+                'title' => 'registration_paper_edit',
             ],
             [
                 'id'    => 259,
-                'title' => 'papers_registration_show',
+                'title' => 'registration_paper_show',
             ],
             [
                 'id'    => 260,
-                'title' => 'papers_registration_delete',
+                'title' => 'registration_paper_delete',
             ],
             [
                 'id'    => 261,
-                'title' => 'papers_registration_access',
+                'title' => 'registration_paper_access',
             ],
             [
                 'id'    => 262,
@@ -1784,6 +1784,50 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 444,
+                'title' => 'communication_centre_access',
+            ],
+            [
+                'id'    => 445,
+                'title' => 'notification_create',
+            ],
+            [
+                'id'    => 446,
+                'title' => 'notification_edit',
+            ],
+            [
+                'id'    => 447,
+                'title' => 'notification_show',
+            ],
+            [
+                'id'    => 448,
+                'title' => 'notification_delete',
+            ],
+            [
+                'id'    => 449,
+                'title' => 'notification_access',
+            ],
+            [
+                'id'    => 450,
+                'title' => 'notificable_create',
+            ],
+            [
+                'id'    => 451,
+                'title' => 'notificable_edit',
+            ],
+            [
+                'id'    => 452,
+                'title' => 'notificable_show',
+            ],
+            [
+                'id'    => 453,
+                'title' => 'notificable_delete',
+            ],
+            [
+                'id'    => 454,
+                'title' => 'notificable_access',
+            ],
+            [
+                'id'    => 455,
                 'title' => 'profile_password_edit',
             ],
         ];

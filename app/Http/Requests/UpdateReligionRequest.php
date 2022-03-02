@@ -19,7 +19,7 @@ class UpdateReligionRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'code' => [
                 'string',

@@ -50,8 +50,8 @@ class EnrolmentsController extends Controller
             $table->editColumn('number', function ($row) {
                 return $row->number ? $row->number : '';
             });
-            $table->addColumn('student_guardian_mobile_no', function ($row) {
-                return $row->student ? $row->student->guardian_mobile_no : '';
+            $table->addColumn('student_enrolment_no', function ($row) {
+                return $row->student ? $row->student->enrolment_no : '';
             });
 
             $table->editColumn('status', function ($row) {
@@ -73,7 +73,7 @@ class EnrolmentsController extends Controller
     {
         abort_if(Gate::denies('enrolment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.enrolments.create', compact('students'));
     }
@@ -89,7 +89,7 @@ class EnrolmentsController extends Controller
     {
         abort_if(Gate::denies('enrolment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $enrolment->load('student');
 

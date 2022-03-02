@@ -19,7 +19,7 @@ class UpdateCityRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'status' => [
                 'string',

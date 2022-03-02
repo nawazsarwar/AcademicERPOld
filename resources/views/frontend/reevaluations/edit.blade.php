@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <label for="examination_part">{{ trans('cruds.reevaluation.fields.examination_part') }}</label>
-                            <input class="form-control" type="text" name="examination_part" id="examination_part" value="{{ old('examination_part', $reevaluation->examination_part) }}">
+                            <input class="form-control" type="number" name="examination_part" id="examination_part" value="{{ old('examination_part', $reevaluation->examination_part) }}" step="1">
                             @if($errors->has('examination_part'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('examination_part') }}

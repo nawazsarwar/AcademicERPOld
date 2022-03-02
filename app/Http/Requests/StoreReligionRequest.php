@@ -19,7 +19,7 @@ class StoreReligionRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'code' => [
                 'string',

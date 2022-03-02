@@ -56,7 +56,7 @@
                                             {{ $enrolment->number ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $enrolment->student->guardian_mobile_no ?? '' }}
+                                            {{ $enrolment->student->enrolment_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ $enrolment->status ?? '' }}

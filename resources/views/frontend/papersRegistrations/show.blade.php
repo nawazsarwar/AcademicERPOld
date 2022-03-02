@@ -47,7 +47,7 @@
                                         {{ trans('cruds.papersRegistration.fields.student') }}
                                     </th>
                                     <td>
-                                        {{ $papersRegistration->student->guardian_mobile_no ?? '' }}
+                                        {{ $papersRegistration->student->enrolment_no ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>

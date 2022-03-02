@@ -117,8 +117,8 @@
                 <span class="help-block">{{ trans('cruds.researchScholar.fields.casr_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.researchScholar.fields.paper_1') }}</label>
-                <select class="form-control {{ $errors->has('paper_1') ? 'is-invalid' : '' }}" name="paper_1" id="paper_1" required>
+                <label>{{ trans('cruds.researchScholar.fields.paper_1') }}</label>
+                <select class="form-control {{ $errors->has('paper_1') ? 'is-invalid' : '' }}" name="paper_1" id="paper_1">
                     <option value disabled {{ old('paper_1', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\ResearchScholar::PAPER_1_SELECT as $key => $label)
                         <option value="{{ $key }}" {{ old('paper_1', $researchScholar->paper_1) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -130,8 +130,8 @@
                 <span class="help-block">{{ trans('cruds.researchScholar.fields.paper_1_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.researchScholar.fields.paper_1_result') }}</label>
-                <select class="form-control {{ $errors->has('paper_1_result') ? 'is-invalid' : '' }}" name="paper_1_result" id="paper_1_result" required>
+                <label>{{ trans('cruds.researchScholar.fields.paper_1_result') }}</label>
+                <select class="form-control {{ $errors->has('paper_1_result') ? 'is-invalid' : '' }}" name="paper_1_result" id="paper_1_result">
                     <option value disabled {{ old('paper_1_result', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\ResearchScholar::PAPER_1_RESULT_SELECT as $key => $label)
                         <option value="{{ $key }}" {{ old('paper_1_result', $researchScholar->paper_1_result) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>

@@ -4,15 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitiesTable extends Migration
+class CreateNotificablesTable extends Migration
 {
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('notificables', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('status')->nullable();
-            $table->longText('remarks')->nullable();
+            $table->integer('notificable');
+            $table->string('notificable_type');
             $table->timestamps();
             $table->softDeletes();
         });

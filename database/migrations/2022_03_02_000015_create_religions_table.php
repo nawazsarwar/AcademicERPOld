@@ -10,7 +10,7 @@ class CreateReligionsTable extends Migration
     {
         Schema::create('religions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('code')->unique();
             $table->string('status')->nullable();
             $table->longText('remarks')->nullable();

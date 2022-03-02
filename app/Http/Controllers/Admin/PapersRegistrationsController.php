@@ -57,12 +57,12 @@ class PapersRegistrationsController extends Controller
                 return $row->registration ? $row->registration->type : '';
             });
 
-            $table->addColumn('student_guardian_mobile_no', function ($row) {
-                return $row->student ? $row->student->guardian_mobile_no : '';
+            $table->addColumn('student_enrolment_no', function ($row) {
+                return $row->student ? $row->student->enrolment_no : '';
             });
 
-            $table->editColumn('registration_mode', function ($row) {
-                return $row->registration_mode ? PapersRegistration::REGISTRATION_MODE_RADIO[$row->registration_mode] : '';
+            $table->editColumn('mode', function ($row) {
+                return $row->mode ? PapersRegistration::MODE_RADIO[$row->mode] : '';
             });
             $table->editColumn('profile', function ($row) {
                 return $row->profile ? $row->profile : '';
@@ -82,8 +82,8 @@ class PapersRegistrationsController extends Controller
             $table->editColumn('paper_title', function ($row) {
                 return $row->paper_title ? $row->paper_title : '';
             });
-            $table->editColumn('fraction', function ($row) {
-                return $row->fraction ? $row->fraction : '';
+            $table->editColumn('part', function ($row) {
+                return $row->part ? $row->part : '';
             });
             $table->editColumn('credits', function ($row) {
                 return $row->credits ? $row->credits : '';
@@ -111,7 +111,7 @@ class PapersRegistrationsController extends Controller
 
         $registrations = ExamRegistration::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.papersRegistrations.create', compact('papers', 'registrations', 'students'));
     }
@@ -131,7 +131,7 @@ class PapersRegistrationsController extends Controller
 
         $registrations = ExamRegistration::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $papersRegistration->load('paper', 'registration', 'student');
 

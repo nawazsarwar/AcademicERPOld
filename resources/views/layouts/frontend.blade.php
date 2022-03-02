@@ -142,9 +142,9 @@
                                             {{ trans('cruds.examRegistration.title') }}
                                         </a>
                                     @endcan
-                                    @can('papers_registration_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.papers-registrations.index') }}">
-                                            {{ trans('cruds.papersRegistration.title') }}
+                                    @can('registration_paper_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.registration-papers.index') }}">
+                                            {{ trans('cruds.registrationPaper.title') }}
                                         </a>
                                     @endcan
                                     @can('examination_schedule_access')
@@ -167,14 +167,14 @@
                                             {{ trans('cruds.examinationMark.title') }}
                                         </a>
                                     @endcan
-                                    @can('reevaluation_paper_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.reevaluation-papers.index') }}">
-                                            {{ trans('cruds.reevaluationPaper.title') }}
-                                        </a>
-                                    @endcan
                                     @can('reevaluation_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.reevaluations.index') }}">
                                             {{ trans('cruds.reevaluation.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('reevaluation_paper_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.reevaluation-papers.index') }}">
+                                            {{ trans('cruds.reevaluationPaper.title') }}
                                         </a>
                                     @endcan
                                     @can('research_unit_access')
@@ -280,6 +280,21 @@
                                     @can('order_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.orders.index') }}">
                                             {{ trans('cruds.order.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('communication_centre_access')
+                                        <a class="dropdown-item disabled" href="#">
+                                            {{ trans('cruds.communicationCentre.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('notification_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.notifications.index') }}">
+                                            {{ trans('cruds.notification.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('notificable_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.notificables.index') }}">
+                                            {{ trans('cruds.notificable.title') }}
                                         </a>
                                     @endcan
                                     @can('registrars_office_access')

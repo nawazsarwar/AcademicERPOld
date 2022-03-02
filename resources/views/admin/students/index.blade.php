@@ -38,7 +38,13 @@
                         {{ trans('cruds.student.fields.enrolment_no') }}
                     </th>
                     <th>
-                        {{ trans('cruds.student.fields.guardian_mobile_no') }}
+                        {{ trans('cruds.student.fields.mobile_no') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.guardians_mobile_no') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.emergency_mobile_no') }}
                     </th>
                     <th>
                         {{ trans('cruds.student.fields.verification_status') }}
@@ -51,6 +57,12 @@
                     </th>
                     <th>
                         {{ trans('cruds.student.fields.verification_remark') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.detained') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.student.fields.detention_reason') }}
                     </th>
                     <th>
                         &nbsp;
@@ -112,11 +124,15 @@
 { data: 'person_first_name', name: 'person.first_name' },
 { data: 'enrolment_number', name: 'enrolment.number' },
 { data: 'enrolment_no', name: 'enrolment_no' },
-{ data: 'guardian_mobile_no', name: 'guardian_mobile_no' },
+{ data: 'mobile_no', name: 'mobile_no' },
+{ data: 'guardians_mobile_no', name: 'guardians_mobile_no' },
+{ data: 'emergency_mobile_no', name: 'emergency_mobile_no' },
 { data: 'verification_status_name', name: 'verification_status.name' },
 { data: 'verified_by_name', name: 'verified_by.name' },
 { data: 'verified_at', name: 'verified_at' },
 { data: 'verification_remark', name: 'verification_remark' },
+{ data: 'detained', name: 'detained' },
+{ data: 'detention_reason', name: 'detention_reason' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -12,7 +12,7 @@ class CreateReevaluationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('examination_name')->nullable();
             $table->string('examination_year')->nullable();
-            $table->string('examination_part')->nullable();
+            $table->integer('examination_part')->nullable();
             $table->date('result_declaration_date');
             $table->integer('submitted')->nullable();
             $table->string('status')->nullable();
