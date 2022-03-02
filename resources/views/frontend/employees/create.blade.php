@@ -206,7 +206,7 @@
                         </div>
                         <div class="form-group">
                             <label for="verified_at">{{ trans('cruds.employee.fields.verified_at') }}</label>
-                            <input class="form-control date" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at') }}">
+                            <input class="form-control datetime" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at') }}">
                             @if($errors->has('verified_at'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('verified_at') }}

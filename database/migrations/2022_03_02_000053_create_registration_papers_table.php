@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePapersRegistrationsTable extends Migration
+class CreateRegistrationPapersTable extends Migration
 {
     public function up()
     {
-        Schema::create('papers_registrations', function (Blueprint $table) {
+        Schema::create('registration_papers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mode');
             $table->longText('profile')->nullable();

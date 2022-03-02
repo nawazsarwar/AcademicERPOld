@@ -30,7 +30,7 @@ class EnrolmentsController extends Controller
     {
         abort_if(Gate::denies('enrolment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('frontend.enrolments.create', compact('students'));
     }
@@ -46,7 +46,7 @@ class EnrolmentsController extends Controller
     {
         abort_if(Gate::denies('enrolment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $enrolment->load('student');
 

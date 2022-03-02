@@ -36,7 +36,7 @@ class PapersRegistrationsController extends Controller
 
         $registrations = ExamRegistration::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('frontend.papersRegistrations.create', compact('papers', 'registrations', 'students'));
     }
@@ -56,7 +56,7 @@ class PapersRegistrationsController extends Controller
 
         $registrations = ExamRegistration::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $papersRegistration->load('paper', 'registration', 'student');
 

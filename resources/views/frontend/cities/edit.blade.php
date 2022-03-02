@@ -28,8 +28,8 @@
                             <span class="help-block">{{ trans('cruds.city.fields.province_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="name">{{ trans('cruds.city.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $city->name) }}">
+                            <label class="required" for="name">{{ trans('cruds.city.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $city->name) }}" required>
                             @if($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('name') }}

@@ -137,7 +137,7 @@
                                 </li>
                             @endcan
                             @can('examination_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/course-students*") ? "menu-open" : "" }} {{ request()->is("admin/registration-forms*") ? "menu-open" : "" }} {{ request()->is("admin/exam-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/papers-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/examination-schedules*") ? "menu-open" : "" }} {{ request()->is("admin/examiners*") ? "menu-open" : "" }}">
+                                <li class="nav-item has-treeview {{ request()->is("admin/course-students*") ? "menu-open" : "" }} {{ request()->is("admin/registration-forms*") ? "menu-open" : "" }} {{ request()->is("admin/exam-registrations*") ? "menu-open" : "" }} {{ request()->is("admin/registration-papers*") ? "menu-open" : "" }} {{ request()->is("admin/examination-schedules*") ? "menu-open" : "" }} {{ request()->is("admin/examiners*") ? "menu-open" : "" }}">
                                     <a class="nav-link nav-dropdown-toggle" href="#">
                                         <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -184,14 +184,14 @@
                                                 </a>
                                             </li>
                                         @endcan
-                                        @can('papers_registration_access')
+                                        @can('registration_paper_access')
                                             <li class="nav-item">
-                                                <a href="{{ route("admin.papers-registrations.index") }}" class="nav-link {{ request()->is("admin/papers-registrations") || request()->is("admin/papers-registrations/*") ? "active" : "" }}">
+                                                <a href="{{ route("admin.registration-papers.index") }}" class="nav-link {{ request()->is("admin/registration-papers") || request()->is("admin/registration-papers/*") ? "active" : "" }}">
                                                     <i class="fa-fw nav-icon fas fa-cogs">
 
                                                     </i>
                                                     <p>
-                                                        {{ trans('cruds.papersRegistration.title') }}
+                                                        {{ trans('cruds.registrationPaper.title') }}
                                                     </p>
                                                 </a>
                                             </li>
@@ -224,7 +224,7 @@
                                 </li>
                             @endcan
                             @can('result_processing_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/examination-marks*") ? "menu-open" : "" }} {{ request()->is("admin/reevaluation-papers*") ? "menu-open" : "" }} {{ request()->is("admin/reevaluations*") ? "menu-open" : "" }}">
+                                <li class="nav-item has-treeview {{ request()->is("admin/examination-marks*") ? "menu-open" : "" }} {{ request()->is("admin/reevaluations*") ? "menu-open" : "" }} {{ request()->is("admin/reevaluation-papers*") ? "menu-open" : "" }}">
                                     <a class="nav-link nav-dropdown-toggle" href="#">
                                         <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -247,18 +247,6 @@
                                                 </a>
                                             </li>
                                         @endcan
-                                        @can('reevaluation_paper_access')
-                                            <li class="nav-item">
-                                                <a href="{{ route("admin.reevaluation-papers.index") }}" class="nav-link {{ request()->is("admin/reevaluation-papers") || request()->is("admin/reevaluation-papers/*") ? "active" : "" }}">
-                                                    <i class="fa-fw nav-icon fas fa-cogs">
-
-                                                    </i>
-                                                    <p>
-                                                        {{ trans('cruds.reevaluationPaper.title') }}
-                                                    </p>
-                                                </a>
-                                            </li>
-                                        @endcan
                                         @can('reevaluation_access')
                                             <li class="nav-item">
                                                 <a href="{{ route("admin.reevaluations.index") }}" class="nav-link {{ request()->is("admin/reevaluations") || request()->is("admin/reevaluations/*") ? "active" : "" }}">
@@ -267,6 +255,18 @@
                                                     </i>
                                                     <p>
                                                         {{ trans('cruds.reevaluation.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('reevaluation_paper_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.reevaluation-papers.index") }}" class="nav-link {{ request()->is("admin/reevaluation-papers") || request()->is("admin/reevaluation-papers/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.reevaluationPaper.title') }}
                                                     </p>
                                                 </a>
                                             </li>
@@ -440,7 +440,7 @@
                     </li>
                 @endcan
                 @can('demographic_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/people*") ? "menu-open" : "" }} {{ request()->is("admin/addresses*") ? "menu-open" : "" }} {{ request()->is("admin/phones*") ? "menu-open" : "" }} {{ request()->is("admin/biometrics*") ? "menu-open" : "" }} {{ request()->is("admin/academic-qualifications*") ? "menu-open" : "" }} {{ request()->is("admin/work-experiences*") ? "menu-open" : "" }} {{ request()->is("admin/orders*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/people*") ? "menu-open" : "" }} {{ request()->is("admin/addresses*") ? "menu-open" : "" }} {{ request()->is("admin/phones*") ? "menu-open" : "" }} {{ request()->is("admin/biometrics*") ? "menu-open" : "" }} {{ request()->is("admin/academic-qualifications*") ? "menu-open" : "" }} {{ request()->is("admin/work-experiences*") ? "menu-open" : "" }} {{ request()->is("admin/orders*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-user-astronaut">
 
@@ -533,6 +533,45 @@
                                             {{ trans('cruds.order.title') }}
                                         </p>
                                     </a>
+                                </li>
+                            @endcan
+                            @can('communication_centre_access')
+                                <li class="nav-item has-treeview {{ request()->is("admin/notifications*") ? "menu-open" : "" }} {{ request()->is("admin/notificables*") ? "menu-open" : "" }}">
+                                    <a class="nav-link nav-dropdown-toggle" href="#">
+                                        <i class="fa-fw nav-icon fas fa-envelope">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.communicationCentre.title') }}
+                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @can('notification_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.notifications.index") }}" class="nav-link {{ request()->is("admin/notifications") || request()->is("admin/notifications/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.notification.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('notificable_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.notificables.index") }}" class="nav-link {{ request()->is("admin/notificables") || request()->is("admin/notificables/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.notificable.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                    </ul>
                                 </li>
                             @endcan
                         </ul>

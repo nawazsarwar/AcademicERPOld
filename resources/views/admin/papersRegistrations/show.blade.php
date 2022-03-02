@@ -44,15 +44,15 @@
                             {{ trans('cruds.papersRegistration.fields.student') }}
                         </th>
                         <td>
-                            {{ $papersRegistration->student->guardian_mobile_no ?? '' }}
+                            {{ $papersRegistration->student->enrolment_no ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.papersRegistration.fields.registration_mode') }}
+                            {{ trans('cruds.papersRegistration.fields.mode') }}
                         </th>
                         <td>
-                            {{ App\Models\PapersRegistration::REGISTRATION_MODE_RADIO[$papersRegistration->registration_mode] ?? '' }}
+                            {{ App\Models\PapersRegistration::MODE_RADIO[$papersRegistration->mode] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -105,10 +105,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.papersRegistration.fields.fraction') }}
+                            {{ trans('cruds.papersRegistration.fields.part') }}
                         </th>
                         <td>
-                            {{ $papersRegistration->fraction }}
+                            {{ $papersRegistration->part }}
                         </td>
                     </tr>
                     <tr>

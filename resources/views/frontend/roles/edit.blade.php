@@ -14,8 +14,8 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group">
-                            <label class="required" for="title">{{ trans('cruds.role.fields.title') }}</label>
-                            <input class="form-control" type="text" name="title" id="title" value="{{ old('title', $role->title) }}" required>
+                            <label for="title">{{ trans('cruds.role.fields.title') }}</label>
+                            <input class="form-control" type="text" name="title" id="title" value="{{ old('title', $role->title) }}">
                             @if($errors->has('title'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('title') }}

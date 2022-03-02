@@ -98,7 +98,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'number', name: 'number' },
-{ data: 'student_guardian_mobile_no', name: 'student.guardian_mobile_no' },
+{ data: 'student_enrolment_no', name: 'student.enrolment_no' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

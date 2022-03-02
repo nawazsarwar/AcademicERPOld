@@ -52,10 +52,26 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.student.fields.guardian_mobile_no') }}
+                                        {{ trans('cruds.student.fields.mobile_no') }}
                                     </th>
                                     <td>
-                                        {{ $student->guardian_mobile_no }}
+                                        {{ $student->mobile_no }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.student.fields.guardians_mobile_no') }}
+                                    </th>
+                                    <td>
+                                        {{ $student->guardians_mobile_no }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.student.fields.emergency_mobile_no') }}
+                                    </th>
+                                    <td>
+                                        {{ $student->emergency_mobile_no }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -88,6 +104,22 @@
                                     </th>
                                     <td>
                                         {{ $student->verification_remark }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.student.fields.detained') }}
+                                    </th>
+                                    <td>
+                                        {{ $student->detained }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.student.fields.detention_reason') }}
+                                    </th>
+                                    <td>
+                                        {{ $student->detention_reason }}
                                     </td>
                                 </tr>
                             </tbody>

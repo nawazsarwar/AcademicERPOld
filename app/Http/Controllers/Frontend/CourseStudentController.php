@@ -35,7 +35,7 @@ class CourseStudentController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $session_admitteds = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -61,7 +61,7 @@ class CourseStudentController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $students = Student::pluck('guardian_mobile_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Student::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $session_admitteds = AcademicSession::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

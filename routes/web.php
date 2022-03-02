@@ -286,11 +286,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('exam-registrations/destroy', 'ExamRegistrationsController@massDestroy')->name('exam-registrations.massDestroy');
     Route::resource('exam-registrations', 'ExamRegistrationsController');
 
-    // Papers Registrations
-    Route::delete('papers-registrations/destroy', 'PapersRegistrationsController@massDestroy')->name('papers-registrations.massDestroy');
-    Route::post('papers-registrations/parse-csv-import', 'PapersRegistrationsController@parseCsvImport')->name('papers-registrations.parseCsvImport');
-    Route::post('papers-registrations/process-csv-import', 'PapersRegistrationsController@processCsvImport')->name('papers-registrations.processCsvImport');
-    Route::resource('papers-registrations', 'PapersRegistrationsController');
+    // Registration Papers
+    Route::delete('registration-papers/destroy', 'RegistrationPapersController@massDestroy')->name('registration-papers.massDestroy');
+    Route::post('registration-papers/parse-csv-import', 'RegistrationPapersController@parseCsvImport')->name('registration-papers.parseCsvImport');
+    Route::post('registration-papers/process-csv-import', 'RegistrationPapersController@processCsvImport')->name('registration-papers.processCsvImport');
+    Route::resource('registration-papers', 'RegistrationPapersController');
 
     // Employment Statuses
     Route::delete('employment-statuses/destroy', 'EmploymentStatusesController@massDestroy')->name('employment-statuses.massDestroy');
@@ -457,6 +457,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Reevaluations
     Route::delete('reevaluations/destroy', 'ReevaluationsController@massDestroy')->name('reevaluations.massDestroy');
     Route::resource('reevaluations', 'ReevaluationsController');
+
+    // Notifications
+    Route::delete('notifications/destroy', 'NotificationsController@massDestroy')->name('notifications.massDestroy');
+    Route::resource('notifications', 'NotificationsController');
+
+    // Notificable
+    Route::delete('notificables/destroy', 'NotificableController@massDestroy')->name('notificables.massDestroy');
+    Route::resource('notificables', 'NotificableController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
@@ -687,9 +695,9 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::delete('exam-registrations/destroy', 'ExamRegistrationsController@massDestroy')->name('exam-registrations.massDestroy');
     Route::resource('exam-registrations', 'ExamRegistrationsController');
 
-    // Papers Registrations
-    Route::delete('papers-registrations/destroy', 'PapersRegistrationsController@massDestroy')->name('papers-registrations.massDestroy');
-    Route::resource('papers-registrations', 'PapersRegistrationsController');
+    // Registration Papers
+    Route::delete('registration-papers/destroy', 'RegistrationPapersController@massDestroy')->name('registration-papers.massDestroy');
+    Route::resource('registration-papers', 'RegistrationPapersController');
 
     // Employment Statuses
     Route::delete('employment-statuses/destroy', 'EmploymentStatusesController@massDestroy')->name('employment-statuses.massDestroy');
@@ -838,6 +846,14 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Reevaluations
     Route::delete('reevaluations/destroy', 'ReevaluationsController@massDestroy')->name('reevaluations.massDestroy');
     Route::resource('reevaluations', 'ReevaluationsController');
+
+    // Notifications
+    Route::delete('notifications/destroy', 'NotificationsController@massDestroy')->name('notifications.massDestroy');
+    Route::resource('notifications', 'NotificationsController');
+
+    // Notificable
+    Route::delete('notificables/destroy', 'NotificableController@massDestroy')->name('notificables.massDestroy');
+    Route::resource('notificables', 'NotificableController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

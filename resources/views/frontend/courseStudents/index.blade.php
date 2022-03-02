@@ -88,7 +88,7 @@
                                             {{ $courseStudent->user->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $courseStudent->student->guardian_mobile_no ?? '' }}
+                                            {{ $courseStudent->student->enrolment_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ $courseStudent->faculty_no ?? '' }}

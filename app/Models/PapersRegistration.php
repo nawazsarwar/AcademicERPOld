@@ -14,7 +14,7 @@ class PapersRegistration extends Model
     use Auditable;
     use HasFactory;
 
-    public const REGISTRATION_MODE_RADIO = [
+    public const MODE_RADIO = [
         'A' => 'A',
         'B' => 'B',
         'C' => 'C',
@@ -32,14 +32,14 @@ class PapersRegistration extends Model
         'paper_id',
         'registration_id',
         'student_id',
-        'registration_mode',
+        'mode',
         'profile',
         'faculty',
         'department',
         'department_code',
         'paper_code',
         'paper_title',
-        'fraction',
+        'part',
         'credits',
         'status',
         'remarks',

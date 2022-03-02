@@ -89,7 +89,7 @@
                                             {{ $papersRegistration->registration->type ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $papersRegistration->student->guardian_mobile_no ?? '' }}
+                                            {{ $papersRegistration->student->enrolment_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ App\Models\PapersRegistration::MODE_RADIO[$papersRegistration->mode] ?? '' }}

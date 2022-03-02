@@ -52,12 +52,6 @@ class UpdateResearchScholarRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'paper_1' => [
-                'required',
-            ],
-            'paper_1_result' => [
-                'required',
-            ],
             'paper_2' => [
                 'string',
                 'nullable',

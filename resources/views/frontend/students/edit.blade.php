@@ -52,14 +52,34 @@
                             <span class="help-block">{{ trans('cruds.student.fields.enrolment_no_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="guardian_mobile_no">{{ trans('cruds.student.fields.guardian_mobile_no') }}</label>
-                            <input class="form-control" type="text" name="guardian_mobile_no" id="guardian_mobile_no" value="{{ old('guardian_mobile_no', $student->guardian_mobile_no) }}">
-                            @if($errors->has('guardian_mobile_no'))
+                            <label for="mobile_no">{{ trans('cruds.student.fields.mobile_no') }}</label>
+                            <input class="form-control" type="text" name="mobile_no" id="mobile_no" value="{{ old('mobile_no', $student->mobile_no) }}">
+                            @if($errors->has('mobile_no'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('guardian_mobile_no') }}
+                                    {{ $errors->first('mobile_no') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.student.fields.guardian_mobile_no_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.student.fields.mobile_no_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="guardians_mobile_no">{{ trans('cruds.student.fields.guardians_mobile_no') }}</label>
+                            <input class="form-control" type="text" name="guardians_mobile_no" id="guardians_mobile_no" value="{{ old('guardians_mobile_no', $student->guardians_mobile_no) }}">
+                            @if($errors->has('guardians_mobile_no'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('guardians_mobile_no') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.student.fields.guardians_mobile_no_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency_mobile_no">{{ trans('cruds.student.fields.emergency_mobile_no') }}</label>
+                            <input class="form-control" type="text" name="emergency_mobile_no" id="emergency_mobile_no" value="{{ old('emergency_mobile_no', $student->emergency_mobile_no) }}">
+                            @if($errors->has('emergency_mobile_no'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('emergency_mobile_no') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.student.fields.emergency_mobile_no_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="verification_status_id">{{ trans('cruds.student.fields.verification_status') }}</label>
@@ -91,7 +111,7 @@
                         </div>
                         <div class="form-group">
                             <label for="verified_at">{{ trans('cruds.student.fields.verified_at') }}</label>
-                            <input class="form-control date" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at', $student->verified_at) }}">
+                            <input class="form-control datetime" type="text" name="verified_at" id="verified_at" value="{{ old('verified_at', $student->verified_at) }}">
                             @if($errors->has('verified_at'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('verified_at') }}
@@ -108,6 +128,26 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.student.fields.verification_remark_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="detained">{{ trans('cruds.student.fields.detained') }}</label>
+                            <input class="form-control" type="number" name="detained" id="detained" value="{{ old('detained', $student->detained) }}" step="1">
+                            @if($errors->has('detained'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('detained') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.student.fields.detained_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="detention_reason">{{ trans('cruds.student.fields.detention_reason') }}</label>
+                            <textarea class="form-control" name="detention_reason" id="detention_reason">{{ old('detention_reason', $student->detention_reason) }}</textarea>
+                            @if($errors->has('detention_reason'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('detention_reason') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.student.fields.detention_reason_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

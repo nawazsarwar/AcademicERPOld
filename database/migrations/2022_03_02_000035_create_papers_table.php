@@ -12,7 +12,7 @@ class CreatePapersTable extends Migration
             $table->bigIncrements('id');
             $table->string('code')->unique();
             $table->string('title');
-            $table->integer('fraction')->nullable();
+            $table->integer('part')->nullable();
             $table->string('teaching_status')->nullable();
             $table->string('credits')->nullable();
             $table->string('status')->nullable();

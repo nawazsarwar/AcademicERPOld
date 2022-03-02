@@ -14,8 +14,8 @@
                         @method('POST')
                         @csrf
                         <div class="form-group">
-                            <label class="required" for="title">{{ trans('cruds.permission.fields.title') }}</label>
-                            <input class="form-control" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                            <label for="title">{{ trans('cruds.permission.fields.title') }}</label>
+                            <input class="form-control" type="text" name="title" id="title" value="{{ old('title', '') }}">
                             @if($errors->has('title'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('title') }}

@@ -19,8 +19,8 @@ class CreateResearchScholarsTable extends Migration
             $table->string('net_jrf')->nullable();
             $table->date('bos_date')->nullable();
             $table->date('casr_date')->nullable();
-            $table->string('paper_1');
-            $table->string('paper_1_result');
+            $table->string('paper_1')->nullable();
+            $table->string('paper_1_result')->nullable();
             $table->string('paper_2')->nullable();
             $table->string('paper_2_result')->nullable();
             $table->string('paper_3')->nullable();

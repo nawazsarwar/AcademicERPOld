@@ -30,13 +30,27 @@ class StoreStudentRequest extends FormRequest
                 'required',
                 'unique:students',
             ],
-            'guardian_mobile_no' => [
+            'mobile_no' => [
+                'string',
+                'nullable',
+            ],
+            'guardians_mobile_no' => [
+                'string',
+                'nullable',
+            ],
+            'emergency_mobile_no' => [
                 'string',
                 'nullable',
             ],
             'verified_at' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
+            ],
+            'detained' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }

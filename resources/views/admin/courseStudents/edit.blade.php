@@ -55,16 +55,16 @@
                 <span class="help-block">{{ trans('cruds.courseStudent.fields.faculty_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="admitted_in_id">{{ trans('cruds.courseStudent.fields.admitted_in') }}</label>
-                <select class="form-control select2 {{ $errors->has('admitted_in') ? 'is-invalid' : '' }}" name="admitted_in_id" id="admitted_in_id" required>
-                    @foreach($admitted_ins as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('admitted_in_id') ? old('admitted_in_id') : $courseStudent->admitted_in->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label class="required" for="session_admitted_id">{{ trans('cruds.courseStudent.fields.session_admitted') }}</label>
+                <select class="form-control select2 {{ $errors->has('session_admitted') ? 'is-invalid' : '' }}" name="session_admitted_id" id="session_admitted_id" required>
+                    @foreach($session_admitteds as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('session_admitted_id') ? old('session_admitted_id') : $courseStudent->session_admitted->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('admitted_in'))
-                    <span class="text-danger">{{ $errors->first('admitted_in') }}</span>
+                @if($errors->has('session_admitted'))
+                    <span class="text-danger">{{ $errors->first('session_admitted') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.courseStudent.fields.admitted_in_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.courseStudent.fields.session_admitted_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="admitted_on">{{ trans('cruds.courseStudent.fields.admitted_on') }}</label>
@@ -76,7 +76,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_extension">{{ trans('cruds.courseStudent.fields.duration_extension') }}</label>
-                <input class="form-control {{ $errors->has('duration_extension') ? 'is-invalid' : '' }}" type="text" name="duration_extension" id="duration_extension" value="{{ old('duration_extension', $courseStudent->duration_extension) }}">
+                <input class="form-control {{ $errors->has('duration_extension') ? 'is-invalid' : '' }}" type="number" name="duration_extension" id="duration_extension" value="{{ old('duration_extension', $courseStudent->duration_extension) }}" step="1">
                 @if($errors->has('duration_extension'))
                     <span class="text-danger">{{ $errors->first('duration_extension') }}</span>
                 @endif
@@ -124,7 +124,7 @@
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.courseStudent.fields.status') }}</label>
-                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', $courseStudent->status) }}" step="1">
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $courseStudent->status) }}">
                 @if($errors->has('status'))
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif

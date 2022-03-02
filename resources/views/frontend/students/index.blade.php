@@ -39,7 +39,13 @@
                                         {{ trans('cruds.student.fields.enrolment_no') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.student.fields.guardian_mobile_no') }}
+                                        {{ trans('cruds.student.fields.mobile_no') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.student.fields.guardians_mobile_no') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.student.fields.emergency_mobile_no') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.student.fields.verification_status') }}
@@ -52,6 +58,12 @@
                                     </th>
                                     <th>
                                         {{ trans('cruds.student.fields.verification_remark') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.student.fields.detained') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.student.fields.detention_reason') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -74,7 +86,13 @@
                                             {{ $student->enrolment_no ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $student->guardian_mobile_no ?? '' }}
+                                            {{ $student->mobile_no ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $student->guardians_mobile_no ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $student->emergency_mobile_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ $student->verification_status->name ?? '' }}
@@ -87,6 +105,12 @@
                                         </td>
                                         <td>
                                             {{ $student->verification_remark ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $student->detained ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $student->detention_reason ?? '' }}
                                         </td>
                                         <td>
                                             @can('student_show')

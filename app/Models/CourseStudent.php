@@ -28,7 +28,7 @@ class CourseStudent extends Model
         'user_id',
         'student_id',
         'faculty_no',
-        'admitted_in_id',
+        'session_admitted_id',
         'admitted_on',
         'duration_extension',
         'verification_status_id',
@@ -57,9 +57,9 @@ class CourseStudent extends Model
         return $this->belongsTo(Student::class, 'student_id');
     }
 
-    public function admitted_in()
+    public function session_admitted()
     {
-        return $this->belongsTo(AcademicSession::class, 'admitted_in_id');
+        return $this->belongsTo(AcademicSession::class, 'session_admitted_id');
     }
 
     public function getAdmittedOnAttribute($value)

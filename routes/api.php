@@ -132,8 +132,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Exam Registrations
     Route::apiResource('exam-registrations', 'ExamRegistrationsApiController');
 
-    // Papers Registrations
-    Route::apiResource('papers-registrations', 'PapersRegistrationsApiController');
+    // Registration Papers
+    Route::apiResource('registration-papers', 'RegistrationPapersApiController');
 
     // Employment Statuses
     Route::apiResource('employment-statuses', 'EmploymentStatusesApiController');
@@ -183,4 +183,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Hall Student
     Route::apiResource('hall-students', 'HallStudentApiController');
+
+    // Notifications
+    Route::apiResource('notifications', 'NotificationsApiController');
 });

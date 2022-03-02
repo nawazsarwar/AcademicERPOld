@@ -14,8 +14,8 @@
                         @method('POST')
                         @csrf
                         <div class="form-group">
-                            <label for="name">{{ trans('cruds.religion.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}">
+                            <label class="required" for="name">{{ trans('cruds.religion.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                             @if($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('name') }}
