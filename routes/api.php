@@ -186,4 +186,11 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Notifications
     Route::apiResource('notifications', 'NotificationsApiController');
+
+    // Advertisements
+    Route::post('advertisements/media', 'AdvertisementsApiController@storeMedia')->name('advertisements.storeMedia');
+    Route::apiResource('advertisements', 'AdvertisementsApiController');
+
+    // Posts
+    Route::apiResource('posts', 'PostsApiController');
 });

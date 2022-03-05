@@ -49,10 +49,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.two_factor') }}
+                            {{ trans('cruds.user.fields.type') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $user->two_factor ? 'checked' : '' }}>
+                            {{ App\Models\User::TYPE_SELECT[$user->type] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -63,6 +63,14 @@
                             @foreach($user->roles as $key => $roles)
                                 <span class="label label-info">{{ $roles->title }}</span>
                             @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.two_factor') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $user->two_factor ? 'checked' : '' }}>
                         </td>
                     </tr>
                     <tr>

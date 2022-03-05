@@ -1828,6 +1828,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 455,
+                'title' => 'career_access',
+            ],
+            [
+                'id'    => 456,
+                'title' => 'advertisement_create',
+            ],
+            [
+                'id'    => 457,
+                'title' => 'advertisement_edit',
+            ],
+            [
+                'id'    => 458,
+                'title' => 'advertisement_show',
+            ],
+            [
+                'id'    => 459,
+                'title' => 'advertisement_delete',
+            ],
+            [
+                'id'    => 460,
+                'title' => 'advertisement_access',
+            ],
+            [
+                'id'    => 461,
                 'title' => 'profile_password_edit',
             ],
         ];

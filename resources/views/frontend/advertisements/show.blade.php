@@ -6,13 +6,13 @@
 
             <div class="card">
                 <div class="card-header">
-                    {{ trans('global.show') }} {{ trans('cruds.user.title') }}
+                    {{ trans('global.show') }} {{ trans('cruds.advertisement.title') }}
                 </div>
 
                 <div class="card-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.users.index') }}">
+                            <a class="btn btn-default" href="{{ route('frontend.advertisements.index') }}">
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>
@@ -20,98 +20,76 @@
                             <tbody>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.id') }}
+                                        {{ trans('cruds.advertisement.fields.id') }}
                                     </th>
                                     <td>
-                                        {{ $user->id }}
+                                        {{ $advertisement->id }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.name') }}
+                                        {{ trans('cruds.advertisement.fields.title') }}
                                     </th>
                                     <td>
-                                        {{ $user->name }}
+                                        {{ $advertisement->title }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.email') }}
+                                        {{ trans('cruds.advertisement.fields.slug') }}
                                     </th>
                                     <td>
-                                        {{ $user->email }}
+                                        {{ $advertisement->slug }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.email_verified_at') }}
+                                        {{ trans('cruds.advertisement.fields.description') }}
                                     </th>
                                     <td>
-                                        {{ $user->email_verified_at }}
+                                        {{ $advertisement->description }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.type') }}
+                                        {{ trans('cruds.advertisement.fields.dated') }}
                                     </th>
                                     <td>
-                                        {{ App\Models\User::TYPE_SELECT[$user->type] ?? '' }}
+                                        {{ $advertisement->dated }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.roles') }}
+                                        {{ trans('cruds.advertisement.fields.type') }}
                                     </th>
                                     <td>
-                                        @foreach($user->roles as $key => $roles)
-                                            <span class="label label-info">{{ $roles->title }}</span>
-                                        @endforeach
+                                        {{ App\Models\Advertisement::TYPE_SELECT[$advertisement->type] ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.two_factor') }}
+                                        {{ trans('cruds.advertisement.fields.advertisement_url') }}
                                     </th>
                                     <td>
-                                        <input type="checkbox" disabled="disabled" {{ $user->two_factor ? 'checked' : '' }}>
+                                        {{ $advertisement->advertisement_url }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.role') }}
+                                        {{ trans('cruds.advertisement.fields.document') }}
                                     </th>
                                     <td>
-                                        {{ $user->role }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.user.fields.revoked') }}
-                                    </th>
-                                    <td>
-                                        {{ $user->revoked }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.user.fields.applications') }}
-                                    </th>
-                                    <td>
-                                        {{ $user->applications }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.user.fields.remarks') }}
-                                    </th>
-                                    <td>
-                                        {{ $user->remarks }}
+                                        @if($advertisement->document)
+                                            <a href="{{ $advertisement->document->getUrl() }}" target="_blank">
+                                                {{ trans('global.view_file') }}
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.users.index') }}">
+                            <a class="btn btn-default" href="{{ route('frontend.advertisements.index') }}">
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>

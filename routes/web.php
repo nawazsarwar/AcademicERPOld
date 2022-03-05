@@ -466,6 +466,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('notificables/destroy', 'NotificableController@massDestroy')->name('notificables.massDestroy');
     Route::resource('notificables', 'NotificableController');
 
+    // Advertisements
+    Route::delete('advertisements/destroy', 'AdvertisementsController@massDestroy')->name('advertisements.massDestroy');
+    Route::post('advertisements/media', 'AdvertisementsController@storeMedia')->name('advertisements.storeMedia');
+    Route::post('advertisements/ckmedia', 'AdvertisementsController@storeCKEditorImages')->name('advertisements.storeCKEditorImages');
+    Route::resource('advertisements', 'AdvertisementsController');
+
+    // Post Types
+    Route::delete('post-types/destroy', 'PostTypesController@massDestroy')->name('post-types.massDestroy');
+    Route::resource('post-types', 'PostTypesController');
+
+    // Posts
+    Route::delete('posts/destroy', 'PostsController@massDestroy')->name('posts.massDestroy');
+    Route::resource('posts', 'PostsController');
+
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
@@ -854,6 +868,20 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Notificable
     Route::delete('notificables/destroy', 'NotificableController@massDestroy')->name('notificables.massDestroy');
     Route::resource('notificables', 'NotificableController');
+
+    // Advertisements
+    Route::delete('advertisements/destroy', 'AdvertisementsController@massDestroy')->name('advertisements.massDestroy');
+    Route::post('advertisements/media', 'AdvertisementsController@storeMedia')->name('advertisements.storeMedia');
+    Route::post('advertisements/ckmedia', 'AdvertisementsController@storeCKEditorImages')->name('advertisements.storeCKEditorImages');
+    Route::resource('advertisements', 'AdvertisementsController');
+
+    // Post Types
+    Route::delete('post-types/destroy', 'PostTypesController@massDestroy')->name('post-types.massDestroy');
+    Route::resource('post-types', 'PostTypesController');
+
+    // Posts
+    Route::delete('posts/destroy', 'PostsController@massDestroy')->name('posts.massDestroy');
+    Route::resource('posts', 'PostsController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

@@ -20,6 +20,11 @@ class User extends Authenticatable
     use Auditable;
     use HasFactory;
 
+    public const TYPE_SELECT = [
+        'Personal' => 'Personal',
+        'Role'     => 'Role',
+    ];
+
     public $table = 'users';
 
     public static $searchable = [
@@ -46,6 +51,7 @@ class User extends Authenticatable
         'email',
         'email_verified_at',
         'password',
+        'type',
         'two_factor',
         'two_factor_code',
         'two_factor_expires_at',

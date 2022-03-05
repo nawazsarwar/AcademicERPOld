@@ -10,8 +10,44 @@
         <form method="POST" action="{{ route("admin.addresses.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="person_id">{{ trans('cruds.address.fields.person') }}</label>
-                <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id" required>
+                <label class="required" for="country_id">{{ trans('cruds.address.fields.country') }}</label>
+                <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
+                    @foreach($countries as $id => $entry)
+                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('country'))
+                    <span class="text-danger">{{ $errors->first('country') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.address.fields.country_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="province_id">{{ trans('cruds.address.fields.province') }}</label>
+                <select class="form-control select2 {{ $errors->has('province') ? 'is-invalid' : '' }}" name="province_id" id="province_id">
+                    @foreach($provinces as $id => $entry)
+                        <option value="{{ $id }}" {{ old('province_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('province'))
+                    <span class="text-danger">{{ $errors->first('province') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.address.fields.province_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="postal_code_id">{{ trans('cruds.address.fields.postal_code') }}</label>
+                <select class="form-control select2 {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" name="postal_code_id" id="postal_code_id">
+                    @foreach($postal_codes as $id => $entry)
+                        <option value="{{ $id }}" {{ old('postal_code_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('postal_code'))
+                    <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.address.fields.postal_code_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="person_id">{{ trans('cruds.address.fields.person') }}</label>
+                <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id">
                     @foreach($people as $id => $entry)
                         <option value="{{ $id }}" {{ old('person_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -20,6 +56,18 @@
                     <span class="text-danger">{{ $errors->first('person') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.address.fields.person_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="user_id">{{ trans('cruds.address.fields.user') }}</label>
+                <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>
+                    @foreach($users as $id => $entry)
+                        <option value="{{ $id }}" {{ old('user_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('user'))
+                    <span class="text-danger">{{ $errors->first('user') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.address.fields.user_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required">{{ trans('cruds.address.fields.type') }}</label>
@@ -35,36 +83,12 @@
                 <span class="help-block">{{ trans('cruds.address.fields.type_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="country_id">{{ trans('cruds.address.fields.country') }}</label>
-                <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
-                    @foreach($countries as $id => $entry)
-                        <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('country'))
-                    <span class="text-danger">{{ $errors->first('country') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.address.fields.country_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="mobile">{{ trans('cruds.address.fields.mobile') }}</label>
-                <input class="form-control {{ $errors->has('mobile') ? 'is-invalid' : '' }}" type="text" name="mobile" id="mobile" value="{{ old('mobile', '') }}" required>
+                <label for="mobile">{{ trans('cruds.address.fields.mobile') }}</label>
+                <input class="form-control {{ $errors->has('mobile') ? 'is-invalid' : '' }}" type="text" name="mobile" id="mobile" value="{{ old('mobile', '') }}">
                 @if($errors->has('mobile'))
                     <span class="text-danger">{{ $errors->first('mobile') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.address.fields.mobile_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="postal_code_id">{{ trans('cruds.address.fields.postal_code') }}</label>
-                <select class="form-control select2 {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" name="postal_code_id" id="postal_code_id" required>
-                    @foreach($postal_codes as $id => $entry)
-                        <option value="{{ $id }}" {{ old('postal_code_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('postal_code'))
-                    <span class="text-danger">{{ $errors->first('postal_code') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.address.fields.postal_code_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="details">{{ trans('cruds.address.fields.details') }}</label>
@@ -105,18 +129,6 @@
                     <span class="text-danger">{{ $errors->first('city') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.address.fields.city_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="province_id">{{ trans('cruds.address.fields.province') }}</label>
-                <select class="form-control select2 {{ $errors->has('province') ? 'is-invalid' : '' }}" name="province_id" id="province_id">
-                    @foreach($provinces as $id => $entry)
-                        <option value="{{ $id }}" {{ old('province_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('province'))
-                    <span class="text-danger">{{ $errors->first('province') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.address.fields.province_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="status">{{ trans('cruds.address.fields.status') }}</label>

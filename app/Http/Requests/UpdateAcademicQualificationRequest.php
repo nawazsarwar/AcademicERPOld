@@ -30,7 +30,7 @@ class UpdateAcademicQualificationRequest extends FormRequest
                 'required',
             ],
             'year' => [
-                'required',
+                'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',

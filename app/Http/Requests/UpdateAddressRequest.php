@@ -17,21 +17,20 @@ class UpdateAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'person_id' => [
-                'required',
-                'integer',
-            ],
             'country_id' => [
                 'required',
                 'integer',
             ],
-            'mobile' => [
-                'string',
-                'required',
-            ],
-            'postal_code_id' => [
+            'user_id' => [
                 'required',
                 'integer',
+            ],
+            'type' => [
+                'required',
+            ],
+            'mobile' => [
+                'string',
+                'nullable',
             ],
             'details' => [
                 'string',
@@ -51,10 +50,6 @@ class UpdateAddressRequest extends FormRequest
                 'required',
             ],
             'city' => [
-                'string',
-                'required',
-            ],
-            'type' => [
                 'string',
                 'required',
             ],

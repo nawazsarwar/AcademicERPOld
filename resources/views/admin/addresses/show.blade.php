@@ -25,10 +25,42 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.address.fields.country') }}
+                        </th>
+                        <td>
+                            {{ $address->country->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.address.fields.province') }}
+                        </th>
+                        <td>
+                            {{ $address->province->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.address.fields.postal_code') }}
+                        </th>
+                        <td>
+                            {{ $address->postal_code->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.address.fields.person') }}
                         </th>
                         <td>
                             {{ $address->person->first_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.address.fields.user') }}
+                        </th>
+                        <td>
+                            {{ $address->user->username ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -41,26 +73,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.country') }}
-                        </th>
-                        <td>
-                            {{ $address->country->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.address.fields.mobile') }}
                         </th>
                         <td>
                             {{ $address->mobile }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.postal_code') }}
-                        </th>
-                        <td>
-                            {{ $address->postal_code->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -101,14 +117,6 @@
                         </th>
                         <td>
                             {{ $address->city }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.province') }}
-                        </th>
-                        <td>
-                            {{ $address->province->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

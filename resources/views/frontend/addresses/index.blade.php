@@ -30,19 +30,25 @@
                                         {{ trans('cruds.address.fields.id') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.address.fields.country') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.address.fields.province') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.address.fields.postal_code') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.address.fields.person') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.address.fields.user') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.address.fields.type') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.address.fields.country') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.address.fields.mobile') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.address.fields.postal_code') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.address.fields.details') }}
@@ -58,9 +64,6 @@
                                     </th>
                                     <th>
                                         {{ trans('cruds.address.fields.city') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.address.fields.province') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.address.fields.status') }}
@@ -80,19 +83,25 @@
                                             {{ $address->id ?? '' }}
                                         </td>
                                         <td>
+                                            {{ $address->country->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $address->province->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $address->postal_code->name ?? '' }}
+                                        </td>
+                                        <td>
                                             {{ $address->person->first_name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $address->user->username ?? '' }}
                                         </td>
                                         <td>
                                             {{ App\Models\Address::TYPE_SELECT[$address->type] ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $address->country->name ?? '' }}
-                                        </td>
-                                        <td>
                                             {{ $address->mobile ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $address->postal_code->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $address->details ?? '' }}
@@ -108,9 +117,6 @@
                                         </td>
                                         <td>
                                             {{ $address->city ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $address->province->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $address->status ?? '' }}
