@@ -29,19 +29,25 @@
                         {{ trans('cruds.address.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.address.fields.country') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.address.fields.province') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.address.fields.postal_code') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.address.fields.person') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.address.fields.user') }}
                     </th>
                     <th>
                         {{ trans('cruds.address.fields.type') }}
                     </th>
                     <th>
-                        {{ trans('cruds.address.fields.country') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.address.fields.mobile') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.address.fields.postal_code') }}
                     </th>
                     <th>
                         {{ trans('cruds.address.fields.details') }}
@@ -57,9 +63,6 @@
                     </th>
                     <th>
                         {{ trans('cruds.address.fields.city') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.address.fields.province') }}
                     </th>
                     <th>
                         {{ trans('cruds.address.fields.status') }}
@@ -124,17 +127,18 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'person_first_name', name: 'person.first_name' },
-{ data: 'type', name: 'type' },
 { data: 'country_name', name: 'country.name' },
-{ data: 'mobile', name: 'mobile' },
+{ data: 'province_name', name: 'province.name' },
 { data: 'postal_code_name', name: 'postal_code.name' },
+{ data: 'person_first_name', name: 'person.first_name' },
+{ data: 'user_username', name: 'user.username' },
+{ data: 'type', name: 'type' },
+{ data: 'mobile', name: 'mobile' },
 { data: 'details', name: 'details' },
 { data: 'street', name: 'street' },
 { data: 'landmark', name: 'landmark' },
 { data: 'locality', name: 'locality' },
 { data: 'city', name: 'city' },
-{ data: 'province_name', name: 'province.name' },
 { data: 'status', name: 'status' },
 { data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

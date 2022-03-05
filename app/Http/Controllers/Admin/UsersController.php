@@ -57,8 +57,8 @@ class UsersController extends Controller
                 return $row->email ? $row->email : '';
             });
 
-            $table->editColumn('two_factor', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->two_factor ? 'checked' : null) . '>';
+            $table->editColumn('type', function ($row) {
+                return $row->type ? User::TYPE_SELECT[$row->type] : '';
             });
             $table->editColumn('roles', function ($row) {
                 $labels = [];
@@ -67,6 +67,9 @@ class UsersController extends Controller
                 }
 
                 return implode(' ', $labels);
+            });
+            $table->editColumn('two_factor', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->two_factor ? 'checked' : null) . '>';
             });
             $table->editColumn('role', function ($row) {
                 return $row->role ? $row->role : '';
@@ -81,7 +84,7 @@ class UsersController extends Controller
                 return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'two_factor', 'roles']);
+            $table->rawColumns(['actions', 'placeholder', 'roles', 'two_factor']);
 
             return $table->make(true);
         }

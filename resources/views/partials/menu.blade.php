@@ -578,7 +578,7 @@
                     </li>
                 @endcan
                 @can('registrars_office_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/campuses*") ? "menu-open" : "" }} {{ request()->is("admin/faculties*") ? "menu-open" : "" }} {{ request()->is("admin/departments*") ? "menu-open" : "" }} {{ request()->is("admin/centres*") ? "menu-open" : "" }} {{ request()->is("admin/employees*") ? "menu-open" : "" }} {{ request()->is("admin/designations*") ? "menu-open" : "" }} {{ request()->is("admin/nominees*") ? "menu-open" : "" }} {{ request()->is("admin/family-members*") ? "menu-open" : "" }} {{ request()->is("admin/employment-statuses*") ? "menu-open" : "" }} {{ request()->is("admin/designation-types*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/campuses*") ? "menu-open" : "" }} {{ request()->is("admin/faculties*") ? "menu-open" : "" }} {{ request()->is("admin/departments*") ? "menu-open" : "" }} {{ request()->is("admin/centres*") ? "menu-open" : "" }} {{ request()->is("admin/employees*") ? "menu-open" : "" }} {{ request()->is("admin/designations*") ? "menu-open" : "" }} {{ request()->is("admin/nominees*") ? "menu-open" : "" }} {{ request()->is("admin/family-members*") ? "menu-open" : "" }} {{ request()->is("admin/employment-statuses*") ? "menu-open" : "" }} {{ request()->is("admin/designation-types*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -707,6 +707,57 @@
                                             {{ trans('cruds.designationType.title') }}
                                         </p>
                                     </a>
+                                </li>
+                            @endcan
+                            @can('career_access')
+                                <li class="nav-item has-treeview {{ request()->is("admin/advertisements*") ? "menu-open" : "" }} {{ request()->is("admin/post-types*") ? "menu-open" : "" }} {{ request()->is("admin/posts*") ? "menu-open" : "" }}">
+                                    <a class="nav-link nav-dropdown-toggle" href="#">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.career.title') }}
+                                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @can('advertisement_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.advertisements.index") }}" class="nav-link {{ request()->is("admin/advertisements") || request()->is("admin/advertisements/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.advertisement.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('post_type_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.post-types.index") }}" class="nav-link {{ request()->is("admin/post-types") || request()->is("admin/post-types/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.postType.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('post_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.posts.index") }}" class="nav-link {{ request()->is("admin/posts") || request()->is("admin/posts/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon fas fa-cogs">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.post.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                    </ul>
                                 </li>
                             @endcan
                         </ul>

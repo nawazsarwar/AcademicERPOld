@@ -28,17 +28,18 @@ class Address extends Model
     ];
 
     protected $fillable = [
-        'person_id',
         'country_id',
-        'mobile',
+        'province_id',
         'postal_code_id',
+        'person_id',
+        'user_id',
+        'type',
+        'mobile',
         'details',
         'street',
         'landmark',
         'locality',
         'city',
-        'province_id',
-        'type',
         'status',
         'remarks',
         'created_at',
@@ -46,14 +47,14 @@ class Address extends Model
         'deleted_at',
     ];
 
-    public function person()
-    {
-        return $this->belongsTo(Person::class, 'person_id');
-    }
-
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class, 'province_id');
     }
 
     public function postal_code()
@@ -61,9 +62,14 @@ class Address extends Model
         return $this->belongsTo(PostalCode::class, 'postal_code_id');
     }
 
-    public function province()
+    public function person()
     {
-        return $this->belongsTo(Province::class, 'province_id');
+        return $this->belongsTo(Person::class, 'person_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

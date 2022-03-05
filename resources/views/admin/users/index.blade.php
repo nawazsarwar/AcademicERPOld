@@ -41,10 +41,13 @@
                         {{ trans('cruds.user.fields.email_verified_at') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.two_factor') }}
+                        {{ trans('cruds.user.fields.type') }}
                     </th>
                     <th>
                         {{ trans('cruds.user.fields.roles') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.two_factor') }}
                     </th>
                     <th>
                         {{ trans('cruds.user.fields.role') }}
@@ -119,8 +122,9 @@
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
 { data: 'email_verified_at', name: 'email_verified_at' },
-{ data: 'two_factor', name: 'two_factor' },
+{ data: 'type', name: 'type' },
 { data: 'roles', name: 'roles.title' },
+{ data: 'two_factor', name: 'two_factor' },
 { data: 'role', name: 'role' },
 { data: 'revoked', name: 'revoked' },
 { data: 'applications', name: 'applications' },

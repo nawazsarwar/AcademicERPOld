@@ -43,8 +43,8 @@
                 <span class="help-block">{{ trans('cruds.academicQualification.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="year">{{ trans('cruds.academicQualification.fields.year') }}</label>
-                <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" type="number" name="year" id="year" value="{{ old('year', $academicQualification->year) }}" step="1" required>
+                <label for="year">{{ trans('cruds.academicQualification.fields.year') }}</label>
+                <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" type="number" name="year" id="year" value="{{ old('year', $academicQualification->year) }}" step="1">
                 @if($errors->has('year'))
                     <span class="text-danger">{{ $errors->first('year') }}</span>
                 @endif

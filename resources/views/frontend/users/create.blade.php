@@ -44,14 +44,29 @@
                             <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
-                            <input class="form-control" type="password" name="password" id="password" required>
+                            <label for="password">{{ trans('cruds.user.fields.password') }}</label>
+                            <input class="form-control" type="password" name="password" id="password">
                             @if($errors->has('password'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('password') }}
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required">{{ trans('cruds.user.fields.type') }}</label>
+                            <select class="form-control" name="type" id="type" required>
+                                <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                @foreach(App\Models\User::TYPE_SELECT as $key => $label)
+                                    <option value="{{ $key }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('type'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('type') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.user.fields.type_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>

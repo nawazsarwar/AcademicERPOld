@@ -352,6 +352,26 @@
                                             {{ trans('cruds.designationType.title') }}
                                         </a>
                                     @endcan
+                                    @can('career_access')
+                                        <a class="dropdown-item disabled" href="#">
+                                            {{ trans('cruds.career.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('advertisement_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.advertisements.index') }}">
+                                            {{ trans('cruds.advertisement.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('post_type_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.post-types.index') }}">
+                                            {{ trans('cruds.postType.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('post_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.posts.index') }}">
+                                            {{ trans('cruds.post.title') }}
+                                        </a>
+                                    @endcan
                                     @can('system_configuration_access')
                                         <a class="dropdown-item disabled" href="#">
                                             {{ trans('cruds.systemConfiguration.title') }}

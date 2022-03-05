@@ -3,64 +3,48 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            @can('user_create')
+            @can('advertisement_create')
                 <div style="margin-bottom: 10px;" class="row">
                     <div class="col-lg-12">
-                        <a class="btn btn-success" href="{{ route('frontend.users.create') }}">
-                            {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
+                        <a class="btn btn-success" href="{{ route('frontend.advertisements.create') }}">
+                            {{ trans('global.add') }} {{ trans('cruds.advertisement.title_singular') }}
                         </a>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
-                            {{ trans('global.app_csvImport') }}
-                        </button>
-                        @include('csvImport.modal', ['model' => 'User', 'route' => 'admin.users.parseCsvImport'])
                     </div>
                 </div>
             @endcan
             <div class="card">
                 <div class="card-header">
-                    {{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}
+                    {{ trans('cruds.advertisement.title_singular') }} {{ trans('global.list') }}
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class=" table table-bordered table-striped table-hover datatable datatable-User">
+                        <table class=" table table-bordered table-striped table-hover datatable datatable-Advertisement">
                             <thead>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.user.fields.id') }}
+                                        {{ trans('cruds.advertisement.fields.id') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.username') }}
+                                        {{ trans('cruds.advertisement.fields.title') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.name') }}
+                                        {{ trans('cruds.advertisement.fields.slug') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.email') }}
+                                        {{ trans('cruds.advertisement.fields.description') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.email_verified_at') }}
+                                        {{ trans('cruds.advertisement.fields.dated') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.type') }}
+                                        {{ trans('cruds.advertisement.fields.type') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.roles') }}
+                                        {{ trans('cruds.advertisement.fields.advertisement_url') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.user.fields.two_factor') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.user.fields.role') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.user.fields.revoked') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.user.fields.applications') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.user.fields.remarks') }}
+                                        {{ trans('cruds.advertisement.fields.document') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -68,62 +52,51 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $key => $user)
-                                    <tr data-entry-id="{{ $user->id }}">
+                                @foreach($advertisements as $key => $advertisement)
+                                    <tr data-entry-id="{{ $advertisement->id }}">
                                         <td>
-                                            {{ $user->id ?? '' }}
+                                            {{ $advertisement->id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $user->username ?? '' }}
+                                            {{ $advertisement->title ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $user->name ?? '' }}
+                                            {{ $advertisement->slug ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $user->email ?? '' }}
+                                            {{ $advertisement->description ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $user->email_verified_at ?? '' }}
+                                            {{ $advertisement->dated ?? '' }}
                                         </td>
                                         <td>
-                                            {{ App\Models\User::TYPE_SELECT[$user->type] ?? '' }}
+                                            {{ App\Models\Advertisement::TYPE_SELECT[$advertisement->type] ?? '' }}
                                         </td>
                                         <td>
-                                            @foreach($user->roles as $key => $item)
-                                                <span>{{ $item->title }}</span>
-                                            @endforeach
+                                            {{ $advertisement->advertisement_url ?? '' }}
                                         </td>
                                         <td>
-                                            <span style="display:none">{{ $user->two_factor ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $user->two_factor ? 'checked' : '' }}>
+                                            @if($advertisement->document)
+                                                <a href="{{ $advertisement->document->getUrl() }}" target="_blank">
+                                                    {{ trans('global.view_file') }}
+                                                </a>
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $user->role ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $user->revoked ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $user->applications ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $user->remarks ?? '' }}
-                                        </td>
-                                        <td>
-                                            @can('user_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.users.show', $user->id) }}">
+                                            @can('advertisement_show')
+                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.advertisements.show', $advertisement->id) }}">
                                                     {{ trans('global.view') }}
                                                 </a>
                                             @endcan
 
-                                            @can('user_edit')
-                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.users.edit', $user->id) }}">
+                                            @can('advertisement_edit')
+                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.advertisements.edit', $advertisement->id) }}">
                                                     {{ trans('global.edit') }}
                                                 </a>
                                             @endcan
 
-                                            @can('user_delete')
-                                                <form action="{{ route('frontend.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                            @can('advertisement_delete')
+                                                <form action="{{ route('frontend.advertisements.destroy', $advertisement->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -149,11 +122,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('user_delete')
+@can('advertisement_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('frontend.users.massDestroy') }}",
+    url: "{{ route('frontend.advertisements.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -184,7 +157,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Advertisement:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

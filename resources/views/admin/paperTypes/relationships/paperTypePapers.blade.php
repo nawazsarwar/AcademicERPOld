@@ -37,7 +37,7 @@
                                 {{ trans('cruds.paperType.fields.name') }}
                             </th>
                             <th>
-                                {{ trans('cruds.paper.fields.fraction') }}
+                                {{ trans('cruds.paper.fields.part') }}
                             </th>
                             <th>
                                 {{ trans('cruds.paper.fields.teaching_status') }}
@@ -84,7 +84,7 @@
                                     {{ $paper->paper_type->name ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $paper->fraction ?? '' }}
+                                    {{ $paper->part ?? '' }}
                                 </td>
                                 <td>
                                     {{ App\Models\Paper::TEACHING_STATUS_SELECT[$paper->teaching_status] ?? '' }}
