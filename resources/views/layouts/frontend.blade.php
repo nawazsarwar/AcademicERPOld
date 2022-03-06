@@ -362,14 +362,9 @@
                                             {{ trans('cruds.advertisement.title') }}
                                         </a>
                                     @endcan
-                                    @can('post_type_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.post-types.index') }}">
-                                            {{ trans('cruds.postType.title') }}
-                                        </a>
-                                    @endcan
-                                    @can('post_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.posts.index') }}">
-                                            {{ trans('cruds.post.title') }}
+                                    @can('old_post_type_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.old-post-types.index') }}">
+                                            {{ trans('cruds.oldPostType.title') }}
                                         </a>
                                     @endcan
                                     @can('system_configuration_access')
