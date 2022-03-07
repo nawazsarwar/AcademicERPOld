@@ -617,6 +617,16 @@
                                             {{ trans('cruds.dialogue.title') }}
                                         </a>
                                     @endcan
+                                    @can('university_access')
+                                        <a class="dropdown-item disabled" href="#">
+                                            {{ trans('cruds.university.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('organization_unit_type_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.organization-unit-types.index') }}">
+                                            {{ trans('cruds.organizationUnitType.title') }}
+                                        </a>
+                                    @endcan
 
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

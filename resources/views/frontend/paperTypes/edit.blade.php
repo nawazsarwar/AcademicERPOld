@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label for="remarks">{{ trans('cruds.paperType.fields.remarks') }}</label>
-                            <input class="form-control" type="text" name="remarks" id="remarks" value="{{ old('remarks', $paperType->remarks) }}">
+                            <textarea class="form-control" name="remarks" id="remarks">{{ old('remarks', $paperType->remarks) }}</textarea>
                             @if($errors->has('remarks'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('remarks') }}
