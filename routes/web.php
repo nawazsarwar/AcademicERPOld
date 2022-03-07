@@ -476,6 +476,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('old-post-types/destroy', 'OldPostTypesController@massDestroy')->name('old-post-types.massDestroy');
     Route::resource('old-post-types', 'OldPostTypesController');
 
+    // Organization Units Type
+    Route::delete('organization-units-types/destroy', 'OrganizationUnitsTypeController@massDestroy')->name('organization-units-types.massDestroy');
+    Route::resource('organization-units-types', 'OrganizationUnitsTypeController');
+
+    // Organization Units
+    Route::delete('organization-units/destroy', 'OrganizationUnitsController@massDestroy')->name('organization-units.massDestroy');
+    Route::resource('organization-units', 'OrganizationUnitsController');
+
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
@@ -874,6 +882,14 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Old Post Types
     Route::delete('old-post-types/destroy', 'OldPostTypesController@massDestroy')->name('old-post-types.massDestroy');
     Route::resource('old-post-types', 'OldPostTypesController');
+
+    // Organization Units Type
+    Route::delete('organization-units-types/destroy', 'OrganizationUnitsTypeController@massDestroy')->name('organization-units-types.massDestroy');
+    Route::resource('organization-units-types', 'OrganizationUnitsTypeController');
+
+    // Organization Units
+    Route::delete('organization-units/destroy', 'OrganizationUnitsController@massDestroy')->name('organization-units.massDestroy');
+    Route::resource('organization-units', 'OrganizationUnitsController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

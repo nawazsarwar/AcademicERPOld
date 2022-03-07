@@ -327,11 +327,6 @@
                                             {{ trans('cruds.employee.title') }}
                                         </a>
                                     @endcan
-                                    @can('designation_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.designations.index') }}">
-                                            {{ trans('cruds.designation.title') }}
-                                        </a>
-                                    @endcan
                                     @can('nominee_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.nominees.index') }}">
                                             {{ trans('cruds.nominee.title') }}
@@ -622,9 +617,24 @@
                                             {{ trans('cruds.university.title') }}
                                         </a>
                                     @endcan
-                                    @can('organization_unit_type_access')
-                                        <a class="dropdown-item ml-3" href="{{ route('frontend.organization-unit-types.index') }}">
-                                            {{ trans('cruds.organizationUnitType.title') }}
+                                    @can('organization_units_type_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.organization-units-types.index') }}">
+                                            {{ trans('cruds.organizationUnitsType.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('organization_unit_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.organization-units.index') }}">
+                                            {{ trans('cruds.organizationUnit.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('designation_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.designations.index') }}">
+                                            {{ trans('cruds.designation.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('organigram_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.organigrams.index') }}">
+                                            {{ trans('cruds.organigram.title') }}
                                         </a>
                                     @endcan
 
