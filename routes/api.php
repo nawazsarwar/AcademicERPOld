@@ -193,4 +193,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Old Post Types
     Route::apiResource('old-post-types', 'OldPostTypesApiController');
+
+    // Organization Units
+    Route::apiResource('organization-units', 'OrganizationUnitsApiController');
 });

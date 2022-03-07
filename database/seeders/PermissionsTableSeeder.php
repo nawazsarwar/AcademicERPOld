@@ -1876,6 +1876,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 467,
+                'title' => 'organization_units_type_create',
+            ],
+            [
+                'id'    => 468,
+                'title' => 'organization_units_type_edit',
+            ],
+            [
+                'id'    => 469,
+                'title' => 'organization_units_type_show',
+            ],
+            [
+                'id'    => 470,
+                'title' => 'organization_units_type_delete',
+            ],
+            [
+                'id'    => 471,
+                'title' => 'organization_units_type_access',
+            ],
+            [
+                'id'    => 472,
+                'title' => 'organization_unit_create',
+            ],
+            [
+                'id'    => 473,
+                'title' => 'organization_unit_edit',
+            ],
+            [
+                'id'    => 474,
+                'title' => 'organization_unit_show',
+            ],
+            [
+                'id'    => 475,
+                'title' => 'organization_unit_delete',
+            ],
+            [
+                'id'    => 476,
+                'title' => 'organization_unit_access',
+            ],
+            [
+                'id'    => 477,
                 'title' => 'profile_password_edit',
             ],
         ];
