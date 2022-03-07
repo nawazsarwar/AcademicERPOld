@@ -1852,6 +1852,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 461,
+                'title' => 'old_post_type_create',
+            ],
+            [
+                'id'    => 462,
+                'title' => 'old_post_type_edit',
+            ],
+            [
+                'id'    => 463,
+                'title' => 'old_post_type_show',
+            ],
+            [
+                'id'    => 464,
+                'title' => 'old_post_type_delete',
+            ],
+            [
+                'id'    => 465,
+                'title' => 'old_post_type_access',
+            ],
+            [
+                'id'    => 466,
+                'title' => 'university_access',
+            ],
+            [
+                'id'    => 467,
                 'title' => 'profile_password_edit',
             ],
         ];

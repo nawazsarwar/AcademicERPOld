@@ -13,7 +13,7 @@ class CreatePaperTypesTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('status')->nullable();
-            $table->string('remarks')->nullable();
+            $table->longText('remarks')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

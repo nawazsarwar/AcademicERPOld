@@ -710,7 +710,7 @@
                                 </li>
                             @endcan
                             @can('career_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/advertisements*") ? "menu-open" : "" }} {{ request()->is("admin/post-types*") ? "menu-open" : "" }} {{ request()->is("admin/posts*") ? "menu-open" : "" }}">
+                                <li class="nav-item has-treeview {{ request()->is("admin/advertisements*") ? "menu-open" : "" }} {{ request()->is("admin/old-post-types*") ? "menu-open" : "" }}">
                                     <a class="nav-link nav-dropdown-toggle" href="#">
                                         <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -733,26 +733,14 @@
                                                 </a>
                                             </li>
                                         @endcan
-                                        @can('post_type_access')
+                                        @can('old_post_type_access')
                                             <li class="nav-item">
-                                                <a href="{{ route("admin.post-types.index") }}" class="nav-link {{ request()->is("admin/post-types") || request()->is("admin/post-types/*") ? "active" : "" }}">
+                                                <a href="{{ route("admin.old-post-types.index") }}" class="nav-link {{ request()->is("admin/old-post-types") || request()->is("admin/old-post-types/*") ? "active" : "" }}">
                                                     <i class="fa-fw nav-icon fas fa-cogs">
 
                                                     </i>
                                                     <p>
-                                                        {{ trans('cruds.postType.title') }}
-                                                    </p>
-                                                </a>
-                                            </li>
-                                        @endcan
-                                        @can('post_access')
-                                            <li class="nav-item">
-                                                <a href="{{ route("admin.posts.index") }}" class="nav-link {{ request()->is("admin/posts") || request()->is("admin/posts/*") ? "active" : "" }}">
-                                                    <i class="fa-fw nav-icon fas fa-cogs">
-
-                                                    </i>
-                                                    <p>
-                                                        {{ trans('cruds.post.title') }}
+                                                        {{ trans('cruds.oldPostType.title') }}
                                                     </p>
                                                 </a>
                                             </li>

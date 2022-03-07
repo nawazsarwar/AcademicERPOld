@@ -191,6 +191,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('advertisements/media', 'AdvertisementsApiController@storeMedia')->name('advertisements.storeMedia');
     Route::apiResource('advertisements', 'AdvertisementsApiController');
 
-    // Posts
-    Route::apiResource('posts', 'PostsApiController');
+    // Old Post Types
+    Route::apiResource('old-post-types', 'OldPostTypesApiController');
 });

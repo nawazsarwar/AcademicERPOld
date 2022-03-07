@@ -472,13 +472,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('advertisements/ckmedia', 'AdvertisementsController@storeCKEditorImages')->name('advertisements.storeCKEditorImages');
     Route::resource('advertisements', 'AdvertisementsController');
 
-    // Post Types
-    Route::delete('post-types/destroy', 'PostTypesController@massDestroy')->name('post-types.massDestroy');
-    Route::resource('post-types', 'PostTypesController');
-
-    // Posts
-    Route::delete('posts/destroy', 'PostsController@massDestroy')->name('posts.massDestroy');
-    Route::resource('posts', 'PostsController');
+    // Old Post Types
+    Route::delete('old-post-types/destroy', 'OldPostTypesController@massDestroy')->name('old-post-types.massDestroy');
+    Route::resource('old-post-types', 'OldPostTypesController');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
@@ -875,13 +871,9 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('advertisements/ckmedia', 'AdvertisementsController@storeCKEditorImages')->name('advertisements.storeCKEditorImages');
     Route::resource('advertisements', 'AdvertisementsController');
 
-    // Post Types
-    Route::delete('post-types/destroy', 'PostTypesController@massDestroy')->name('post-types.massDestroy');
-    Route::resource('post-types', 'PostTypesController');
-
-    // Posts
-    Route::delete('posts/destroy', 'PostsController@massDestroy')->name('posts.massDestroy');
-    Route::resource('posts', 'PostsController');
+    // Old Post Types
+    Route::delete('old-post-types/destroy', 'OldPostTypesController@massDestroy')->name('old-post-types.massDestroy');
+    Route::resource('old-post-types', 'OldPostTypesController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
