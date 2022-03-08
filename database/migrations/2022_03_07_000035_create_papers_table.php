@@ -15,9 +15,13 @@ class CreatePapersTable extends Migration
             $table->integer('part')->nullable();
             $table->string('teaching_status')->nullable();
             $table->string('credits')->nullable();
+            $table->string('category')->nullable();
+            $table->string('delivery_mode')->nullable();
+            $table->integer('sessional')->nullable();
+            $table->integer('end_term')->nullable();
+            $table->string('administrable_type')->nullable();
             $table->string('status')->nullable();
             $table->longText('remarks')->nullable();
-            $table->string('administrable_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
